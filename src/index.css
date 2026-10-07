@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Custom engineering grid background */
+.bg-industrial-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
+}
+
+.bg-industrial-grid-dark {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Subtle brushed metal sheen */
+.metal-sheen {
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(240,244,248,0.2) 50%, rgba(220,228,236,0.5) 100%);
+}
+
+.dark-metal-plate {
+  background: linear-gradient(145deg, #1b212c, #131720);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f131a;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a475d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
+
+/* ===== INFINITE MARQUEE ANIMATION ===== */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.marquee-outer {
+  overflow: hidden;
+  width: 100%;
+}
+
+
+/* ===== HERO SLIDER ANIMATIONS ===== */
+@keyframes hero-fade-in {
+  from { opacity: 0; transform: scale(1.03); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.hero-slide-active {
+  animation: hero-fade-in 0.8s ease-out forwards;
+}
+
+/* ===== PAGE HERO BANNER ===== */
+.page-hero-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Prevent horizontal overflow globally */
+html, body {
+  overflow-x: clip;
+  max-width: 100vw;
+}
