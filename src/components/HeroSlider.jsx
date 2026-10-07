@@ -8,7 +8,7 @@ const slides = [
     eyebrow: "PRECISION INDUSTRIAL IDENTIFICATION",
     heading: "ENGINEERED NAMEPLATES. BUILT FOR INDUSTRY.",
     description: "Precision-manufactured industrial nameplates, identification plates and custom labels for machines, control panels, equipment and industrial applications.",
-    image: "/images/custom-plates-group.jpg",
+    image: "/images/hero-industrial-nameplates.jpg",
     objectPosition: "center 40%",
     badge: "SS 304 / SS 316 Grade",
     specs: "Laser Etched • Serialized • Vibration-Proof",
@@ -149,9 +149,9 @@ export default function HeroSlider({ onOpenQuote }) {
       >
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4 sm:py-8">
 
-          {/* Dark / Subtle Readable Content Panel */}
+          {/* Subtle Transparent Content Panel */}
           <div
-            className={`max-w-xl lg:max-w-2xl bg-neutral-950/85 sm:bg-neutral-950/80 backdrop-blur-md p-5 sm:p-7 md:p-8 rounded-xl sm:rounded-2xl border border-neutral-800 shadow-2xl transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+            className={`max-w-xl lg:max-w-2xl bg-black/15 sm:bg-black/10 p-5 sm:p-7 md:p-8 rounded-xl sm:rounded-2xl transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
               }`}
           >
             {/* Eyebrow badge */}

@@ -22,7 +22,7 @@ export default function ProductGallery() {
     {
       title: "Equipment Data Spec Plate",
       category: "Stainless Steel 316",
-      image: "/images/equipment-data-plate.jpg",
+      image: "/images/data-plate.jpg",
       span: "col-span-1 md:col-span-1 lg:col-span-1",
       aspect: "aspect-[4/3]",
       caption: "Tabulated pressure rating, voltage & CE serial certification"
@@ -54,7 +54,7 @@ export default function ProductGallery() {
     {
       title: "Custom Multi-Material Group",
       category: "Bespoke Metal Fabrication",
-      image: "/images/custom-plates-group.jpg",
+      image: "/images/multi-materials.jpg",
       span: "col-span-1 md:col-span-2 lg:col-span-2",
       aspect: "aspect-[4/3] md:aspect-[16/9]",
       caption: "Comparative array of stainless, anodized, brass and copper tags"
