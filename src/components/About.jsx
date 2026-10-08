@@ -28,23 +28,22 @@ export default function About({ onSelectImage }) {
   return (
     <section id="about" className="py-20 md:py-24 bg-white border-b border-slate-200 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
 
-          {/* LEFT: Large Close-Up Image of Actual Industrial Plate */}
-          <div className="lg:col-span-5 relative">
+          {/* LEFT: Fixed-width Image Card */}
+          <div className="w-full max-w-[560px] lg:w-[460px] lg:max-w-none lg:shrink-0 mx-auto lg:mx-0 relative">
             <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl group">
               <img
                 src="/images/about-img-home.jpg"
                 alt="Rameshwar Industries - Precision Engineered Brass Turbine Name Plate"
                 className="w-full h-auto object-cover group-hover:scale-103 transition-transform duration-500 cursor-pointer"
-
               />
 
               {/* Overlay engineering tag */}
               <div className="absolute bottom-4 left-4 right-4 bg-industrial-950/90 backdrop-blur-md text-white p-4 rounded-xl border border-white/10 shadow-lg">
                 <div className="flex items-center justify-between text-xs font-mono text-slate-300 pb-2 border-b border-slate-800">
                   <span className="text-brand-orange font-bold">CLOSE-UP SPECIMEN</span>
-                  <span>SOLID BRASS / DEEP ETCH</span>
+                  <span className="hidden sm:inline">SOLID BRASS / DEEP ETCH</span>
                 </div>
                 <p className="text-xs text-slate-200 mt-2 font-mono">
                   Deep enamel infill, beveled safety border & countersunk screw alignment.
@@ -52,13 +51,13 @@ export default function About({ onSelectImage }) {
               </div>
             </div>
 
-            {/* Decorative subtle backdrop element */}
+            {/* Decorative backdrop */}
             <div className="absolute -top-4 -left-4 w-28 h-28 border-2 border-slate-200 rounded-2xl -z-10"></div>
             <div className="absolute -bottom-4 -right-4 w-28 h-28 border-2 border-brand-orange/30 rounded-2xl -z-10"></div>
           </div>
 
-          {/* RIGHT: About Details & Customization Parameters */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* RIGHT: About Details */}
+          <div className="flex-1 space-y-6">
 
             {/* Small Label */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-50 border border-orange-200 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
@@ -107,7 +106,7 @@ export default function About({ onSelectImage }) {
               </div>
             </div>
 
-            {/* CTA Button: Learn More -> /about */}
+            {/* CTA Button */}
             <div className="pt-4">
               <Link
                 to="/about"

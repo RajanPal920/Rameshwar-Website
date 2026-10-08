@@ -4,8 +4,6 @@ import MaterialStrip from '../components/MaterialStrip';
 import About from '../components/About';
 import Products from '../components/Products';
 import Industries from '../components/Industries';
-import CustomizationGuide from '../components/CustomizationGuide';
-import ProductGallery from '../components/ProductGallery';
 import WhyChooseUs from '../components/WhyChooseUs';
 import GlobalPresence from '../components/GlobalPresence';
 import QuoteSection from '../components/QuoteSection';
@@ -29,8 +27,8 @@ export default function HomePage({ onOpenQuote, onSelectImage, onSelectProduct }
         onSelectImage={onSelectImage}
       />
 
-      {/* 5. Materials / Manufacturing Capabilities */}
-      <CustomizationGuide onOpenQuote={onOpenQuote} />
+      {/* 8. Why Choose Rameshwar Industries */}
+      <WhyChooseUs />
 
       {/* 6. Industries We Serve */}
       <Industries
@@ -38,11 +36,7 @@ export default function HomePage({ onOpenQuote, onSelectImage, onSelectProduct }
         onSelectImage={onSelectImage}
       />
 
-      {/* 8. Why Choose Rameshwar Industries */}
-      <WhyChooseUs />
 
-      {/* 9. Product Gallery */}
-      <ProductGallery onSelectImage={onSelectImage} />
 
       {/* 10. Call-to-Action / Get Quote section */}
       <QuoteSection />

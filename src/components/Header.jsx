@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Menu, X, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
 import { FaWhatsapp, FaLinkedinIn, FaFacebookF, FaInstagram } from 'react-icons/fa6';
 
 export default function Header({ onOpenQuote }) {
@@ -103,21 +103,31 @@ export default function Header({ onOpenQuote }) {
         className={`bg-white transition-all duration-200 border-b border-slate-200 ${isScrolled ? 'shadow-md shadow-slate-200/80 bg-white/98 backdrop-blur-md' : 'shadow-xs'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-34 sm:h-28 lg:h-[90px]">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-8 flex items-center justify-between h-16 sm:h-20 lg:h-[96px]">
 
           {/* Prominent Rameshwar Industries Logo + Company Name */}
-          <Link to="/" className="flex items-center gap-2.5 sm:gap-3.5 py-1 group shrink-0">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3.5 py-1 group shrink-0">
             <img
               src="/logo.png"
               alt="Rameshwar Industries Logo"
-              className="h-9 sm:h-11 md:h-12 lg:h-14 xl:h-[100px] w-auto object-contain transition-all"
+              className="h-8 sm:h-11 md:h-14 lg:h-16 xl:h-[76px] w-auto object-contain transition-all"
             />
-            <span className=" xl:mt-[3.1%] lg:mt-[3.5%]  font-extrabold text-industrial-950 tracking-tight text-sm sm:text-base md:text-lg lg:text-lg xl:text-[28px] font-sans uppercase text-orange-500 whitespace-nowrap">
-              RAMESHWAR INDUSTRIES
-            </span>
+            <div className="flex flex-col justify-center">
+              <span className="font-extrabold tracking-tight text-[13px] sm:text-base md:text-lg lg:text-xl xl:text-[26px] font-sans uppercase text-orange-500 whitespace-nowrap leading-tight">
+                RAMESHWAR INDUSTRIES
+              </span>
+
+              {/* ISO Certificate Line — Shifted right directly under "INDUSTRIES", bold in black, compact on mobile */}
+              <div className="flex items-center gap-0.5 sm:gap-1 mt-0.5 self-end">
+                <ShieldCheck className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-black shrink-0" />
+                <span className="text-[7.5px] sm:text-[9.5px]  font-bold tracking-tight sm:tracking-wider uppercase text-black whitespace-nowrap leading-none">
+                  ISO 9001:2015 Certified Company
+                </span>
+              </div>
+            </div>
           </Link>
 
-          {/* Desktop Navigation Links — Centered/Right with balanced spacing */}
+          {/* Desktop Navigation Links — Centered/Right with balanced spacing, vertically centered */}
           <div className="hidden lg:flex items-center gap-5 xl:gap-7 2xl:gap-8 h-full">
             {navLinks.map((link) => (
               <NavLink
@@ -138,7 +148,7 @@ export default function Header({ onOpenQuote }) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-1.5 rounded-md text-slate-700 hover:text-brand-orange hover:bg-slate-100 transition-colors focus:outline-none cursor-pointer"
+            className="lg:hidden p-2 rounded-md text-slate-700 hover:text-brand-orange hover:bg-slate-100 transition-colors focus:outline-none cursor-pointer"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

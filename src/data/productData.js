@@ -94,6 +94,18 @@ export const PRODUCTS = [
     materials: ["Brass", "Copper", "Bronze", "SS 316", "Aluminium", "PVC"],
     mounting: ["Custom Cutouts / Slotted / Adhesive"],
     leadTime: "Custom Schedule"
+  },
+  {
+    id: "pvc-vinyl-labels",
+    number: "09",
+    title: "PVC & Vinyl Labels",
+    category: "Flexible Identification",
+    image: "/images/pvc-industrial.jpg",
+    description: "Flexible, solvent-resistant PVC and vinyl labels for curved surfaces, warning tags and equipment marking.",
+    details: "Manufactured from high-bond laminated vinyl and industrial PVC substrates. Ideal for curved housings, control cabinets, motor casings, and safety warning overlays. Resistant to oils, coolants, mild solvents, UV exposure, and outdoor weathering. Supplied with 3M high-bond adhesive backing for permanent attachment.",
+    materials: ["Industrial PVC", "Laminated Vinyl", "Polyester Film"],
+    mounting: ["3M High-Bond Adhesive", "Peel-and-Stick Backing"],
+    leadTime: "2 - 4 Days"
   }
 ];
 
