@@ -123,19 +123,19 @@ export default function HeroSlider({ onOpenQuote }) {
             }}
           />
 
-          {/* Cinematic Vignette Overlay: Left-heavy for text panel contrast, transparent on right for product display */}
+          {/* Cinematic Overlay: Noticeably lighter and brighter for product visibility while keeping text readable */}
           <div
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(90deg, rgba(5,7,10,0.88) 0%, rgba(8,10,14,0.78) 42%, rgba(10,12,16,0.38) 72%, rgba(10,12,16,0.18) 100%)',
+              background: 'linear-gradient(90deg, rgba(5,7,10,0.68) 0%, rgba(8,10,14,0.48) 45%, rgba(10,12,16,0.15) 75%, rgba(10,12,16,0.05) 100%)',
               zIndex: 2,
             }}
           />
-          {/* Subtle bottom gradient to blend into marquee */}
+          {/* Subtle soft bottom gradient to blend into marquee */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-20 sm:h-28"
+            className="absolute bottom-0 left-0 right-0 h-16 sm:h-20"
             style={{
-              background: 'linear-gradient(to top, rgba(5,7,10,0.65) 0%, transparent 100%)',
+              background: 'linear-gradient(to top, rgba(5,7,10,0.35) 0%, transparent 100%)',
               zIndex: 3,
             }}
           />
@@ -151,7 +151,7 @@ export default function HeroSlider({ onOpenQuote }) {
 
           {/* Subtle Transparent Content Panel */}
           <div
-            className={`max-w-xl lg:max-w-2xl bg-black/15 sm:bg-black/10 p-5 sm:p-7 md:p-8 rounded-xl sm:rounded-2xl transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+            className={`max-w-xl lg:max-w-[760px] bg-black/40 sm:bg-black/30 backdrop-blur-[2px] p-5 sm:p-7 md:p-8 rounded-xl sm:rounded-2xl transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
               }`}
           >
             {/* Eyebrow badge */}
@@ -160,13 +160,13 @@ export default function HeroSlider({ onOpenQuote }) {
               <span>{slide.eyebrow}</span>
             </div>
 
-            {/* Large Bold Headline */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-black text-white tracking-tight leading-[1.14] mb-3 uppercase drop-shadow-md">
+            {/* Large Bold Headline (+10-15% on desktop) */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[45px] xl:text-[46px] font-black text-white tracking-tight leading-[1.12] mb-3 uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               {slide.heading}
             </h1>
 
             {/* Description */}
-            <p className="text-neutral-200 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-5 font-normal max-w-xl drop-shadow">
+            <p className="text-neutral-100 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-5 font-normal max-w-2xl lg:max-w-[720px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
               {slide.description}
             </p>
 

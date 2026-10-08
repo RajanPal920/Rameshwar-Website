@@ -6,7 +6,7 @@ export default function ProductGallery() {
     {
       title: "Machine Rating Plate",
       category: "Stainless Steel 304",
-      image: "/images/machine-name-plate.jpg",
+      image: "/images/img2.jpg",
       span: "col-span-1 md:col-span-2 lg:col-span-2 row-span-2",
       aspect: "aspect-[4/3] md:aspect-[16/11]",
       caption: "High-spec motor rating plate with precision tapped mounting holes"
@@ -14,15 +14,15 @@ export default function ProductGallery() {
     {
       title: "Control Panel Faceplate",
       category: "Anodized Aluminium",
-      image: "/images/control-panel-plate.jpg",
+      image: "/images/img9.jpg",
       span: "col-span-1 md:col-span-1 lg:col-span-1",
       aspect: "aspect-[4/3]",
-      caption: "Feed speed dial scale & emergency stop switch cutouts"
+      caption: "High-contrast rotary dial scale and voltage output calibrations"
     },
     {
       title: "Equipment Data Spec Plate",
       category: "Stainless Steel 316",
-      image: "/images/data-plate.jpg",
+      image: "/images/img4.jpg",
       span: "col-span-1 md:col-span-1 lg:col-span-1",
       aspect: "aspect-[4/3]",
       caption: "Tabulated pressure rating, voltage & CE serial certification"
@@ -30,26 +30,26 @@ export default function ProductGallery() {
     {
       title: "Turbine Pump Brass Plate",
       category: "Solid Polished Brass",
-      image: "/images/brass-industrial-plate.jpg",
+      image: "/images/img12.jpg",
       span: "col-span-1 md:col-span-1 lg:col-span-1",
       aspect: "aspect-[4/3]",
-      caption: "Deep chemical etch with black enamel contrast lettering"
+      caption: "Centrifugal pump data plate with deep chemical etch and enamel lettering"
     },
     {
       title: "Facility Door / Room Plate",
       category: "Brushed Architectural Aluminium",
-      image: "/images/room-door-plate.jpg",
+      image: "/images/img13.jpg",
       span: "col-span-1 md:col-span-1 lg:col-span-1",
       aspect: "aspect-[4/3]",
-      caption: "Control room high-visibility access warning signage"
+      caption: "Heavy-duty satin stainless steel PUSH & PULL directional facility plates"
     },
     {
       title: "Lathe Speed & Feed Chart",
       category: "Machine Operating Chart",
-      image: "/images/temperature-chart-plate.jpg",
+      image: "/images/img14.jpg",
       span: "col-span-1 md:col-span-2 lg:col-span-2",
       aspect: "aspect-[4/3] md:aspect-[16/9]",
-      caption: "Spindle RPM gear settings and temperature limit guidelines"
+      caption: "Spindle RPM gear settings and feeds & threads technical operating chart"
     },
     {
       title: "Custom Multi-Material Group",
@@ -60,12 +60,12 @@ export default function ProductGallery() {
       caption: "Comparative array of stainless, anodized, brass and copper tags"
     },
     {
-      title: "Push / Pull Directional Plates",
-      category: "Facility Hardware Signage",
-      image: "/images/push-pull-plate.jpg",
+      title: "Machinery Technical Spec Plate",
+      category: "Heavy Industrial Stamped",
+      image: "/images/img3.jpg",
       span: "col-span-1 md:col-span-1 lg:col-span-1",
       aspect: "aspect-[4/3]",
-      caption: "Laser etched heavy-duty satin door plates"
+      caption: "Permanent motor technical ratings, voltage index and CE certified identification"
     },
     {
       title: "Flexible PVC Rating Labels",

@@ -34,7 +34,7 @@ export default function About({ onSelectImage }) {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl group">
               <img
-                src="/images/machine-name-plate.jpg"
+                src="/images/about-img-home.jpg"
                 alt="Rameshwar Industries - Precision Engineered Brass Turbine Name Plate"
                 className="w-full h-auto object-cover group-hover:scale-103 transition-transform duration-500 cursor-pointer"
 

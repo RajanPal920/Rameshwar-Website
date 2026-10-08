@@ -105,23 +105,26 @@ export default function Header({ onOpenQuote }) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-34 sm:h-28 lg:h-[90px]">
 
-          {/* Prominent Rameshwar Industries Logo — No white box, natural aspect ratio, vertically centered */}
-          <Link to="/" className="flex items-center py-1 group shrink-0">
+          {/* Prominent Rameshwar Industries Logo + Company Name */}
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-3.5 py-1 group shrink-0">
             <img
               src="/logo.png"
-              alt="Rameshwar Industries - Precision Industrial Name Plates"
-              className="h-9 sm:h-11 md:h-12 lg:h-[48px0] xl:h-[100px] w-auto object-contain transition-all"
+              alt="Rameshwar Industries Logo"
+              className="h-9 sm:h-11 md:h-12 lg:h-14 xl:h-[100px] w-auto object-contain transition-all"
             />
+            <span className=" xl:mt-[3.1%] lg:mt-[3.5%]  font-extrabold text-industrial-950 tracking-tight text-sm sm:text-base md:text-lg lg:text-lg xl:text-[28px] font-sans uppercase text-orange-500 whitespace-nowrap">
+              RAMESHWAR INDUSTRIES
+            </span>
           </Link>
 
-          {/* Desktop Navigation Links — Centered, professional spacing */}
-          <div className="hidden lg:flex items-center gap-4 xl:gap-6 h-full">
+          {/* Desktop Navigation Links — Centered/Right with balanced spacing */}
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7 2xl:gap-8 h-full">
             {navLinks.map((link) => (
               <NavLink
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-[13px] xl:text-[18px] font-medium transition-colors py-1 relative hover:text-brand-orange ${isActive
+                  `text-sm xl:text-[15px] 2xl:text-base font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${isActive
                     ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
                     : 'text-slate-700 hover:after:w-full after:transition-all after:duration-200 after:absolute after:-bottom-2.5 after:left-0 after:w-0 after:h-0.5 after:bg-brand-orange'
                   }`
@@ -130,17 +133,6 @@ export default function Header({ onOpenQuote }) {
                 {link.name}
               </NavLink>
             ))}
-          </div>
-
-          {/* Right Action: Get Quote Button */}
-          <div className="hidden sm:flex items-center">
-            <button
-              onClick={onOpenQuote}
-              className="inline-flex items-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white text-xs sm:text-sm font-bold px-4 sm:px-5 py-2 rounded-md shadow-sm shadow-orange-500/20 hover:shadow-md hover:shadow-orange-500/30 transition-all duration-200 group cursor-pointer"
-            >
-              <span>Get Quote</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </button>
           </div>
 
           {/* Mobile Menu Button */}

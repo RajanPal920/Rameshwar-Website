@@ -49,11 +49,11 @@ export default function Footer() {
               />
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-300 font-semibold tracking-wide text-brand-orange uppercase">
+            <p className="text-sm sm:text-base text-slate-300 font-semibold tracking-wide text-brand-orange uppercase">
               Industrial Name Plates & Identification Solutions
             </p>
 
-            <p className="text-xs text-slate-400 leading-relaxed pr-4">
+            <p className="text-sm text-slate-400 leading-relaxed pr-4">
               Specialized manufacturer of customized industrial name plates, machine plates, control panel faceplates, equipment data tags, door signage, and chemical-resistant industrial labels.
             </p>
 
@@ -100,10 +100,10 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase font-mono">
+            <h4 className="text-white font-bold text-base tracking-wider uppercase font-mono">
               Navigation
             </h4>
-            <ul className="space-y-2 text-xs font-extrabold">
+            <ul className="space-y-2.5 text-sm font-semibold">
               <li><Link to="/" className="hover:text-brand-orange transition-colors">Home</Link></li>
               <li><Link to="/about" className="hover:text-brand-orange transition-colors">About Us</Link></li>
               <li><Link to="/products" className="hover:text-brand-orange transition-colors">Product Range</Link></li>
@@ -116,10 +116,10 @@ export default function Footer() {
 
           {/* Column 3: Product Categories */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase font-mono">
+            <h4 className="text-white font-bold text-base tracking-wider uppercase font-mono">
               Products
             </h4>
-            <ul className="space-y-2 text-xs font-extrabold">
+            <ul className="space-y-2.5 text-sm font-semibold">
               <li><Link to="/products" className="hover:text-brand-orange transition-colors">Industrial Name Plates</Link></li>
               <li><Link to="/products" className="hover:text-brand-orange transition-colors">Machine Identification Plates</Link></li>
               <li><Link to="/products" className="hover:text-brand-orange transition-colors">Control Panel Plates</Link></li>
@@ -133,11 +133,11 @@ export default function Footer() {
 
           {/* Column 4: Contact Information */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase font-mono">
+            <h4 className="text-white font-bold text-base tracking-wider uppercase font-mono">
               Factory & Sales Contact
             </h4>
 
-            <div className="space-y-2.5 text-xs">
+            <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
                 <span className="leading-snug text-slate-300">
@@ -172,9 +172,9 @@ export default function Footer() {
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-emerald-400 hover:text-emerald-300 border border-slate-700 px-3.5 py-2 rounded-md text-xs font-semibold transition-colors"
+                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-emerald-400 hover:text-emerald-300 border border-slate-700 px-3.5 py-2.5 rounded-md text-sm font-semibold transition-colors"
               >
-                <IoLogoWhatsapp className="w-3.5 h-3.5" />
+                <IoLogoWhatsapp className="w-4 h-4" />
                 <span>Instant WhatsApp Support</span>
               </a>
             </div>
@@ -183,7 +183,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-400">
           <div>
             © 2026 Rameshwar Industries. All Rights Reserved.
           </div>

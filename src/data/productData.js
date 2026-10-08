@@ -4,7 +4,7 @@ export const PRODUCTS = [
     number: "01",
     title: "Industrial Identification Plates",
     category: "Facility & Room Identification",
-    image: "/images/room-door-plate.jpg",
+    image: "/images/aluminium-metal-plate.jpg",
     description: "Clear and durable identification plates for industrial areas, equipment and facilities.",
     details: "Manufactured from high-grade brushed aluminium and stainless steel with precision chamfered edges. Designed to withstand harsh chemical exposure, dust, and continuous temperature fluctuations.",
     materials: ["Stainless Steel", "Aluminium", "Brass"],
@@ -28,7 +28,7 @@ export const PRODUCTS = [
     number: "03",
     title: "Control Panel Plates",
     category: "Automation & Electrical",
-    image: "/images/control-panel-plate.jpg",
+    image: "/images/img8.jpg",
     description: "Precision-cut control panel plates with labels, markings, switches and component identification.",
     details: "High-precision CNC routing and laser cutting for potentiometer dials, emergency push switches, toggle selectors, and LED annunciators. Contrasting engraved text and directional scales.",
     materials: ["Anodized Aluminium", "Polycarbonate", "SS 304"],
@@ -52,7 +52,7 @@ export const PRODUCTS = [
     number: "05",
     title: "Door & Room Plates",
     category: "Architectural & Facility",
-    image: "/images/room-door-plate.jpg",
+    image: "/images/door-plate.jpg",
     description: "Customized door, room, laboratory and facility identification plates.",
     details: "Architectural-grade brushed metallic signage for testing labs, control cabins, compressor stations, and electrical substations. Deep black contrast text for high visibility in low-light environments.",
     materials: ["Aluminium", "Brass", "Stainless Steel"],
@@ -88,7 +88,7 @@ export const PRODUCTS = [
     number: "08",
     title: "Custom Industrial Plates",
     category: "Tailored Manufacturing",
-    image: "/images/hero-industrial-nameplates.jpg",
+    image: "/images/custom-plates-group.jpg",
     description: "Custom-designed plates manufactured according to your exact application and requirements.",
     details: "Bespoke combinations of multi-material tags, custom geometry cutouts, specialized serialized numbering, and unique industrial finishes engineered to client CAD drawings.",
     materials: ["Brass", "Copper", "Bronze", "SS 316", "Aluminium", "PVC"],
@@ -173,16 +173,68 @@ export const MATERIALS = [
 ];
 
 export const APPLICATIONS = [
-  { id: "01", name: "Machinery", desc: "Main manufacturer serial, power rating and model identification tags", image: "/images/machine-name-plate.jpg" },
-  { id: "02", name: "Motor Boxes", desc: "Terminal junction box wiring diagrams and electrical phase ratings", image: "/images/aluminium-metal-plate.jpg" },
-  { id: "03", name: "Electrical Panels", desc: "High voltage warning plates, breaker markers and circuit legends", image: "/images/pvc-industrial-labels.jpg" },
-  { id: "04", name: "Control Panels", desc: "Faceted switch cutouts, feed-speed dials and operator indicators", image: "/images/control-panel-plate.jpg" },
-  { id: "05", name: "Industrial Doors", desc: "Heavy duty push/pull plates and access-restricted security markings", image: "/images/push-pull-plate.jpg" },
-  { id: "06", name: "Factory Areas", desc: "Bay numbers, workstation identifiers, and directional pathway signage", image: "/images/room-door-plate.jpg" },
-  { id: "07", name: "Equipment Identification", desc: "Vessel data plates, boiler tags, and pump technical specs", image: "/images/equipment-data-plate.jpg" },
-  { id: "08", name: "Laboratories & Technical Rooms", desc: "Cleanroom door labels, testing facility room plates, and hazard warnings", image: "/images/room-door-plate.jpg" },
-  { id: "09", name: "Machine Components", desc: "Gearbox ratio charts, hydraulic pressure limits, and lube specs", image: "/images/temperature-chart-plate.jpg" },
-  { id: "10", name: "Industrial Infrastructure", desc: "Pipeline valve tags, transformer plates, and grounding identifiers", image: "/images/copper-industrial-plate.jpg" }
+  {
+    id: "01",
+    name: "Industrial Machinery",
+    desc: "Machine identification plates featuring model numbers, serial numbers, specifications and technical details.",
+    image: "/images/img1.jpg",
+  },
+
+  {
+    id: "02",
+    name: "Electrical Panels",
+    desc: "Durable metal labels for electrical panels, switchboards, voltage ratings, warnings and circuit identification.",
+    image: "/images/img11.jpg",
+  },
+
+  {
+    id: "03",
+    name: "Control Panels",
+    desc: "Professional labels and nameplates for switches, controls, indicators and industrial automation panels.",
+    image: "/images/img8.jpg",
+  },
+
+  {
+    id: "04",
+    name: "Automotive & Engineering",
+    desc: "Metal identification plates, badges and specification labels designed for automotive and engineering applications.",
+    image: "/images/img6.jpg",
+  },
+
+  {
+    id: "05",
+    name: "Pharmaceutical Equipment",
+    desc: "High-quality stainless steel nameplates and identification labels for pharmaceutical and processing equipment.",
+    image: "/images/img4.jpg",
+  },
+
+  {
+    id: "06",
+    name: "Elevators & Escalators",
+    desc: "Elegant and durable manufacturer plates, certification labels and specification nameplates for elevators and escalators.",
+    image: "/images/img2.jpg",
+  },
+
+  {
+    id: "07",
+    name: "HVAC Equipment",
+    desc: "Equipment labels and metal nameplates for air conditioning units, compressors, chillers and HVAC systems.",
+    image: "/images/img3.jpg",
+  },
+
+  {
+    id: "08",
+    name: "Pumps & Motors",
+    desc: "Industrial data plates displaying motor ratings, pump specifications, model numbers and technical information.",
+    image: "/images/img12.jpg",
+  },
+
+  {
+    id: "09",
+    name: "Industrial Equipment",
+    desc: "Custom metal nameplates and identification labels for generators, tanks, boilers and heavy industrial equipment.",
+    image: "/images/img5.jpg",
+  },
 ];
 
 export const WHY_CHOOSE_US = [
@@ -231,12 +283,12 @@ export const CUSTOMIZATION_OPTIONS = [
 ];
 
 export const INDUSTRIES = [
-  { name: "Machinery", desc: "Lathes, milling machines, packaging equipment, CNC centers, and tool machinery", image: "/images/machine-with-plates.jpg" },
-  { name: "Manufacturing", desc: "High-volume assembly lines, stamping presses, and factory automation equipment", image: "/images/machine-name-plate.jpg" },
-  { name: "Electrical Panels", desc: "Switchgear cabinets, high-voltage breakers, and distribution board legends", image: "/images/pvc-industrial-labels.jpg" },
-  { name: "Industrial Equipment", desc: "Pumps, compressors, hydraulic power packs, boilers, and pressure vessels", image: "/images/brass-industrial-plate.jpg" },
-  { name: "Automation", desc: "Robotics cells, PLC consoles, servo motor drives, and conveyor systems", image: "/images/control-panel-plate.jpg" },
-  { name: "Engineering", desc: "Precision tooling workshops, fabrication facilities, and heavy mechanical plants", image: "/images/plate-precision-macro.jpg" },
+  { name: "Machinery", desc: "Lathes, milling machines, packaging equipment, CNC centers, and tool machinery", image: "/images/img1.jpg" },
+  { name: "Manufacturing", desc: "High-volume assembly lines, stamping presses, and factory automation equipment", image: "/images/img10.jpg" },
+  { name: "Electrical Panels", desc: "Switchgear cabinets, high-voltage breakers, and distribution board legends", image: "/images/img11.jpg" },
+  { name: "Industrial Equipment", desc: "Pumps, compressors, hydraulic power packs, boilers, and pressure vessels", image: "/images/img5.jpg" },
+  { name: "Automation", desc: "Robotics cells, PLC consoles, servo motor drives, and conveyor systems", image: "/images/img7.jpg" },
+  { name: "Engineering", desc: "Precision tooling workshops, fabrication facilities, and heavy mechanical plants", image: "/images/img6.jpg" },
   { name: "Factories & Facilities", desc: "Architectural room signage, push/pull doors, and facility hazard tags", image: "/images/room-door-plate.jpg" },
   { name: "Process Equipment", desc: "Chemical processing vessels, pipeline valve tags, and transformer grounding", image: "/images/copper-industrial-plate.jpg" }
 ];

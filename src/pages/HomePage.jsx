@@ -38,8 +38,6 @@ export default function HomePage({ onOpenQuote, onSelectImage, onSelectProduct }
         onSelectImage={onSelectImage}
       />
 
-
-
       {/* 8. Why Choose Rameshwar Industries */}
       <WhyChooseUs />
 
