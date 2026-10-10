@@ -185,7 +185,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-400">
           <div>
-            © 2026 Rameshwar Industries. All Rights Reserved.
+            © 2026 Rameshwar Industries. All Rights Reserved. | Design & SEO by <a href="https://sunmargindia.com" target="_blank" rel="noopener noreferrer" className="text-brand-orange">Sunmarg India</a>
           </div>
 
           <div className="flex items-center gap-6">
