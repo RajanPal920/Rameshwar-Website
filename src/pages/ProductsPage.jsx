@@ -103,61 +103,56 @@ export default function ProductsPage({ onOpenQuote, onSelectProduct, onSelectIma
                       alt={`${product.title} Manufacturer in India`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-3 left-3 bg-industrial-950/80 backdrop-blur-sm text-white text-xs font-mono px-2 py-0.5 rounded border border-white/10">
+                    <div className="absolute top-2.5 left-2.5 bg-industrial-950/85 backdrop-blur-sm text-white text-[10px] font-mono px-2 py-0.5 rounded border border-white/10">
                       SPEC #{product.number}
                     </div>
-                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-slate-900 p-2 rounded-md shadow-md">
-                      <Eye className="w-4 h-4" />
+                    <div className="absolute top-2.5 right-2.5 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-mono font-bold px-2 py-0.5 rounded shadow-2xs">
+                      {product.materials[0]}
                     </div>
                   </Link>
 
-                  {/* Details */}
-                  <div className="p-6">
-                    <span className="text-[11px] font-mono font-bold text-brand-orange uppercase tracking-wider block mb-1">
+                  {/* Compact Details Body */}
+                  <div className="p-4 sm:p-5">
+                    <span className="text-[10px] font-mono font-bold text-brand-orange uppercase tracking-wider block mb-1 truncate">
                       {product.category}
                     </span>
 
-                    <Link to={product.seoUrl}>
-                      <h3 className="text-lg font-bold text-industrial-950 group-hover:text-brand-orange transition-colors">
+                    <Link to={product.seoUrl} className="block">
+                      <h3 className="text-base sm:text-lg font-bold text-industrial-950 group-hover:text-brand-orange transition-colors line-clamp-1 leading-snug">
                         {product.title}
                       </h3>
                     </Link>
 
-                    <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
+                    <p className="text-xs text-slate-600 mt-1.5 line-clamp-2 leading-relaxed">
                       {product.description}
                     </p>
 
-                    <div className="mt-4 pt-4 border-t border-slate-100 space-y-1.5 text-xs font-mono">
-                      <div className="flex justify-between">
-                        <span className="text-slate-400">Substrates:</span>
-                        <span className="text-slate-800 font-semibold">{product.materials.join(', ')}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400">Mounting:</span>
-                        <span className="text-slate-800 font-semibold">{product.mounting.join(', ')}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400">Lead Time:</span>
-                        <span className="text-emerald-600 font-bold">{product.leadTime}</span>
-                      </div>
+                    {/* Compact Single-Row Technical Spec Strip */}
+                    <div className="mt-3 py-2 px-2.5 bg-slate-50 border border-slate-200/70 rounded-md flex items-center justify-between text-[11px] font-mono text-slate-600">
+                      <span className="truncate pr-2">
+                        {product.materials.slice(0, 2).join(', ')}
+                      </span>
+                      <span className="text-emerald-700 font-bold shrink-0">
+                        {product.leadTime}
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Card Actions */}
-                <div className="p-6 pt-0 flex items-center justify-between gap-3 border-t border-slate-100 mt-2">
+                {/* Card Actions — Aligned at Bottom */}
+                <div className="p-4 sm:p-5 pt-0 flex items-center justify-between gap-3 border-t border-slate-100 mt-auto">
                   <Link
                     to={product.seoUrl}
-                    className="text-xs font-bold text-slate-700 hover:text-brand-orange inline-flex items-center gap-1"
+                    className="text-xs font-bold text-slate-700 hover:text-brand-orange inline-flex items-center gap-1 transition-colors"
                   >
-                    <span>Full Specifications</span>
+                    <span>Full Specs</span>
                     <ArrowRight className="w-3 h-3" />
                   </Link>
 
                   <button
                     type="button"
                     onClick={() => onOpenQuote(product.title)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-industrial-950 hover:bg-brand-orange px-3.5 py-2 rounded-md transition-colors shadow-xs cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-industrial-950 hover:bg-brand-orange px-3.5 py-1.5 rounded-md transition-colors shadow-2xs cursor-pointer"
                   >
                     <span>Request Quote</span>
                   </button>

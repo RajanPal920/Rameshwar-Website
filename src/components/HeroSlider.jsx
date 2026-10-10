@@ -124,42 +124,42 @@ export default function HeroSlider({ onOpenQuote }) {
       <div className="absolute inset-0 flex items-center z-10 pointer-events-none">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4">
 
-          {/* Single Clean Content Card - Refined Translucent Background with High Legibility */}
+          {/* Single Clean Content Card - Wider Prominent Proportions with High Contrast */}
           <div
-            className={`pointer-events-auto max-w-lg lg:max-w-xl bg-slate-950/70 sm:bg-slate-950/65 backdrop-blur-md p-6 sm:p-7 md:p-8 rounded-2xl border border-white/20 shadow-2xl transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+            className={`pointer-events-auto w-full max-w-xl md:max-w-2xl lg:max-w-[720px] xl:max-w-[740px] bg-industrial-950/90 sm:bg-industrial-950/85 backdrop-blur-sm p-6 sm:p-8 md:p-9 rounded-2xl border border-neutral-700/60 shadow-2xl transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
               }`}
           >
             {/* Eyebrow badge */}
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-brand-orange text-black text-[10px] sm:text-xs font-mono font-black tracking-widest uppercase mb-3 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-orange text-black text-[11px] sm:text-xs font-mono font-black tracking-widest uppercase mb-3.5 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
               <span>{slide.eyebrow}</span>
             </div>
 
             {/* Clear, Bold Heading */}
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[35px] font-extrabold text-white tracking-tight leading-[1.18] mb-3 uppercase drop-shadow-md">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[40px] font-extrabold text-white tracking-tight leading-[1.15] mb-3.5 uppercase drop-shadow-md">
               {slide.heading}
             </h1>
 
             {/* High-Legibility Description */}
-            <p className="text-slate-100 text-xs sm:text-sm md:text-[14.5px] leading-relaxed mb-4 font-normal drop-shadow-sm">
+            <p className="text-slate-100 text-sm sm:text-[15px] md:text-base leading-relaxed mb-4.5 font-normal drop-shadow-sm max-w-2xl">
               {slide.description}
             </p>
 
             {/* Industrial Specs Pill */}
-            <div className="flex flex-wrap items-center gap-2 mb-4">
-              <span className="text-[10px] sm:text-[11px] font-mono font-bold bg-white/10 text-brand-orange border border-white/20 px-2.5 py-0.5 rounded shadow-2xs">
+            <div className="flex flex-wrap items-center gap-2.5 mb-5">
+              <span className="text-[11px] sm:text-xs font-mono font-bold bg-white/10 text-brand-orange border border-white/20 px-3 py-1 rounded shadow-2xs">
                 {slide.badge}
               </span>
-              <span className="text-[10px] sm:text-[11px] font-mono text-slate-200 hidden sm:inline">
+              <span className="text-xs font-mono text-slate-200 hidden sm:inline">
                 {slide.specs}
               </span>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-3.5 mb-5">
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-md shadow-md shadow-orange-600/30 transition-all duration-200 group tracking-wider uppercase cursor-pointer"
+                className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-lg shadow-md shadow-orange-600/30 transition-all duration-200 group tracking-wider uppercase cursor-pointer"
               >
                 <span>{slide.ctaPrimary}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -167,26 +167,26 @@ export default function HeroSlider({ onOpenQuote }) {
 
               <button
                 onClick={() => onOpenQuote(slide.badge)}
-                className="inline-flex items-center gap-2 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-brand-orange text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-md transition-all duration-200 tracking-wider uppercase cursor-pointer"
+                className="inline-flex items-center gap-2 bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700 hover:border-brand-orange text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-lg transition-all duration-200 tracking-wider uppercase cursor-pointer"
               >
                 <span>{slide.ctaSecondary}</span>
               </button>
             </div>
 
             {/* Industrial Trust Badges */}
-            <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-neutral-800 text-[11px] font-mono">
+            <div className="flex flex-wrap items-center gap-3 pt-3.5 border-t border-neutral-800 text-xs font-mono">
               <div className="flex items-center gap-1.5 text-brand-orange font-bold">
-                <ShieldCheck className="w-3.5 h-3.5 text-brand-orange" />
+                <ShieldCheck className="w-4 h-4 text-brand-orange" />
                 <span>{slide.qual}</span>
               </div>
               <span className="text-neutral-600 hidden sm:inline">•</span>
               <div className="flex items-center gap-1 text-neutral-300">
-                <CheckCircle2 className="w-3 h-3 text-brand-orange" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-brand-orange" />
                 <span>Custom CAD</span>
               </div>
               <span className="text-neutral-600 hidden sm:inline">•</span>
               <div className="flex items-center gap-1 text-neutral-300">
-                <CheckCircle2 className="w-3 h-3 text-brand-orange" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-brand-orange" />
                 <span>Multi-Alloy</span>
               </div>
             </div>

@@ -268,12 +268,12 @@ export default function Header({ onOpenQuote }) {
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'products' ? 'rotate-180 text-brand-orange' : 'text-slate-400'}`} />
               </NavLink>
 
-              {/* Mega Dropdown Panel */}
+              {/* Mega Dropdown Panel - Wide Single-Row Multi-Column Layout */}
               {activeDropdown === 'products' && (
                 <div
                   role="region"
                   aria-label="Products Mega Menu"
-                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[780px] xl:w-[860px] max-w-[92vw] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 w-[980px] xl:w-[1060px] max-w-[96vw] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
                   onMouseEnter={() => handleMouseEnter('products')}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -282,50 +282,50 @@ export default function Header({ onOpenQuote }) {
                     <div className="bg-slate-50 px-6 py-3 border-b border-slate-200 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Layers className="w-4 h-4 text-brand-orange" />
-                        <span className="text-xs font-mono font-bold tracking-wider uppercase text-slate-800">
+                        <span className="text-xs font-mono font-bold tracking-wider uppercase text-slate-800 whitespace-nowrap">
                           Product Solutions Portfolio
                         </span>
-                        <span className="text-[10px] bg-orange-100 text-brand-orange font-mono font-bold px-2 py-0.5 rounded">
+                        <span className="text-[10px] bg-orange-100 text-brand-orange font-mono font-bold px-2 py-0.5 rounded whitespace-nowrap">
                           12 Industrial Categories
                         </span>
                       </div>
                       <Link
                         to="/products"
                         onClick={closeAllMenus}
-                        className="text-xs font-bold text-brand-orange hover:text-brand-orange-dark flex items-center gap-1 transition-colors group/view"
+                        className="text-xs font-bold text-brand-orange hover:text-brand-orange-dark flex items-center gap-1 transition-colors group/view whitespace-nowrap"
                       >
                         <span>View All Products</span>
                         <ArrowRight className="w-3 h-3 group-view:translate-x-0.5 transition-transform" />
                       </Link>
                     </div>
 
-                    {/* 4 Category Columns Grid */}
-                    <div className="p-6 grid grid-cols-2 md:grid-cols-4 gap-6 bg-white">
+                    {/* 4 Category Columns Grid - Clean Single Horizontal Row on Desktop */}
+                    <div className="p-6 sm:p-7 grid grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 bg-white">
                       {PRODUCT_MENU_CATEGORIES.map((cat) => {
                         const CategoryIcon = cat.icon;
                         return (
-                          <div key={cat.title} className="space-y-3">
-                            <div className="pb-2 border-b border-slate-100">
+                          <div key={cat.title} className="space-y-3 min-w-0">
+                            <div className="pb-2.5 border-b border-slate-100">
                               <div className="flex items-center gap-1.5 text-brand-orange mb-0.5">
-                                <CategoryIcon className="w-3.5 h-3.5" />
-                                <h4 className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-900">
+                                <CategoryIcon className="w-3.5 h-3.5 shrink-0" />
+                                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900 whitespace-nowrap">
                                   {cat.title}
                                 </h4>
                               </div>
-                              <p className="text-[10px] text-slate-400 font-mono">
+                              <p className="text-[10px] text-slate-400 font-mono whitespace-nowrap">
                                 {cat.subtitle}
                               </p>
                             </div>
-                            <ul className="space-y-2">
+                            <ul className="space-y-1.5">
                               {cat.items.map((item) => (
                                 <li key={item.name}>
                                   <Link
                                     to={item.url}
                                     onClick={closeAllMenus}
-                                    className="group/item flex items-center gap-1.5 text-xs text-slate-600 hover:text-brand-orange font-medium py-0.5 leading-snug transition-all"
+                                    className="group/item flex items-center gap-2 text-xs text-slate-700 hover:text-brand-orange hover:bg-orange-50/70 font-medium px-2.5 py-1.5 rounded-md leading-tight transition-all whitespace-nowrap"
                                   >
-                                    <span className="w-1.5 h-1.5 rounded-full bg-brand-orange opacity-0 -ml-2 group-hover/item:opacity-100 group-hover/item:ml-0 transition-all"></span>
-                                    <span>{item.name}</span>
+                                    <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0 opacity-0 -ml-1 group-hover/item:opacity-100 group-hover/item:ml-0 transition-all"></span>
+                                    <span className="whitespace-nowrap">{item.name}</span>
                                   </Link>
                                 </li>
                               ))}
@@ -337,7 +337,7 @@ export default function Header({ onOpenQuote }) {
 
                     {/* Dropdown Footer CTA */}
                     <div className="bg-slate-900 text-white px-6 py-3 flex items-center justify-between text-xs">
-                      <span className="text-slate-300 font-mono text-[11px]">
+                      <span className="text-slate-300 font-mono text-[11px] whitespace-nowrap">
                         Direct Factory Manufacturer • SS 304/316 • Aluminium • Brass • ISO 9001:2015
                       </span>
                       <a
@@ -346,7 +346,7 @@ export default function Header({ onOpenQuote }) {
                         rel="noopener noreferrer"
                         download
                         onClick={closeAllMenus}
-                        className="inline-flex items-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white px-3.5 py-1.5 rounded-md font-bold transition-colors shadow-2xs"
+                        className="inline-flex items-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white px-3.5 py-1.5 rounded-md font-bold transition-colors shadow-2xs whitespace-nowrap"
                       >
                         <FileDown className="w-3.5 h-3.5" />
                         <span>Download Catalogue (PDF)</span>
