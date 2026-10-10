@@ -192,9 +192,8 @@ export default function Header({ onOpenQuote }) {
 
       {/* Main Sticky Navbar */}
       <nav
-        className={`bg-white transition-all duration-200 border-b border-slate-200 ${
-          isScrolled ? 'shadow-md shadow-slate-200/80 bg-white/98 backdrop-blur-md' : 'shadow-xs'
-        }`}
+        className={`bg-white transition-all duration-200 border-b border-slate-200 ${isScrolled ? 'shadow-md shadow-slate-200/80 bg-white/98 backdrop-blur-md' : 'shadow-xs'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-3.5 sm:px-8 flex items-center justify-between h-16 sm:h-20 lg:h-[96px]">
 
@@ -206,7 +205,7 @@ export default function Header({ onOpenQuote }) {
               className="h-8 sm:h-11 md:h-14 lg:h-16 xl:h-[76px] w-auto object-contain transition-all"
             />
             <div className="flex flex-col justify-center">
-              <span className="font-extrabold tracking-tight text-[13px] sm:text-base md:text-lg lg:text-xl xl:text-[26px] font-sans uppercase text-orange-500 whitespace-nowrap leading-tight">
+              <span className="font-extrabold tracking-tight text-[13px] sm:text-base md:text-lg lg:text-xl xl:text-[26px] font-medium uppercase text-orange-500 whitespace-nowrap leading-tight">
                 RAMESHWAR INDUSTRIES
               </span>
               <div className="flex items-center gap-0.5 sm:gap-1 mt-0.5 self-end">
@@ -224,10 +223,9 @@ export default function Header({ onOpenQuote }) {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isActive
-                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
-                    : 'text-slate-800'
+                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${isActive
+                  ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                  : 'text-slate-800'
                 }`
               }
             >
@@ -238,10 +236,9 @@ export default function Header({ onOpenQuote }) {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isActive
-                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
-                    : 'text-slate-800'
+                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${isActive
+                  ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                  : 'text-slate-800'
                 }`
               }
             >
@@ -258,11 +255,10 @@ export default function Header({ onOpenQuote }) {
                 to="/products"
                 aria-haspopup="true"
                 aria-expanded={activeDropdown === 'products'}
-                className={`inline-flex items-center gap-1.5 text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isProductsActive
-                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
-                    : 'text-slate-800'
-                }`}
+                className={`inline-flex items-center gap-1.5 text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${isProductsActive
+                  ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                  : 'text-slate-800'
+                  }`}
               >
                 <span>Products</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'products' ? 'rotate-180 text-brand-orange' : 'text-slate-400'}`} />
@@ -282,10 +278,10 @@ export default function Header({ onOpenQuote }) {
                     <div className="bg-slate-50 px-6 py-3 border-b border-slate-200 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Layers className="w-4 h-4 text-brand-orange" />
-                        <span className="text-xs font-mono font-bold tracking-wider uppercase text-slate-800 whitespace-nowrap">
+                        <span className="text-xs font-medium font-bold tracking-wider uppercase text-slate-800 whitespace-nowrap">
                           Product Solutions Portfolio
                         </span>
-                        <span className="text-[10px] bg-orange-100 text-brand-orange font-mono font-bold px-2 py-0.5 rounded whitespace-nowrap">
+                        <span className="text-[10px] bg-orange-100 text-brand-orange font-medium font-bold px-2 py-0.5 rounded whitespace-nowrap">
                           12 Industrial Categories
                         </span>
                       </div>
@@ -308,11 +304,11 @@ export default function Header({ onOpenQuote }) {
                             <div className="pb-2.5 border-b border-slate-100">
                               <div className="flex items-center gap-1.5 text-brand-orange mb-0.5">
                                 <CategoryIcon className="w-3.5 h-3.5 shrink-0" />
-                                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900 whitespace-nowrap">
+                                <h4 className="text-xs font-medium font-bold uppercase tracking-wider text-slate-900 whitespace-nowrap">
                                   {cat.title}
                                 </h4>
                               </div>
-                              <p className="text-[10px] text-slate-400 font-mono whitespace-nowrap">
+                              <p className="text-[10px] text-slate-400 font-medium whitespace-nowrap">
                                 {cat.subtitle}
                               </p>
                             </div>
@@ -337,7 +333,7 @@ export default function Header({ onOpenQuote }) {
 
                     {/* Dropdown Footer CTA */}
                     <div className="bg-slate-900 text-white px-6 py-3 flex items-center justify-between text-xs">
-                      <span className="text-slate-300 font-mono text-[11px] whitespace-nowrap">
+                      <span className="text-slate-300 font-medium text-[11px] whitespace-nowrap">
                         Direct Factory Manufacturer • SS 304/316 • Aluminium • Brass • ISO 9001:2015
                       </span>
                       <a
@@ -361,10 +357,9 @@ export default function Header({ onOpenQuote }) {
             <NavLink
               to="/materials"
               className={({ isActive }) =>
-                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isActive
-                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
-                    : 'text-slate-800'
+                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${isActive
+                  ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                  : 'text-slate-800'
                 }`
               }
             >
@@ -375,10 +370,9 @@ export default function Header({ onOpenQuote }) {
             <NavLink
               to="/industries"
               className={({ isActive }) =>
-                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isActive
-                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
-                    : 'text-slate-800'
+                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${isActive
+                  ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                  : 'text-slate-800'
                 }`
               }
             >
@@ -394,11 +388,10 @@ export default function Header({ onOpenQuote }) {
               <button
                 type="button"
                 onClick={() => setActiveDropdown(activeDropdown === 'certification' ? null : 'certification')}
-                className={`inline-flex items-center gap-1.5 text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap cursor-pointer ${
-                  isCertActive
-                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
-                    : 'text-slate-800'
-                }`}
+                className={`inline-flex items-center gap-1.5 text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap cursor-pointer ${isCertActive
+                  ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                  : 'text-slate-800'
+                  }`}
               >
                 <span>Certification</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'certification' ? 'rotate-180 text-brand-orange' : 'text-slate-400'}`} />
@@ -414,7 +407,7 @@ export default function Header({ onOpenQuote }) {
                   <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden divide-y divide-slate-100">
                     {/* Header */}
                     <div className="bg-slate-50 px-4 py-2.5">
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-800">
+                      <span className="text-[11px] font-medium font-bold uppercase tracking-wider text-slate-800">
                         Official Enterprise Documents
                       </span>
                     </div>
@@ -489,8 +482,7 @@ export default function Header({ onOpenQuote }) {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                `text-sm xl:text-[15px] 2xl:text-base font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isActive ? 'text-brand-orange font-bold' : 'text-slate-700'
+                `text-sm xl:text-[15px] 2xl:text-base font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${isActive ? 'text-brand-orange font-bold' : 'text-slate-700'
                 }`
               }
             >
@@ -518,8 +510,7 @@ export default function Header({ onOpenQuote }) {
               to="/"
               onClick={closeAllMenus}
               className={({ isActive }) =>
-                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${
-                  isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
+                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
                 }`
               }
             >
@@ -531,8 +522,7 @@ export default function Header({ onOpenQuote }) {
               to="/about"
               onClick={closeAllMenus}
               className={({ isActive }) =>
-                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${
-                  isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
+                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
                 }`
               }
             >
@@ -554,7 +544,7 @@ export default function Header({ onOpenQuote }) {
                 <div className="pl-4 pr-2 py-2 space-y-3 bg-slate-50 rounded-lg my-1">
                   {PRODUCT_MENU_CATEGORIES.map((cat) => (
                     <div key={cat.title}>
-                      <span className="text-[10px] font-mono font-bold uppercase text-slate-400 tracking-wider block mb-1">
+                      <span className="text-[10px] font-medium font-bold uppercase text-slate-400 tracking-wider block mb-1">
                         {cat.title}
                       </span>
                       <div className="space-y-1">
@@ -601,8 +591,7 @@ export default function Header({ onOpenQuote }) {
               to="/materials"
               onClick={closeAllMenus}
               className={({ isActive }) =>
-                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${
-                  isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
+                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
                 }`
               }
             >
@@ -614,8 +603,7 @@ export default function Header({ onOpenQuote }) {
               to="/industries"
               onClick={closeAllMenus}
               className={({ isActive }) =>
-                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${
-                  isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
+                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
                 }`
               }
             >
@@ -668,8 +656,7 @@ export default function Header({ onOpenQuote }) {
               to="/contact"
               onClick={closeAllMenus}
               className={({ isActive }) =>
-                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${
-                  isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
+                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
                 }`
               }
             >
