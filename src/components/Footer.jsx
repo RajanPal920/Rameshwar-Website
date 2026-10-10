@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, ArrowUp, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowUp, Clock, FileDown } from 'lucide-react';
 import { IoLogoWhatsapp } from "react-icons/io";
+import { CATALOGUE_DOWNLOAD_URL } from '../data/productData';
 
 function FacebookIcon({ className }) {
   return (
@@ -111,23 +112,35 @@ export default function Footer() {
               <li><Link to="/industries" className="hover:text-brand-orange transition-colors">Industries</Link></li>
               <li><Link to="/certificate" className="hover:text-brand-orange transition-colors">Certificate & QA</Link></li>
               <li><Link to="/contact" className="hover:text-brand-orange transition-colors">Contact & RFQ</Link></li>
+              <li className="pt-1">
+                <a
+                  href={CATALOGUE_DOWNLOAD_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="inline-flex items-center gap-1.5 text-brand-orange hover:underline font-bold text-xs font-mono"
+                >
+                  <FileDown className="w-3.5 h-3.5" />
+                  <span>Download Catalogue</span>
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Column 3: Product Categories */}
+          {/* Column 3: Product Categories with direct SEO URLs */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-white font-bold text-base tracking-wider uppercase font-mono">
               Products
             </h4>
             <ul className="space-y-2.5 text-sm font-semibold">
-              <li><Link to="/products" className="hover:text-brand-orange transition-colors">Industrial Name Plates</Link></li>
-              <li><Link to="/products" className="hover:text-brand-orange transition-colors">Machine Identification Plates</Link></li>
-              <li><Link to="/products" className="hover:text-brand-orange transition-colors">Control Panel Plates</Link></li>
-              <li><Link to="/products" className="hover:text-brand-orange transition-colors">Equipment Data Plates</Link></li>
-              <li><Link to="/products" className="hover:text-brand-orange transition-colors">Door & Room Identification</Link></li>
-              <li><Link to="/products" className="hover:text-brand-orange transition-colors">Push / Pull Directional Plates</Link></li>
-              <li><Link to="/products" className="hover:text-brand-orange transition-colors">Machine Speed & Feed Charts</Link></li>
-              <li><Link to="/products" className="hover:text-brand-orange transition-colors">Industrial PVC & Vinyl Labels</Link></li>
+              <li><Link to="/machine-name-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Machine Name Plates</Link></li>
+              <li><Link to="/stainless-steel-name-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Stainless Steel Name Plates</Link></li>
+              <li><Link to="/control-panel-name-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Control Panel Name Plates</Link></li>
+              <li><Link to="/aluminium-name-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Aluminium Name Plates</Link></li>
+              <li><Link to="/industrial-machine-tags/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Industrial Machine Tags</Link></li>
+              <li><Link to="/warning-instruction-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Warning & Hazard Plates</Link></li>
+              <li><Link to="/equipment-data-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Equipment Data Plates</Link></li>
+              <li><Link to="/pvc-vinyl-labels/manufacturer-in-india" className="hover:text-brand-orange transition-colors">PVC & Vinyl Industrial Labels</Link></li>
             </ul>
           </div>
 

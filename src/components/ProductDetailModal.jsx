@@ -1,5 +1,6 @@
 import React from 'react';
-import { X, Check, ArrowRight, ShieldCheck, Clock, Wrench } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { X, Check, ArrowRight, ShieldCheck, Clock, Wrench, ExternalLink } from 'lucide-react';
 
 export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
   if (!product) return null;
@@ -96,10 +97,20 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
           <span className="text-xs text-slate-400 font-mono">
             Direct OEM Pricing from Rameshwar Industries
           </span>
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+            {product.seoUrl && (
+              <Link
+                to={product.seoUrl}
+                onClick={onClose}
+                className="px-3.5 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 inline-flex items-center gap-1.5 transition-colors"
+              >
+                <span>Full Product Page</span>
+                <ExternalLink className="w-3 h-3 text-brand-orange" />
+              </Link>
+            )}
             <button
               onClick={onClose}
-              className="w-1/2 sm:w-auto px-4 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 cursor-pointer"
+              className="px-3.5 py-2 rounded-md bg-slate-800/80 hover:bg-slate-700 text-xs font-semibold text-slate-400 hover:text-white cursor-pointer transition-colors"
             >
               Close
             </button>
@@ -108,9 +119,9 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
                 onClose();
                 onOpenQuote(product.title);
               }}
-              className="w-1/2 sm:w-auto inline-flex items-center justify-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white text-xs font-bold px-5 py-2.5 rounded-md transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white text-xs font-bold px-4 py-2 rounded-md transition-colors cursor-pointer"
             >
-              <span>Get Quote for This Plate</span>
+              <span>Get Quote</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

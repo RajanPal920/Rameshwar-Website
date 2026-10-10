@@ -19,6 +19,7 @@ import MaterialsPage from './pages/MaterialsPage';
 import IndustriesPage from './pages/IndustriesPage';
 import CertificatePage from './pages/CertificatePage';
 import ContactPage from './pages/ContactPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 // Scroll to Top helper on route change
 function ScrollToTop() {
@@ -119,6 +120,34 @@ export default function App() {
             <Route 
               path="/contact" 
               element={<ContactPage />} 
+            />
+            {/* Dedicated SEO Product Detail Pages */}
+            <Route 
+              path="/:slug/manufacturer-in-india" 
+              element={
+                <ProductDetailPage 
+                  onOpenQuote={handleOpenQuote}
+                  onSelectImage={handleSelectImage}
+                />
+              } 
+            />
+            <Route 
+              path="/products/:slug/manufacturer-in-india" 
+              element={
+                <ProductDetailPage 
+                  onOpenQuote={handleOpenQuote}
+                  onSelectImage={handleSelectImage}
+                />
+              } 
+            />
+            <Route 
+              path="/products/:slug" 
+              element={
+                <ProductDetailPage 
+                  onOpenQuote={handleOpenQuote}
+                  onSelectImage={handleSelectImage}
+                />
+              } 
             />
             {/* Catch-all fallback */}
             <Route 

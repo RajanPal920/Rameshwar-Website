@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Check, ShieldCheck, Sparkles, Sliders } from 'lucide-react';
 import { MATERIALS } from '../data/productData';
 
@@ -8,32 +9,40 @@ export default function MaterialShowcase({ onOpenQuote, onSelectImage }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 text-slate-100 text-xs font-mono tracking-wider uppercase mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
-            <span>SUBSTRATE SELECTION GUIDE</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 text-slate-100 text-xs font-mono tracking-wider uppercase mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
+              <span>SUBSTRATE SELECTION GUIDE</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-industrial-950 tracking-tight">
+              Choose the Right Material for Your Application
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg mt-2 leading-relaxed">
+              Operating conditions dictate alloy selection. We precision manufacture in surgical stainless steel, anodized aluminium, brass, copper, bronze, and PVC.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-industrial-950 tracking-tight">
-            Choose the Right Material for Your Application
-          </h2>
-          <p className="text-slate-600 text-base sm:text-lg mt-2 leading-relaxed">
-            Different factory operating conditions require specific metallic alloys or synthetic substrates. We manufacture in 5 core industrial materials.
-          </p>
+
+          <Link
+            to="/materials"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-orange hover:text-brand-orange-dark font-mono shrink-0"
+          >
+            <span>View Full Substrate Matrix</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
-        {/* 5 Large Material Cards */}
+        {/* 6 Material Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {MATERIALS.map((mat, idx) => (
+          {MATERIALS.map((mat) => (
             <div
               key={mat.id}
-              className={`group bg-slate-50 rounded-2xl border border-slate-200 hover:border-slate-400 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between ${
-                idx === 3 || idx === 4 ? 'lg:col-span-1' : ''
-              }`}
+              className="group bg-slate-50 rounded-2xl border border-slate-200 hover:border-slate-400 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between"
             >
               <div>
                 {/* Sample Plate Image with Natural Aspect */}
                 <div 
-                  className="relative aspect-[16/10] bg-slate-900 overflow-hidden cursor-pointer"
+                  className="relative aspect-[16/10] bg-slate-950 overflow-hidden cursor-pointer"
                   onClick={() => onSelectImage(mat.image, `${mat.name} Material Specimen`)}
                 >
                   <img
@@ -45,6 +54,10 @@ export default function MaterialShowcase({ onOpenQuote, onSelectImage }) {
                   {/* Overlay Substrate Pill */}
                   <div className="absolute top-3 left-3 bg-industrial-950/90 backdrop-blur-md text-white text-xs font-extrabold px-3 py-1 rounded-md tracking-wider uppercase border border-white/10">
                     {mat.name}
+                  </div>
+
+                  <div className="absolute bottom-3 left-3 bg-white/95 text-slate-900 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded shadow-xs">
+                    {mat.grades}
                   </div>
                 </div>
 
@@ -72,14 +85,22 @@ export default function MaterialShowcase({ onOpenQuote, onSelectImage }) {
                 </div>
               </div>
 
-              {/* Card Footer Action */}
-              <div className="px-6 pb-6 pt-0">
-                <button
-                  onClick={() => onOpenQuote(`${mat.name} Material Name Plate`)}
-                  className="w-full inline-flex items-center justify-center gap-2 text-xs font-bold text-slate-800 hover:text-white bg-white hover:bg-industrial-950 border border-slate-300 hover:border-industrial-950 py-2.5 px-4 rounded-lg transition-colors cursor-pointer"
+              {/* Card Footer Actions */}
+              <div className="px-6 pb-6 pt-0 space-y-2">
+                <Link
+                  to={`/materials?filter=${mat.id}`}
+                  className="w-full inline-flex items-center justify-center gap-2 text-xs font-bold text-brand-orange hover:text-white bg-orange-50 hover:bg-brand-orange border border-orange-200 py-2.5 px-4 rounded-lg transition-colors cursor-pointer"
                 >
-                  <span>Select {mat.name} For RFQ</span>
+                  <span>View {mat.name} Material Products</span>
                   <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => onOpenQuote(`${mat.name} Material Name Plate`)}
+                  className="w-full inline-flex items-center justify-center gap-2 text-xs font-bold text-slate-800 hover:text-white bg-white hover:bg-industrial-950 border border-slate-300 hover:border-industrial-950 py-2 px-4 rounded-lg transition-colors cursor-pointer"
+                >
+                  <span>Request RFQ for {mat.name}</span>
                 </button>
               </div>
 
