@@ -28,18 +28,18 @@ export default function PageHero({
 
       {/* Hero Foreground Content: Clean Left-Aligned Card matching Homepage Hero proportions */}
       <div className="relative z-10 h-full flex items-center max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full py-8 pointer-events-none">
-        <div className="pointer-events-auto hero-content-card">
+        <div className="pointer-events-auto w-[min(740px,calc(100%-24px))] min-h-[380px] p-[32px_28px] box-border flex flex-col justify-center text-white bg-white/15 backdrop-blur-md border border-white/70 rounded-[20px] shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
           {/* Breadcrumbs */}
           {breadcrumbs.length > 0 && (
-            <nav className="flex items-center flex-wrap gap-1.5 text-xs font-mono text-slate-600 mb-3.5" aria-label="Breadcrumb">
-              <Link to="/" className="hover:text-brand-orange transition-colors">
+            <nav className="flex items-center flex-wrap gap-1.5 text-xs font-mono text-white mb-4" aria-label="Breadcrumb">
+              <Link to="/" className="hover:text-brand-orange transition-colors text-white">
                 Home
               </Link>
               {breadcrumbs.map((crumb, i) => (
                 <React.Fragment key={i}>
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+                  <ChevronRight className="w-3.5 h-3.5 text-white/70" />
                   {crumb.to ? (
-                    <Link to={crumb.to} className="hover:text-brand-orange transition-colors">
+                    <Link to={crumb.to} className="hover:text-brand-orange transition-colors text-white">
                       {crumb.label}
                     </Link>
                   ) : (
@@ -52,34 +52,34 @@ export default function PageHero({
 
           {/* Eyebrow Badge */}
           {eyebrow && (
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-orange text-white text-[11px] sm:text-xs font-mono font-bold tracking-widest uppercase mb-3.5 self-start shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-orange text-white text-[11px] sm:text-xs font-extrabold tracking-widest uppercase mb-4 self-start shadow-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               <span>{eyebrow}</span>
             </div>
           )}
 
-          {/* Title - Bold & High Contrast Dark Charcoal */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[40px] font-extrabold text-industrial-950 tracking-tight uppercase leading-[1.15]">
+          {/* Title — Orange, Bold, Big */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[50px] font-extrabold text-brand-orange tracking-tight uppercase leading-[1.1]">
             {title}
           </h1>
 
-          {/* High-Legibility Dark Charcoal Description */}
+          {/* Description — White, Bigger Font */}
           {description && (
-            <p className="text-slate-700 text-sm sm:text-[15px] md:text-base mt-3.5 leading-relaxed font-normal max-w-2xl">
+            <p className="text-white text-base sm:text-lg md:text-xl mt-4 leading-relaxed font-normal max-w-2xl">
               {description}
             </p>
           )}
 
-          {/* Supporting Trust & Specification Line to maintain consistent visual height and balance */}
-          <div className="flex flex-wrap items-center gap-3 pt-3.5 border-t border-slate-300/70 text-xs font-mono mt-auto">
+          {/* Supporting Trust & Specification Line */}
+          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/40 text-xs sm:text-sm font-extrabold mt-auto">
             <div className="flex items-center gap-1.5 text-brand-orange font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
               <span>ISO 9001:2015</span>
             </div>
-            <span className="text-slate-400 hidden sm:inline">•</span>
-            <span className="text-slate-700 font-medium">Bhiwandi & Mumbai, India</span>
-            <span className="text-slate-400 hidden sm:inline">•</span>
-            <span className="text-slate-700 font-medium">OEM Specification Direct</span>
+            <span className="text-white/60 hidden sm:inline">•</span>
+            <span className="text-white font-medium font-extrabold ">Bhiwandi & Mumbai, India</span>
+            <span className="text-white/60 hidden sm:inline">•</span>
+            <span className="text-white font-medium font-extrabold ">OEM Specification Direct</span>
           </div>
         </div>
       </div>
