@@ -51,7 +51,7 @@ export default function Products({ onOpenQuote, onSelectProduct, onSelectImage }
           {PRODUCTS.slice(0, 9).map((product) => (
             <div
               key={product.id}
-              className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden"
+              className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden"
             >
               {/* Clickable Image — Directly linking to product detail page */}
               <Link

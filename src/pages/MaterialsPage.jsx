@@ -127,10 +127,10 @@ export default function MaterialsPage({ onOpenQuote, onSelectImage }) {
             {MATERIALS.map((mat) => (
               <div
                 key={mat.id}
-                className={`group bg-white rounded-2xl border transition-all duration-300 overflow-hidden flex flex-col justify-between ${
+                className={`group bg-white rounded-xl border transition-all duration-300 overflow-hidden flex flex-col justify-between ${
                   selectedMaterialId === mat.id
                     ? 'border-brand-orange shadow-md ring-2 ring-brand-orange/20'
-                    : 'border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-xl'
+                    : 'border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md hover:-translate-y-1'
                 }`}
               >
                 <div>

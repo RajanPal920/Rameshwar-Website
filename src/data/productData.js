@@ -675,3 +675,63 @@ export const INDUSTRIES = [
   { name: "Process Equipment", desc: "Chemical processing vessels, pipeline valve tags, and transformer grounding", image: "/images/copper-industrial-plate.jpg" }
 ];
 
+// Verified Company Contact Information extracted from Catalogue
+export const COMPANY_CONTACT = {
+  name: "Rameshwar Industries",
+  tagline: "Industrial Name Plates & Identification Solutions",
+  certifications: "ISO 9001:2015 Certified Company • Udyam MSME Registered",
+  
+  // Factory / Manufacturing Works (from Catalogue Page 4)
+  factory: {
+    label: "Manufacturing Works & Facility",
+    compound: "Osiyamata Compound, C-4, Reti Bunder Rd",
+    area: "Pipe Line No. 227, Kalher, Bhiwandi",
+    city: "Thane",
+    pincode: "421302",
+    state: "Maharashtra",
+    country: "India",
+    fullAddress: "Osiyamata Compound, C-4, Reti Bunder Rd, Pipe Line No. 227, Kalher, Bhiwandi, Thane - 421302, Maharashtra, India",
+    directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=Osiyamata+Compound,+Reti+Bunder+Rd,+Kalher,+Bhiwandi,+Thane+421302",
+    mapEmbedUrl: "https://maps.google.com/maps?q=Osiyamata+Compound,+Reti+Bunder+Rd,+Kalher,+Bhiwandi,+Thane+421302&t=&z=15&ie=UTF8&iwloc=&output=embed"
+  },
+
+  // Central / Registered Sales Office (from Catalogue Page 4)
+  office: {
+    label: "Registered & Central Sales Office",
+    building: "Room No. 04, 4th Floor, Lotlikar Bldg",
+    area: "Kamathiwadi, Chira Bazar, Girgaon",
+    city: "Mumbai",
+    state: "Maharashtra",
+    country: "India",
+    fullAddress: "Room No. 04, 4th Floor, Lotlikar Bldg, Kamathiwadi, Chira Bazar, Girgaon, Mumbai, Maharashtra, India",
+    directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=Chira+Bazar+Girgaon+Mumbai"
+  },
+
+  // Official Verified Phone Numbers
+  phones: [
+    { display: "+91 96998 38993", raw: "+919699838993" },
+    { display: "+91 97699 46355", raw: "+919769946355" }
+  ],
+  primaryPhone: "+91 96998 38993",
+  primaryPhoneRaw: "+919699838993",
+
+  // Official Verified Email Addresses
+  emails: [
+    "sales@rameshwarindustries.com",
+    "rameshwarindustries1999@gmail.com"
+  ],
+  primaryEmail: "sales@rameshwarindustries.com",
+
+  // Business Operating Hours
+  workingHours: "Monday to Saturday: 9:00 AM – 7:00 PM IST",
+  workingDays: "Monday – Saturday (Sunday Closed)",
+
+  // WhatsApp
+  whatsappNumber: "919699838993",
+  whatsappUrl: "https://wa.me/919699838993",
+
+  // Official Catalogue PDF
+  catalogueUrl: CATALOGUE_DOWNLOAD_URL
+};
+
+

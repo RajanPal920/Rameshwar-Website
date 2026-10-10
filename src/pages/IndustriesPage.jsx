@@ -25,11 +25,11 @@ export default function IndustriesPage({ onOpenQuote, onSelectImage }) {
           {INDUSTRIES.map((ind) => (
             <div
               key={ind.name}
-              className="bg-white rounded-2xl border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
+              className="bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group"
             >
               <div>
                 <div 
-                  className="relative aspect-[16/9] bg-slate-900 overflow-hidden cursor-pointer"
+                  className="relative aspect-[16/10] bg-slate-900 overflow-hidden cursor-pointer"
                   onClick={() => onSelectImage(ind.image, `${ind.name} Industrial Deployment`)}
                 >
                   <img

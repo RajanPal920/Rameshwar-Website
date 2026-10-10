@@ -248,7 +248,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
               {coreProductLines.map((item) => (
                 <div
                   key={item.title}
-                  className="group bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col"
+                  className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
                 >
                   <Link to={item.link} className="relative aspect-[16/10] bg-slate-950 overflow-hidden block">
                     <img

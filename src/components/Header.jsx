@@ -13,15 +13,21 @@ import {
   ExternalLink,
   Award,
   Layers,
-  FileText
+  FileText,
+  Settings2,
+  SlidersHorizontal,
+  Tag,
+  AlertTriangle
 } from 'lucide-react';
 import { FaWhatsapp, FaLinkedinIn, FaFacebookF, FaInstagram } from 'react-icons/fa6';
-import { PRODUCTS, CATALOGUE_DOWNLOAD_URL } from '../data/productData';
+import { PRODUCTS, CATALOGUE_DOWNLOAD_URL, COMPANY_CONTACT } from '../data/productData';
 
 // Organized categories for the Products mega menu
 const PRODUCT_MENU_CATEGORIES = [
   {
     title: "Machinery & Rating",
+    subtitle: "Motor & Equipment Specs",
+    icon: Settings2,
     items: [
       { name: "Machine Name Plates", url: "/machine-name-plates/manufacturer-in-india" },
       { name: "Motor Rating Plates", url: "/motor-rating-plates/manufacturer-in-india" },
@@ -30,6 +36,8 @@ const PRODUCT_MENU_CATEGORIES = [
   },
   {
     title: "Control Panel & Schematics",
+    subtitle: "Automation & Switchgear",
+    icon: SlidersHorizontal,
     items: [
       { name: "Control Panel Name Plates", url: "/control-panel-name-plates/manufacturer-in-india" },
       { name: "Temperature & Operating Plates", url: "/temperature-control-plates/manufacturer-in-india" },
@@ -38,6 +46,8 @@ const PRODUCT_MENU_CATEGORIES = [
   },
   {
     title: "Metals & Asset Tags",
+    subtitle: "SS, Aluminium & Asset Tracking",
+    icon: Tag,
     items: [
       { name: "Stainless Steel Name Plates", url: "/stainless-steel-name-plates/manufacturer-in-india" },
       { name: "Aluminium Name Plates", url: "/aluminium-name-plates/manufacturer-in-india" },
@@ -46,6 +56,8 @@ const PRODUCT_MENU_CATEGORIES = [
   },
   {
     title: "Safety & Facility Signs",
+    subtitle: "Hazard, Push/Pull & Labels",
+    icon: AlertTriangle,
     items: [
       { name: "Safety Warning & Hazard Signs", url: "/industrial-safety-signs/manufacturer-in-india" },
       { name: "Push / Pull Directional Plates", url: "/push-pull-directional-plates/manufacturer-in-india" },
@@ -71,8 +83,18 @@ export default function Header({ onOpenQuote }) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 15);
     };
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveDropdown(null);
+        setMobileMenuOpen(false);
+      }
+    };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const handleMouseEnter = (menu) => {
@@ -85,7 +107,7 @@ export default function Header({ onOpenQuote }) {
   const handleMouseLeave = () => {
     closeTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 180);
+    }, 220);
   };
 
   const closeAllMenus = () => {
@@ -97,24 +119,24 @@ export default function Header({ onOpenQuote }) {
 
   return (
     <header className="sticky top-0 z-50 transition-all duration-200">
-      {/* Top Bar: Compact, clean, perfectly aligned */}
+      {/* Top Bar: Compact, clean, perfectly aligned with verified information */}
       <div className="bg-industrial-950 text-slate-300 text-xs border-b border-neutral-800/80 py-1.5 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           {/* Left: Contact Info (Phone & Email) */}
           <div className="flex items-center gap-4 sm:gap-6">
             <a
-              href="tel:+919876543210"
+              href={`tel:${COMPANY_CONTACT.primaryPhoneRaw}`}
               className="flex items-center gap-1.5 hover:text-brand-orange transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-              <span className="font-medium text-[11px] sm:text-xs tracking-tight">+91 98765 43210</span>
+              <span className="font-medium text-[11px] sm:text-xs tracking-tight">{COMPANY_CONTACT.primaryPhone}</span>
             </a>
             <a
-              href="mailto:sales@rameshwarindustries.com"
+              href={`mailto:${COMPANY_CONTACT.primaryEmail}`}
               className="hidden sm:flex items-center gap-1.5 hover:text-brand-orange transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-              <span className="font-medium text-[11px] sm:text-xs tracking-tight">sales@rameshwarindustries.com</span>
+              <span className="font-medium text-[11px] sm:text-xs tracking-tight">{COMPANY_CONTACT.primaryEmail}</span>
             </a>
           </div>
 
@@ -122,13 +144,13 @@ export default function Header({ onOpenQuote }) {
           <div className="flex items-center gap-3 sm:gap-5 text-slate-400">
             <span className="hidden lg:flex items-center gap-1.5 text-[11px] text-slate-400">
               <MapPin className="w-3.5 h-3.5 text-brand-orange shrink-0" />
-              <span>GIDC Industrial Area, Gujarat</span>
+              <span>Bhiwandi (Thane) & Mumbai, Maharashtra</span>
             </span>
 
             {/* Social Media Icons */}
             <div className="flex items-center gap-2 sm:gap-3 border-l border-neutral-800 pl-3 sm:pl-4">
               <a
-                href="https://wa.me/919876543210"
+                href={COMPANY_CONTACT.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="WhatsApp Direct"
@@ -234,6 +256,8 @@ export default function Header({ onOpenQuote }) {
             >
               <NavLink
                 to="/products"
+                aria-haspopup="true"
+                aria-expanded={activeDropdown === 'products'}
                 className={`inline-flex items-center gap-1.5 text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
                   isProductsActive
                     ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
@@ -247,11 +271,13 @@ export default function Header({ onOpenQuote }) {
               {/* Mega Dropdown Panel */}
               {activeDropdown === 'products' && (
                 <div
-                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[760px] xl:w-[820px] max-w-[92vw] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                  role="region"
+                  aria-label="Products Mega Menu"
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[780px] xl:w-[860px] max-w-[92vw] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
                   onMouseEnter={() => handleMouseEnter('products')}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden">
+                  <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden ring-1 ring-black/5">
                     {/* Header line inside dropdown */}
                     <div className="bg-slate-50 px-6 py-3 border-b border-slate-200 flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -259,45 +285,60 @@ export default function Header({ onOpenQuote }) {
                         <span className="text-xs font-mono font-bold tracking-wider uppercase text-slate-800">
                           Product Solutions Portfolio
                         </span>
+                        <span className="text-[10px] bg-orange-100 text-brand-orange font-mono font-bold px-2 py-0.5 rounded">
+                          12 Industrial Categories
+                        </span>
                       </div>
                       <Link
                         to="/products"
                         onClick={closeAllMenus}
-                        className="text-xs font-bold text-brand-orange hover:text-brand-orange-dark flex items-center gap-1 transition-colors"
+                        className="text-xs font-bold text-brand-orange hover:text-brand-orange-dark flex items-center gap-1 transition-colors group/view"
                       >
                         <span>View All Products</span>
-                        <ArrowRight className="w-3 h-3" />
+                        <ArrowRight className="w-3 h-3 group-view:translate-x-0.5 transition-transform" />
                       </Link>
                     </div>
 
                     {/* 4 Category Columns Grid */}
                     <div className="p-6 grid grid-cols-2 md:grid-cols-4 gap-6 bg-white">
-                      {PRODUCT_MENU_CATEGORIES.map((cat) => (
-                        <div key={cat.title} className="space-y-2.5">
-                          <h4 className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-900 pb-1.5 border-b border-slate-100">
-                            {cat.title}
-                          </h4>
-                          <ul className="space-y-2">
-                            {cat.items.map((item) => (
-                              <li key={item.name}>
-                                <Link
-                                  to={item.url}
-                                  onClick={closeAllMenus}
-                                  className="text-xs text-slate-600 hover:text-brand-orange font-medium block py-0.5 leading-snug transition-colors"
-                                >
-                                  {item.name}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
+                      {PRODUCT_MENU_CATEGORIES.map((cat) => {
+                        const CategoryIcon = cat.icon;
+                        return (
+                          <div key={cat.title} className="space-y-3">
+                            <div className="pb-2 border-b border-slate-100">
+                              <div className="flex items-center gap-1.5 text-brand-orange mb-0.5">
+                                <CategoryIcon className="w-3.5 h-3.5" />
+                                <h4 className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-900">
+                                  {cat.title}
+                                </h4>
+                              </div>
+                              <p className="text-[10px] text-slate-400 font-mono">
+                                {cat.subtitle}
+                              </p>
+                            </div>
+                            <ul className="space-y-2">
+                              {cat.items.map((item) => (
+                                <li key={item.name}>
+                                  <Link
+                                    to={item.url}
+                                    onClick={closeAllMenus}
+                                    className="group/item flex items-center gap-1.5 text-xs text-slate-600 hover:text-brand-orange font-medium py-0.5 leading-snug transition-all"
+                                  >
+                                    <span className="w-1.5 h-1.5 rounded-full bg-brand-orange opacity-0 -ml-2 group-hover/item:opacity-100 group-hover/item:ml-0 transition-all"></span>
+                                    <span>{item.name}</span>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        );
+                      })}
                     </div>
 
                     {/* Dropdown Footer CTA */}
                     <div className="bg-slate-900 text-white px-6 py-3 flex items-center justify-between text-xs">
-                      <span className="text-slate-300 font-mono">
-                        Direct Factory Manufacturer • SS 304/316 • Aluminium • Brass
+                      <span className="text-slate-300 font-mono text-[11px]">
+                        Direct Factory Manufacturer • SS 304/316 • Aluminium • Brass • ISO 9001:2015
                       </span>
                       <a
                         href={CATALOGUE_DOWNLOAD_URL}
@@ -305,7 +346,7 @@ export default function Header({ onOpenQuote }) {
                         rel="noopener noreferrer"
                         download
                         onClick={closeAllMenus}
-                        className="inline-flex items-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white px-3 py-1.5 rounded-md font-bold transition-colors"
+                        className="inline-flex items-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white px-3.5 py-1.5 rounded-md font-bold transition-colors shadow-2xs"
                       >
                         <FileDown className="w-3.5 h-3.5" />
                         <span>Download Catalogue (PDF)</span>
@@ -649,11 +690,11 @@ export default function Header({ onOpenQuote }) {
               </button>
 
               <div className="flex justify-between items-center text-xs text-slate-500 pt-1">
-                <a href="tel:+919876543210" className="flex items-center gap-1 hover:text-brand-orange">
+                <a href={`tel:${COMPANY_CONTACT.primaryPhoneRaw}`} className="flex items-center gap-1 hover:text-brand-orange">
                   <Phone className="w-3.5 h-3.5 text-brand-orange" />
-                  <span>+91 98765 43210</span>
+                  <span>{COMPANY_CONTACT.primaryPhone}</span>
                 </a>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-emerald-600 font-semibold">
+                <a href={COMPANY_CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-emerald-600 font-semibold">
                   <FaWhatsapp className="w-3.5 h-3.5" />
                   <span>WhatsApp Direct</span>
                 </a>

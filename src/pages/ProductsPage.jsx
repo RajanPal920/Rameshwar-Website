@@ -90,13 +90,13 @@ export default function ProductsPage({ onOpenQuote, onSelectProduct, onSelectIma
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 <div>
                   {/* Product Photo linking to detail page */}
                   <Link
                     to={product.seoUrl}
-                    className="relative aspect-[4/3] bg-slate-950 overflow-hidden block cursor-pointer"
+                    className="relative aspect-[16/10] bg-slate-950 overflow-hidden block cursor-pointer"
                   >
                     <img
                       src={product.image}

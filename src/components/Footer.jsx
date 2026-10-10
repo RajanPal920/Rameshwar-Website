@@ -150,24 +150,39 @@ export default function Footer() {
               Factory & Sales Contact
             </h4>
 
-            <div className="space-y-3 text-sm">
+            <div className="space-y-3 text-xs sm:text-sm">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
-                <span className="leading-snug text-slate-300">
-                  Plot No. 48, GIDC Industrial Estate, Phase II, Gujarat, India (Placeholder)
-                </span>
+                <div className="leading-snug text-slate-300">
+                  <span className="font-semibold text-white block">Works & Factory:</span>
+                  <span>Osiyamata Compound, C-4, Reti Bunder Rd, Kalher, Bhiwandi, Thane - 421302, Maharashtra</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+                <div className="leading-snug text-slate-400">
+                  <span className="font-medium text-slate-300 block">Registered Office:</span>
+                  <span>Lotlikar Bldg, Chira Bazar, Girgaon, Mumbai, Maharashtra</span>
+                </div>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-brand-orange shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-brand-orange text-slate-300">
-                  +91 98765 43210
-                </a>
+                <div className="flex flex-wrap gap-x-2 text-slate-300">
+                  <a href="tel:+919699838993" className="hover:text-brand-orange">
+                    +91 96998 38993
+                  </a>
+                  <span>/</span>
+                  <a href="tel:+919769946355" className="hover:text-brand-orange">
+                    +91 97699 46355
+                  </a>
+                </div>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-brand-orange shrink-0" />
-                <a href="mailto:sales@rameshwarindustries.com" className="hover:text-brand-orange text-slate-300">
+                <a href="mailto:sales@rameshwarindustries.com" className="hover:text-brand-orange text-slate-300 truncate">
                   sales@rameshwarindustries.com
                 </a>
               </div>
@@ -175,17 +190,17 @@ export default function Footer() {
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 text-brand-orange shrink-0" />
                 <span className="text-slate-400">
-                  Mon – Sat: 9:00 AM – 6:30 PM IST
+                  Mon – Sat: 9:00 AM – 7:00 PM IST
                 </span>
               </div>
             </div>
 
             <div className="pt-2">
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919699838993"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-emerald-400 hover:text-emerald-300 border border-slate-700 px-3.5 py-2.5 rounded-md text-sm font-semibold transition-colors"
+                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-emerald-400 hover:text-emerald-300 border border-slate-700 px-3.5 py-2.5 rounded-md text-xs sm:text-sm font-semibold transition-colors"
               >
                 <IoLogoWhatsapp className="w-4 h-4" />
                 <span>Instant WhatsApp Support</span>
