@@ -46,12 +46,12 @@ export default function Products({ onOpenQuote, onSelectProduct, onSelectImage }
           </div>
         </div>
 
-        {/* Product Cards Grid — Balanced 2 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {PRODUCTS.map((product) => (
+        {/* Product Cards Grid — 3 Columns × 3 Rows (9 Cards on Desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PRODUCTS.slice(0, 9).map((product) => (
             <div
               key={product.id}
-              className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col overflow-hidden"
+              className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden"
             >
               {/* Clickable Image — Directly linking to product detail page */}
               <Link
@@ -61,7 +61,7 @@ export default function Products({ onOpenQuote, onSelectProduct, onSelectImage }
                 <img
                   src={product.image}
                   alt={`${product.title} Manufacturer in India`}
-                  className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
 
                 {/* Number Tag */}
@@ -99,6 +99,22 @@ export default function Products({ onOpenQuote, onSelectProduct, onSelectImage }
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom Navigation CTA */}
+        <div className="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <p className="text-xs sm:text-sm text-slate-500 font-mono">
+            Displaying 9 Featured Products from Catalogue • 12 Specialized Formats Available
+          </p>
+          <div className="flex items-center gap-3">
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 bg-industrial-950 hover:bg-industrial-850 text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-md transition-colors"
+            >
+              <span>Explore All 12 Products</span>
+              <ArrowRight className="w-4 h-4 text-brand-orange" />
+            </Link>
+          </div>
         </div>
 
       </div>

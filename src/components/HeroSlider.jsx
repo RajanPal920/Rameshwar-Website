@@ -9,7 +9,7 @@ const slides = [
     heading: "ENGINEERED NAMEPLATES. BUILT FOR INDUSTRY.",
     description: "Precision-manufactured industrial nameplates, identification plates and custom labels for machines, control panels, equipment and industrial applications.",
     image: "/images/hero-industrial-nameplates.jpg",
-    objectPosition: "center 40%",
+    objectPosition: "right 45%",
     badge: "SS 304 / SS 316 Grade",
     specs: "Laser Etched • Serialized • Vibration-Proof",
     ctaPrimary: "EXPLORE OUR PRODUCTS",
@@ -22,7 +22,7 @@ const slides = [
     heading: "CUSTOM INDUSTRIAL NAMEPLATES & IDENTIFICATION",
     description: "Permanent laser-etched and stamped technical rating plates engineered to withstand high vibration, lubricants, heat, and plant floor wear.",
     image: "/images/equipment-data-plate.jpg",
-    objectPosition: "center 50%",
+    objectPosition: "center 45%",
     badge: "Heavy Duty Data Plate",
     specs: "Pressure & Power Ratings • CE Certified",
     ctaPrimary: "EXPLORE OUR PRODUCTS",
@@ -35,7 +35,7 @@ const slides = [
     heading: "BRASS • COPPER • ALUMINIUM PRECISION-MADE PLATES",
     description: "High-contrast chemical etching, deep enamel filling, and precision CNC profiling crafted in solid brass, pure copper, and anodized aluminium for demanding environments.",
     image: "/images/brass-industrial-plate.jpg",
-    objectPosition: "center 50%",
+    objectPosition: "right 50%",
     badge: "Solid Brass & Anodized Alloys",
     specs: "Deep Enamel Fill • Marine Grade • Mirror & Satin",
     ctaPrimary: "EXPLORE OUR PRODUCTS",
@@ -48,7 +48,7 @@ const slides = [
     heading: "IDENTIFICATION PLATES FOR INDUSTRIAL APPLICATIONS",
     description: "Custom switch cutouts, dial markings, emergency indicators, and operator legends manufactured in anodized aluminium and stainless steel.",
     image: "/images/control-panel-plate.jpg",
-    objectPosition: "center 45%",
+    objectPosition: "center 40%",
     badge: "Precision CNC Control Faceplates",
     specs: "CNC Cutouts • Dial Markings • Switch Holes",
     ctaPrimary: "EXPLORE OUR PRODUCTS",
@@ -124,9 +124,9 @@ export default function HeroSlider({ onOpenQuote }) {
       <div className="absolute inset-0 flex items-center z-10 pointer-events-none">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4">
 
-          {/* Single Clean Content Card */}
+          {/* Single Clean Content Card - Refined Translucent Background with High Legibility */}
           <div
-            className={`pointer-events-auto max-w-lg lg:max-w-xl bg-industrial-950/85 sm:bg-industrial-950/80 backdrop-blur-md p-6 sm:p-7 md:p-8 rounded-2xl border border-white/15 shadow-2xl transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+            className={`pointer-events-auto max-w-lg lg:max-w-xl bg-slate-950/70 sm:bg-slate-950/65 backdrop-blur-md p-6 sm:p-7 md:p-8 rounded-2xl border border-white/20 shadow-2xl transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
               }`}
           >
             {/* Eyebrow badge */}
@@ -135,22 +135,22 @@ export default function HeroSlider({ onOpenQuote }) {
               <span>{slide.eyebrow}</span>
             </div>
 
-            {/* Clear Heading */}
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[34px] font-black text-white tracking-tight leading-tight mb-2.5 uppercase drop-shadow-sm">
+            {/* Clear, Bold Heading */}
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[35px] font-extrabold text-white tracking-tight leading-[1.18] mb-3 uppercase drop-shadow-md">
               {slide.heading}
             </h1>
 
-            {/* Description */}
-            <p className="text-neutral-200 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
+            {/* High-Legibility Description */}
+            <p className="text-slate-100 text-xs sm:text-sm md:text-[14.5px] leading-relaxed mb-4 font-normal drop-shadow-sm">
               {slide.description}
             </p>
 
             {/* Industrial Specs Pill */}
             <div className="flex flex-wrap items-center gap-2 mb-4">
-              <span className="text-[10px] sm:text-[11px] font-mono font-bold bg-white/10 text-brand-orange border border-white/15 px-2.5 py-0.5 rounded">
+              <span className="text-[10px] sm:text-[11px] font-mono font-bold bg-white/10 text-brand-orange border border-white/20 px-2.5 py-0.5 rounded shadow-2xs">
                 {slide.badge}
               </span>
-              <span className="text-[10px] sm:text-[11px] font-mono text-neutral-300 hidden sm:inline">
+              <span className="text-[10px] sm:text-[11px] font-mono text-slate-200 hidden sm:inline">
                 {slide.specs}
               </span>
             </div>
@@ -159,7 +159,7 @@ export default function HeroSlider({ onOpenQuote }) {
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-md shadow-md shadow-orange-600/25 transition-all duration-200 group tracking-wider uppercase cursor-pointer"
+                className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-md shadow-md shadow-orange-600/30 transition-all duration-200 group tracking-wider uppercase cursor-pointer"
               >
                 <span>{slide.ctaPrimary}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

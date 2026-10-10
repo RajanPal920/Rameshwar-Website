@@ -17,9 +17,9 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-mono tracking-wider uppercase mb-3">
-            <span>ENGINEERING STRENGTHS</span>
+            <span>ENGINEERING STRATEGY & STRENGTHS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-industrial-950 tracking-tight">
             Why Rameshwar Industries?
@@ -29,16 +29,16 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        {/* 6 Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 4 Feature Cards Grid — Exactly 2 Cards Per Row on Desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
           {WHY_CHOOSE_US.map((item, index) => (
             <div
               key={item.title}
-              className="group bg-white p-7 rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
+              className="group bg-white p-6 sm:p-7 rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
             >
               {/* Corner Watermark Number */}
               <div className="absolute top-4 right-4 text-3xl font-mono font-black text-slate-100 group-hover:text-orange-50 transition-colors pointer-events-none">
-                {item.number}
+                {String(index + 1).padStart(2, '0')}
               </div>
 
               <div>

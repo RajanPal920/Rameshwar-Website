@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   Phone,
   Mail,
@@ -62,6 +62,10 @@ export default function Header({ onOpenQuote }) {
   const [mobileCertOpen, setMobileCertOpen] = useState(false);
   const closeTimeoutRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isCertActive = location.pathname.startsWith('/certificate');
+  const isProductsActive = location.pathname.startsWith('/products') || PRODUCT_MENU_CATEGORIES.some(cat => cat.items.some(item => location.pathname === item.url));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -193,13 +197,15 @@ export default function Header({ onOpenQuote }) {
           </Link>
 
           {/* Desktop Navigation Links with Dropdown Support */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-7 2xl:gap-8 h-full">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 h-full">
             {/* Home */}
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `text-sm xl:text-[15px] 2xl:text-base font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isActive ? 'text-brand-orange font-bold' : 'text-slate-700'
+                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
+                  isActive
+                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                    : 'text-slate-800'
                 }`
               }
             >
@@ -210,8 +216,10 @@ export default function Header({ onOpenQuote }) {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `text-sm xl:text-[15px] 2xl:text-base font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isActive ? 'text-brand-orange font-bold' : 'text-slate-700'
+                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
+                  isActive
+                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                    : 'text-slate-800'
                 }`
               }
             >
@@ -226,11 +234,11 @@ export default function Header({ onOpenQuote }) {
             >
               <NavLink
                 to="/products"
-                className={({ isActive }) =>
-                  `inline-flex items-center gap-1 text-sm xl:text-[15px] 2xl:text-base font-semibold transition-colors py-1 hover:text-brand-orange whitespace-nowrap ${
-                    isActive ? 'text-brand-orange font-bold' : 'text-slate-700'
-                  }`
-                }
+                className={`inline-flex items-center gap-1.5 text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
+                  isProductsActive
+                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                    : 'text-slate-800'
+                }`}
               >
                 <span>Products</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'products' ? 'rotate-180 text-brand-orange' : 'text-slate-400'}`} />
@@ -312,8 +320,10 @@ export default function Header({ onOpenQuote }) {
             <NavLink
               to="/materials"
               className={({ isActive }) =>
-                `text-sm xl:text-[15px] 2xl:text-base font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isActive ? 'text-brand-orange font-bold' : 'text-slate-700'
+                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
+                  isActive
+                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                    : 'text-slate-800'
                 }`
               }
             >
@@ -324,8 +334,10 @@ export default function Header({ onOpenQuote }) {
             <NavLink
               to="/industries"
               className={({ isActive }) =>
-                `text-sm xl:text-[15px] 2xl:text-base font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
-                  isActive ? 'text-brand-orange font-bold' : 'text-slate-700'
+                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${
+                  isActive
+                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                    : 'text-slate-800'
                 }`
               }
             >
@@ -341,8 +353,10 @@ export default function Header({ onOpenQuote }) {
               <button
                 type="button"
                 onClick={() => setActiveDropdown(activeDropdown === 'certification' ? null : 'certification')}
-                className={`inline-flex items-center gap-1 text-sm xl:text-[15px] 2xl:text-base font-semibold transition-colors py-1 hover:text-brand-orange whitespace-nowrap cursor-pointer ${
-                  window.location.pathname === '/certificate' ? 'text-brand-orange font-bold' : 'text-slate-700'
+                className={`inline-flex items-center gap-1.5 text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap cursor-pointer ${
+                  isCertActive
+                    ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
+                    : 'text-slate-800'
                 }`}
               >
                 <span>Certification</span>

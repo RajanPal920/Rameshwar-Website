@@ -28,7 +28,7 @@ export default function PageHero({
 
       {/* Hero Foreground Content: Clean Left-Aligned Card matching Homepage Hero proportions */}
       <div className="relative z-10 h-full flex items-center max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full py-6">
-        <div className="max-w-xl lg:max-w-2xl bg-industrial-950/85 sm:bg-industrial-950/80 backdrop-blur-md p-6 sm:p-7 md:p-8 rounded-2xl border border-white/15 shadow-2xl">
+        <div className="max-w-xl lg:max-w-2xl bg-slate-950/70 sm:bg-slate-950/65 backdrop-blur-md p-6 sm:p-7 md:p-8 rounded-2xl border border-white/20 shadow-2xl">
           {/* Breadcrumbs */}
           {breadcrumbs.length > 0 && (
             <nav className="flex items-center flex-wrap gap-1.5 text-xs font-mono text-neutral-300 mb-3" aria-label="Breadcrumb">
@@ -37,7 +37,7 @@ export default function PageHero({
               </Link>
               {breadcrumbs.map((crumb, i) => (
                 <React.Fragment key={i}>
-                  <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
+                  <ChevronRight className="w-3.5 h-3.5 text-neutral-400" />
                   {crumb.to ? (
                     <Link to={crumb.to} className="hover:text-brand-orange transition-colors">
                       {crumb.label}
@@ -58,14 +58,14 @@ export default function PageHero({
             </div>
           )}
 
-          {/* Title */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase leading-tight drop-shadow-sm">
+          {/* Title - Bold & High Contrast */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] font-extrabold text-white tracking-tight uppercase leading-[1.18] drop-shadow-md">
             {title}
           </h1>
 
-          {/* Description */}
+          {/* High-Legibility Description */}
           {description && (
-            <p className="text-neutral-200 text-xs sm:text-sm md:text-base mt-3 leading-relaxed font-normal">
+            <p className="text-slate-100 text-xs sm:text-sm md:text-base mt-3 leading-relaxed font-normal drop-shadow-sm">
               {description}
             </p>
           )}
