@@ -33,18 +33,15 @@ export default function Industries({ onOpenQuote, onSelectImage }) {
         </div>
 
         {/* Featured Prominent Industrial Machine Banner */}
-        <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl mb-12 group">
+        <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
 
-            {/* Prominent Real Industrial Photography */}
-            <div
-              className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:h-[380px] overflow-hidden cursor-pointer"
-              onClick={() => onSelectImage('/images/machine-with-plates.jpg', 'Modern CNC Machining Center with Factory Installed Nameplates')}
-            >
+            {/* Prominent Real Industrial Photography (Informative, Non-clickable) */}
+            <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:h-[380px] overflow-hidden">
               <img
                 src="/images/machine-with-plates.jpg"
                 alt="Industrial Machine with installed nameplates and control consoles"
-                className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
               <div className="absolute top-4 left-4 bg-industrial-950/90 backdrop-blur-md px-3 py-1.5 rounded-md text-xs font-mono text-white flex items-center gap-2 border border-white/10">
                 <span className="w-2 h-2 rounded-full bg-brand-orange"></span>
@@ -77,32 +74,31 @@ export default function Industries({ onOpenQuote, onSelectImage }) {
           </div>
         </div>
 
-        {/* 8 Industry & Application Photo Cards Grid */}
+        {/* 8 Industry & Application Photo Cards Grid (Clean Informational Cards) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {INDUSTRIES.map((ind) => (
-            <Link
+            <div
               key={ind.name}
-              to="/industries"
-              className="group relative bg-slate-900 rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
+              className="relative bg-slate-900 rounded-xl border border-slate-200 shadow-xs overflow-hidden"
             >
               {/* Real Industrial Image */}
               <div className="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={ind.image}
                   alt={ind.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover"
                 />
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
 
                 {/* Title Only */}
                 <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h3 className="text-white font-bold text-base sm:text-lg tracking-tight group-hover:text-brand-orange transition-colors">
+                  <h3 className="text-white font-bold text-base sm:text-lg tracking-tight">
                     {ind.name}
                   </h3>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 

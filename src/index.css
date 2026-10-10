@@ -92,11 +92,21 @@
   animation: hero-fade-in 0.8s ease-out forwards;
 }
 
-/* ===== PAGE HERO BANNER ===== */
-.page-hero-bg {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* ===== CONSISTENT HERO DIMENSIONS ACROSS ALL PAGES ===== */
+:root {
+  --site-hero-min-height: 480px;
+  --site-hero-desktop-height: 560px;
+}
+
+.site-hero-container {
+  min-height: var(--site-hero-min-height);
+  height: clamp(480px, 60vh, var(--site-hero-desktop-height));
+}
+
+@media (min-width: 1024px) {
+  .site-hero-container {
+    height: var(--site-hero-desktop-height);
+  }
 }
 
 /* Prevent horizontal overflow globally */

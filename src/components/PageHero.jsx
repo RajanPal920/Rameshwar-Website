@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react';
 
 /**
  * Premium full-width PageHero component for inner pages.
- * Conforms to the industrial aesthetic: full-bleed image cover, readable dark panel, bold typography.
+ * Consistent height, visual proportions, and clear images matching the homepage hero slider.
  */
 export default function PageHero({
   image,
@@ -15,14 +15,8 @@ export default function PageHero({
   objectPosition = 'center center',
 }) {
   return (
-    <div
-      className="relative w-full overflow-hidden bg-neutral-950"
-      style={{
-        minHeight: '440px',
-        height: 'clamp(440px, 52vh, 620px)',
-      }}
-    >
-      {/* Full-Bleed Background Image (fills entire container, object-fit: cover, no margins/borders) */}
+    <div className="relative w-full overflow-hidden bg-neutral-950 site-hero-container">
+      {/* Full-Bleed Background Image (Clear, Sharp, Professionally Presented) */}
       <img
         src={image}
         alt={title}
@@ -32,67 +26,50 @@ export default function PageHero({
         }}
       />
 
-      {/* High-Contrast Industrial Vignette Overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'linear-gradient(90deg, rgba(5,7,10,0.92) 0%, rgba(8,10,14,0.82) 42%, rgba(10,12,16,0.42) 75%, rgba(10,12,16,0.20) 100%)',
-          zIndex: 2,
-        }}
-      />
+      {/* Hero Foreground Content: Clean Left-Aligned Card matching Homepage Hero proportions */}
+      <div className="relative z-10 h-full flex items-center max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full py-6">
+        <div className="max-w-xl lg:max-w-2xl bg-industrial-950/85 sm:bg-industrial-950/80 backdrop-blur-md p-6 sm:p-7 md:p-8 rounded-2xl border border-white/15 shadow-2xl">
+          {/* Breadcrumbs */}
+          {breadcrumbs.length > 0 && (
+            <nav className="flex items-center flex-wrap gap-1.5 text-xs font-mono text-neutral-300 mb-3" aria-label="Breadcrumb">
+              <Link to="/" className="hover:text-brand-orange transition-colors">
+                Home
+              </Link>
+              {breadcrumbs.map((crumb, i) => (
+                <React.Fragment key={i}>
+                  <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
+                  {crumb.to ? (
+                    <Link to={crumb.to} className="hover:text-brand-orange transition-colors">
+                      {crumb.label}
+                    </Link>
+                  ) : (
+                    <span className="text-brand-orange font-bold">{crumb.label}</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </nav>
+          )}
 
-      {/* Bottom Gradient Fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-28"
-        style={{
-          background: 'linear-gradient(to top, rgba(5,7,10,0.70) 0%, transparent 100%)',
-          zIndex: 3,
-        }}
-      />
+          {/* Eyebrow Badge */}
+          {eyebrow && (
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-brand-orange text-black text-[10px] sm:text-xs font-mono font-black tracking-widest uppercase mb-3 self-start shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+              <span>{eyebrow}</span>
+            </div>
+          )}
 
-      {/* Content Container */}
-      <div className="relative z-10 h-full flex flex-col justify-end pb-12 sm:pb-16 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        {/* Breadcrumbs */}
-        {breadcrumbs.length > 0 && (
-          <nav className="flex items-center flex-wrap gap-1.5 text-xs font-mono text-neutral-300 mb-4" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-brand-orange transition-colors">
-              Home
-            </Link>
-            {breadcrumbs.map((crumb, i) => (
-              <React.Fragment key={i}>
-                <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
-                {crumb.to ? (
-                  <Link to={crumb.to} className="hover:text-brand-orange transition-colors">
-                    {crumb.label}
-                  </Link>
-                ) : (
-                  <span className="text-brand-orange font-bold">{crumb.label}</span>
-                )}
-              </React.Fragment>
-            ))}
-          </nav>
-        )}
+          {/* Title */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight uppercase leading-tight drop-shadow-sm">
+            {title}
+          </h1>
 
-        {/* Eyebrow Badge */}
-        {eyebrow && (
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-brand-orange text-black text-[11px] font-mono font-black tracking-widest uppercase mb-4 self-start shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
-            <span>{eyebrow}</span>
-          </div>
-        )}
-
-        {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase leading-tight drop-shadow-md max-w-3xl">
-          {title}
-        </h1>
-
-        {/* Description */}
-        {description && (
-          <p className="text-neutral-200 text-sm sm:text-base md:text-lg mt-3.5 leading-relaxed max-w-2xl drop-shadow">
-            {description}
-          </p>
-        )}
+          {/* Description */}
+          {description && (
+            <p className="text-neutral-200 text-xs sm:text-sm md:text-base mt-3 leading-relaxed font-normal">
+              {description}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

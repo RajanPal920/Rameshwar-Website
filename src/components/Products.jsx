@@ -46,8 +46,8 @@ export default function Products({ onOpenQuote, onSelectProduct, onSelectImage }
           </div>
         </div>
 
-        {/* Product Cards Grid — 3 Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Product Cards Grid — Balanced 2 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {PRODUCTS.map((product) => (
             <div
               key={product.id}

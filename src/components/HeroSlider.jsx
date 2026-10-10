@@ -92,66 +92,41 @@ export default function HeroSlider({ onOpenQuote }) {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-neutral-950"
-      style={{
-        minHeight: '500px',
-        height: 'clamp(500px, calc(96vh - 90px), 760px)',
-      }}
+      className="relative w-full overflow-hidden bg-neutral-950 site-hero-container"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-label="Industrial Nameplates Hero Showcase"
     >
-      {/* Full-Screen Background Image Slides */}
+      {/* Full-Screen Background Image Slides (Clear, Sharp, Zero Dull Overlays) */}
       {slides.map((s, idx) => (
         <div
           key={s.id}
-          className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+          className="absolute inset-0 transition-opacity duration-500 ease-in-out"
           style={{
             opacity: idx === currentSlide ? 1 : 0,
             zIndex: idx === currentSlide ? 1 : 0,
             pointerEvents: idx === currentSlide ? 'auto' : 'none',
           }}
         >
-          {/* Main Full-Bleed Product Image */}
+          {/* Main Full-Bleed Product Image - Sharp, Bright & Clear */}
           <img
             src={s.image}
             alt={s.heading}
-            className="w-full h-full object-cover transition-transform duration-7000 ease-out"
+            className="w-full h-full object-cover"
             style={{
               objectPosition: s.objectPosition || 'center center',
-              transform: idx === currentSlide ? 'scale(1.02)' : 'scale(1.0)',
-            }}
-          />
-
-          {/* Cinematic Overlay: Noticeably lighter and brighter for product visibility while keeping text readable */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(90deg, rgba(5,7,10,0.68) 0%, rgba(8,10,14,0.48) 45%, rgba(10,12,16,0.15) 75%, rgba(10,12,16,0.05) 100%)',
-              zIndex: 2,
-            }}
-          />
-          {/* Subtle soft bottom gradient to blend into marquee */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-16 sm:h-20"
-            style={{
-              background: 'linear-gradient(to top, rgba(5,7,10,0.35) 0%, transparent 100%)',
-              zIndex: 3,
             }}
           />
         </div>
       ))}
 
-      {/* Hero Foreground Content: Dark / Subtle Readable Content Panel */}
-      <div
-        className="absolute inset-0 flex items-center"
-        style={{ zIndex: 10 }}
-      >
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4 sm:py-8">
+      {/* Hero Foreground Content: Single Clean Content Card Positioned on Left */}
+      <div className="absolute inset-0 flex items-center z-10 pointer-events-none">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4">
 
-          {/* Subtle Transparent Content Panel */}
+          {/* Single Clean Content Card */}
           <div
-            className={`max-w-xl lg:max-w-[760px] bg-black/40 sm:bg-black/30 backdrop-blur-[2px] p-5 sm:p-7 md:p-8 rounded-xl sm:rounded-2xl transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+            className={`pointer-events-auto max-w-lg lg:max-w-xl bg-industrial-950/85 sm:bg-industrial-950/80 backdrop-blur-md p-6 sm:p-7 md:p-8 rounded-2xl border border-white/15 shadow-2xl transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
               }`}
           >
             {/* Eyebrow badge */}
@@ -160,18 +135,18 @@ export default function HeroSlider({ onOpenQuote }) {
               <span>{slide.eyebrow}</span>
             </div>
 
-            {/* Large Bold Headline (+10-15% on desktop) */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[45px] xl:text-[46px] font-black text-white tracking-tight leading-[1.12] mb-3 uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            {/* Clear Heading */}
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[34px] font-black text-white tracking-tight leading-tight mb-2.5 uppercase drop-shadow-sm">
               {slide.heading}
             </h1>
 
             {/* Description */}
-            <p className="text-neutral-100 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-5 font-normal max-w-2xl lg:max-w-[720px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+            <p className="text-neutral-200 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
               {slide.description}
             </p>
 
             {/* Industrial Specs Pill */}
-            <div className="flex flex-wrap items-center gap-2 mb-4 sm:mb-5">
+            <div className="flex flex-wrap items-center gap-2 mb-4">
               <span className="text-[10px] sm:text-[11px] font-mono font-bold bg-white/10 text-brand-orange border border-white/15 px-2.5 py-0.5 rounded">
                 {slide.badge}
               </span>
@@ -181,10 +156,10 @@ export default function HeroSlider({ onOpenQuote }) {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-5">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-md shadow-md shadow-orange-600/25 transition-all duration-200 group tracking-wider uppercase cursor-pointer"
+                className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-md shadow-md shadow-orange-600/25 transition-all duration-200 group tracking-wider uppercase cursor-pointer"
               >
                 <span>{slide.ctaPrimary}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -192,14 +167,14 @@ export default function HeroSlider({ onOpenQuote }) {
 
               <button
                 onClick={() => onOpenQuote(slide.badge)}
-                className="inline-flex items-center gap-2 bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700 hover:border-brand-orange text-white font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-md transition-all duration-200 tracking-wider uppercase cursor-pointer"
+                className="inline-flex items-center gap-2 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-brand-orange text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-md transition-all duration-200 tracking-wider uppercase cursor-pointer"
               >
                 <span>{slide.ctaSecondary}</span>
               </button>
             </div>
 
             {/* Industrial Trust Badges */}
-            <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-neutral-800/80 text-[11px] font-mono">
+            <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-neutral-800 text-[11px] font-mono">
               <div className="flex items-center gap-1.5 text-brand-orange font-bold">
                 <ShieldCheck className="w-3.5 h-3.5 text-brand-orange" />
                 <span>{slide.qual}</span>
@@ -207,35 +182,17 @@ export default function HeroSlider({ onOpenQuote }) {
               <span className="text-neutral-600 hidden sm:inline">•</span>
               <div className="flex items-center gap-1 text-neutral-300">
                 <CheckCircle2 className="w-3 h-3 text-brand-orange" />
-                <span>Custom CAD Designs</span>
+                <span>Custom CAD</span>
               </div>
               <span className="text-neutral-600 hidden sm:inline">•</span>
               <div className="flex items-center gap-1 text-neutral-300">
                 <CheckCircle2 className="w-3 h-3 text-brand-orange" />
-                <span>Multi-Alloy Substrates</span>
+                <span>Multi-Alloy</span>
               </div>
             </div>
 
           </div>
 
-        </div>
-      </div>
-
-      {/* Slide Technical Spec Card (Desktop bottom-right) */}
-      <div
-        className="hidden xl:block absolute bottom-12 right-12"
-        style={{ zIndex: 11 }}
-      >
-        <div
-          className={`bg-neutral-950/80 backdrop-blur-md border border-neutral-800 rounded-xl px-4 py-3 text-right transition-all duration-500 shadow-xl ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
-            }`}
-        >
-          <div className="text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
-            {slide.badge}
-          </div>
-          <div className="text-neutral-300 text-[11px] font-mono mt-0.5">
-            {slide.specs}
-          </div>
         </div>
       </div>
 
