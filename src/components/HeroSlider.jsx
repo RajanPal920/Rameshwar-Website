@@ -92,7 +92,7 @@ export default function HeroSlider({ onOpenQuote }) {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-neutral-950 site-hero-container"
+      className="relative w-full overflow-hidden bg-slate-100 site-hero-container"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-label="Industrial Nameplates Hero Showcase"
@@ -120,37 +120,38 @@ export default function HeroSlider({ onOpenQuote }) {
         </div>
       ))}
 
-      {/* Hero Foreground Content: Single Clean Content Card Positioned on Left */}
+      {/* Hero Foreground Content: Single Clean Glassmorphism Card Positioned on Left */}
       <div className="absolute inset-0 flex items-center z-10 pointer-events-none">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4">
 
-          {/* Single Clean Content Card - Wider Prominent Proportions with High Contrast */}
+          {/* Consistent Shared Glassmorphism Content Card */}
           <div
-            className={`pointer-events-auto w-full max-w-xl md:max-w-2xl lg:max-w-[720px] xl:max-w-[740px] bg-industrial-950/90 sm:bg-industrial-950/85 backdrop-blur-sm p-6 sm:p-8 md:p-9 rounded-2xl border border-neutral-700/60 shadow-2xl transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
-              }`}
+            className={`pointer-events-auto hero-content-card transition-all duration-300 ${
+              isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+            }`}
           >
             {/* Eyebrow badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-orange text-black text-[11px] sm:text-xs font-mono font-black tracking-widest uppercase mb-3.5 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-orange text-white text-[11px] sm:text-xs font-mono font-bold tracking-widest uppercase mb-3.5 shadow-xs self-start">
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               <span>{slide.eyebrow}</span>
             </div>
 
-            {/* Clear, Bold Heading */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[40px] font-extrabold text-white tracking-tight leading-[1.15] mb-3.5 uppercase drop-shadow-md">
+            {/* Clear, Bold Heading in Dark Charcoal */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[40px] font-extrabold text-industrial-950 tracking-tight leading-[1.15] mb-3.5 uppercase">
               {slide.heading}
             </h1>
 
-            {/* High-Legibility Description */}
-            <p className="text-slate-100 text-sm sm:text-[15px] md:text-base leading-relaxed mb-4.5 font-normal drop-shadow-sm max-w-2xl">
+            {/* High-Legibility Dark Charcoal / Slate Description */}
+            <p className="text-slate-700 text-sm sm:text-[15px] md:text-base leading-relaxed mb-4.5 font-normal max-w-2xl">
               {slide.description}
             </p>
 
             {/* Industrial Specs Pill */}
             <div className="flex flex-wrap items-center gap-2.5 mb-5">
-              <span className="text-[11px] sm:text-xs font-mono font-bold bg-white/10 text-brand-orange border border-white/20 px-3 py-1 rounded shadow-2xs">
+              <span className="text-[11px] sm:text-xs font-mono font-bold bg-white/90 text-brand-orange border border-orange-200/80 px-3 py-1 rounded shadow-2xs">
                 {slide.badge}
               </span>
-              <span className="text-xs font-mono text-slate-200 hidden sm:inline">
+              <span className="text-xs font-mono text-slate-700 font-medium hidden sm:inline">
                 {slide.specs}
               </span>
             </div>
@@ -167,25 +168,25 @@ export default function HeroSlider({ onOpenQuote }) {
 
               <button
                 onClick={() => onOpenQuote(slide.badge)}
-                className="inline-flex items-center gap-2 bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700 hover:border-brand-orange text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-lg transition-all duration-200 tracking-wider uppercase cursor-pointer"
+                className="inline-flex items-center gap-2 bg-industrial-950 hover:bg-industrial-850 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-lg transition-all duration-200 tracking-wider uppercase cursor-pointer border border-industrial-900"
               >
                 <span>{slide.ctaSecondary}</span>
               </button>
             </div>
 
             {/* Industrial Trust Badges */}
-            <div className="flex flex-wrap items-center gap-3 pt-3.5 border-t border-neutral-800 text-xs font-mono">
+            <div className="flex flex-wrap items-center gap-3 pt-3.5 border-t border-slate-300/70 text-xs font-mono mt-auto">
               <div className="flex items-center gap-1.5 text-brand-orange font-bold">
                 <ShieldCheck className="w-4 h-4 text-brand-orange" />
                 <span>{slide.qual}</span>
               </div>
-              <span className="text-neutral-600 hidden sm:inline">•</span>
-              <div className="flex items-center gap-1 text-neutral-300">
+              <span className="text-slate-400 hidden sm:inline">•</span>
+              <div className="flex items-center gap-1 text-slate-700 font-medium">
                 <CheckCircle2 className="w-3.5 h-3.5 text-brand-orange" />
                 <span>Custom CAD</span>
               </div>
-              <span className="text-neutral-600 hidden sm:inline">•</span>
-              <div className="flex items-center gap-1 text-neutral-300">
+              <span className="text-slate-400 hidden sm:inline">•</span>
+              <div className="flex items-center gap-1 text-slate-700 font-medium">
                 <CheckCircle2 className="w-3.5 h-3.5 text-brand-orange" />
                 <span>Multi-Alloy</span>
               </div>
@@ -200,7 +201,7 @@ export default function HeroSlider({ onOpenQuote }) {
       <button
         onClick={prevSlide}
         aria-label="Previous Slide"
-        className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-neutral-950/70 hover:bg-brand-orange text-white hover:text-black border border-white/20 transition-all duration-200 shadow-lg cursor-pointer focus:outline-none"
+        className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-black/40 hover:bg-brand-orange text-white hover:text-white backdrop-blur-xs border border-white/30 transition-all duration-200 shadow-lg cursor-pointer focus:outline-none"
         style={{ zIndex: 20 }}
       >
         <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -209,7 +210,7 @@ export default function HeroSlider({ onOpenQuote }) {
       <button
         onClick={nextSlide}
         aria-label="Next Slide"
-        className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-neutral-950/70 hover:bg-brand-orange text-white hover:text-black border border-white/20 transition-all duration-200 shadow-lg cursor-pointer focus:outline-none"
+        className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 p-2 sm:p-2.5 rounded-full bg-black/40 hover:bg-brand-orange text-white hover:text-white backdrop-blur-xs border border-white/30 transition-all duration-200 shadow-lg cursor-pointer focus:outline-none"
         style={{ zIndex: 20 }}
       >
         <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
