@@ -11,7 +11,7 @@ export default function MaterialShowcase({ onOpenQuote, onSelectImage }) {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 text-slate-100 text-xs font-mono tracking-wider uppercase mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 text-slate-100 text-xs font-semibold tracking-wide uppercase mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
               <span>SUBSTRATE SELECTION GUIDE</span>
             </div>
@@ -25,7 +25,7 @@ export default function MaterialShowcase({ onOpenQuote, onSelectImage }) {
 
           <Link
             to="/materials"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-orange hover:text-brand-orange-dark font-mono shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-orange hover:text-brand-orange-dark shrink-0"
           >
             <span>View Full Substrate Matrix</span>
             <ArrowRight className="w-4 h-4" />
@@ -37,13 +37,13 @@ export default function MaterialShowcase({ onOpenQuote, onSelectImage }) {
           {MATERIALS.map((mat) => (
             <div
               key={mat.id}
-              className="group bg-slate-50 rounded-2xl border border-slate-200 hover:border-slate-400 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between"
+              className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col justify-between"
             >
               <div>
                 {/* Sample Plate Image with Natural Aspect */}
-                <div 
-                  className="relative aspect-[16/10] bg-slate-950 overflow-hidden cursor-pointer"
-                  onClick={() => onSelectImage(mat.image, `${mat.name} Material Specimen`)}
+                <Link 
+                  to={mat.seoUrl}
+                  className="block relative aspect-[16/10] bg-white overflow-hidden cursor-pointer"
                 >
                   <img
                     src={mat.image}
@@ -56,27 +56,49 @@ export default function MaterialShowcase({ onOpenQuote, onSelectImage }) {
                     {mat.name}
                   </div>
 
-                  <div className="absolute bottom-3 left-3 bg-white/95 text-slate-900 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded shadow-xs">
+                  <div className="absolute bottom-3 left-3 bg-white/95 text-slate-900 text-[11px] font-semibold px-2.5 py-0.5 rounded shadow-xs">
                     {mat.grades}
                   </div>
-                </div>
+                </Link>
 
                 {/* Content */}
                 <div className="p-6">
                   {/* Headline */}
-                  <h3 className="text-lg font-bold text-industrial-950 group-hover:text-brand-orange transition-colors">
-                    {mat.headline}
-                  </h3>
+                  <Link to={mat.seoUrl} className="block">
+                    <h3 className="text-lg font-bold text-industrial-950 group-hover:text-brand-orange transition-colors">
+                      {mat.headline}
+                    </h3>
+                  </Link>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed font-normal">
                     {mat.description}
                   </p>
 
+                  {/* Clickable Grade Badges */}
+                  {mat.gradesList && mat.gradesList.length > 0 && (
+                    <div className="mt-4 pt-3 border-t border-slate-100">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block mb-1.5">
+                        Verified Alloys:
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {mat.gradesList.map((g) => (
+                          <Link
+                            key={g.code}
+                            to={`${mat.seoUrl}?grade=${encodeURIComponent(g.code)}`}
+                            className="text-[11px] font-semibold px-2 py-0.5 rounded bg-slate-100 hover:bg-brand-orange hover:text-white text-slate-700 transition-colors border border-slate-200/60"
+                          >
+                            {g.code}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   {/* Bullet Highlights */}
-                  <div className="mt-5 space-y-2 pt-4 border-t border-slate-200">
+                  <div className="mt-4 space-y-2 pt-4 border-t border-slate-100">
                     {mat.features.map((feat) => (
-                      <div key={feat} className="flex items-center gap-2 text-xs text-slate-700">
+                      <div key={feat} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
                         <Check className="w-3.5 h-3.5 text-brand-orange shrink-0 stroke-[2.5]" />
                         <span>{feat}</span>
                       </div>
@@ -88,20 +110,19 @@ export default function MaterialShowcase({ onOpenQuote, onSelectImage }) {
               {/* Card Footer Actions */}
               <div className="px-6 pb-6 pt-0 space-y-2">
                 <Link
-                  to={`/materials?filter=${mat.id}`}
-                  className="w-full inline-flex items-center justify-center gap-2 text-xs font-bold text-brand-orange hover:text-white bg-orange-50 hover:bg-brand-orange border border-orange-200 py-2.5 px-4 rounded-lg transition-colors cursor-pointer"
+                  to={mat.seoUrl}
+                  className="w-full inline-flex items-center justify-center gap-2 text-xs font-semibold text-white bg-slate-900 hover:bg-industrial-950 py-2.5 px-4 rounded-lg transition-colors shadow-xs"
                 >
-                  <span>View {mat.name} Material Products</span>
+                  <span>View {mat.name} Substrate Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
 
-                <button
-                  type="button"
-                  onClick={() => onOpenQuote(`${mat.name} Material Name Plate`)}
-                  className="w-full inline-flex items-center justify-center gap-2 text-xs font-bold text-slate-800 hover:text-white bg-white hover:bg-industrial-950 border border-slate-300 hover:border-industrial-950 py-2 px-4 rounded-lg transition-colors cursor-pointer"
+                <Link
+                  to={`/materials?filter=${mat.id}`}
+                  className="w-full inline-flex items-center justify-center gap-2 text-xs font-semibold text-brand-orange hover:text-white bg-orange-50 hover:bg-brand-orange border border-orange-200 py-2 px-4 rounded-lg transition-colors cursor-pointer"
                 >
-                  <span>Request RFQ for {mat.name}</span>
-                </button>
+                  <span>Filter Catalogue Products in {mat.name}</span>
+                </Link>
               </div>
 
             </div>

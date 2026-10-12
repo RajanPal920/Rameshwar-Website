@@ -18,10 +18,10 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
         <div className="flex items-center justify-between p-5 bg-industrial-950 border-b border-slate-800">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-mono text-brand-orange font-bold uppercase tracking-wider bg-orange-950/80 px-2 py-0.5 rounded border border-orange-800/40">
+              <span className="text-[11px] font-semibold text-brand-orange uppercase tracking-wider bg-orange-950/80 px-2 py-0.5 rounded border border-orange-800/40">
                 PRODUCT #{product.number}
               </span>
-              <span className="text-xs font-mono text-slate-400">{product.category}</span>
+              <span className="text-xs font-medium text-slate-400">{product.category}</span>
             </div>
             <h3 className="text-xl font-bold text-white mt-1">{product.title}</h3>
           </div>
@@ -38,7 +38,7 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             
             {/* Image */}
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-950 border border-slate-700">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-slate-700">
               <img
                 src={product.image}
                 alt={product.title}
@@ -48,20 +48,20 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
 
             {/* Core Details */}
             <div className="space-y-4">
-              <p className="text-sm text-slate-300 leading-relaxed">
-                {product.details}
+              <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                {product.description || product.overview}
               </p>
 
               <div className="space-y-2 pt-2 border-t border-slate-800 text-xs">
-                <div className="flex justify-between py-1 border-b border-slate-800/60 font-mono">
+                <div className="flex justify-between py-1 border-b border-slate-800/60 font-medium">
                   <span className="text-slate-400">Available Substrates:</span>
                   <span className="text-brand-orange font-bold text-right">{product.materials.join(', ')}</span>
                 </div>
-                <div className="flex justify-between py-1 border-b border-slate-800/60 font-mono">
+                <div className="flex justify-between py-1 border-b border-slate-800/60 font-medium">
                   <span className="text-slate-400">Mounting Options:</span>
                   <span className="text-slate-200 text-right">{product.mounting.join(', ')}</span>
                 </div>
-                <div className="flex justify-between py-1 font-mono">
+                <div className="flex justify-between py-1 font-medium">
                   <span className="text-slate-400">Production Lead Time:</span>
                   <span className="text-emerald-400 font-bold">{product.leadTime}</span>
                 </div>
@@ -72,10 +72,10 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
 
           {/* Fabrication Standards */}
           <div className="p-4 rounded-xl bg-industrial-950 border border-slate-800">
-            <h5 className="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider mb-2">
+            <h5 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
               MANUFACTURING & QUALITY STANDARDS
             </h5>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-400">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-400 font-normal">
               <div className="flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 text-brand-orange" />
                 <span>Zero Burrs & Chamfered Edges</span>
@@ -94,7 +94,7 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
 
         {/* Footer */}
         <div className="p-4 bg-industrial-950 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span className="text-xs text-slate-400 font-mono">
+          <span className="text-xs text-slate-400 font-medium">
             Direct OEM Pricing from Rameshwar Industries
           </span>
           <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
@@ -102,7 +102,7 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
               <Link
                 to={product.seoUrl}
                 onClick={onClose}
-                className="px-3.5 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 inline-flex items-center gap-1.5 transition-colors"
+                className="px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 inline-flex items-center gap-1.5 transition-colors"
               >
                 <span>Full Product Page</span>
                 <ExternalLink className="w-3 h-3 text-brand-orange" />
@@ -110,7 +110,7 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
             )}
             <button
               onClick={onClose}
-              className="px-3.5 py-2 rounded-md bg-slate-800/80 hover:bg-slate-700 text-xs font-semibold text-slate-400 hover:text-white cursor-pointer transition-colors"
+              className="px-3.5 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-xs font-semibold text-slate-400 hover:text-white cursor-pointer transition-colors"
             >
               Close
             </button>
@@ -119,7 +119,7 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
                 onClose();
                 onOpenQuote(product.title);
               }}
-              className="inline-flex items-center justify-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white text-xs font-bold px-4 py-2 rounded-md transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer"
             >
               <span>Get Quote</span>
               <ArrowRight className="w-3.5 h-3.5" />

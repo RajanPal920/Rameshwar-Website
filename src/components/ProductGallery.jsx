@@ -84,7 +84,7 @@ export default function ProductGallery() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 text-slate-100 text-xs font-mono tracking-wider uppercase mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 text-slate-100 text-xs font-semibold tracking-wide uppercase mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
               <span>FABRICATED SPECIMENS</span>
             </div>
@@ -102,9 +102,9 @@ export default function ProductGallery() {
           {galleryItems.map((item, index) => (
             <div
               key={index}
-              className="group relative rounded-xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm transition-all duration-300 flex flex-col"
+              className="group relative rounded-xl overflow-hidden bg-white border border-slate-200 shadow-sm transition-all duration-300 flex flex-col"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-slate-950">
+              <div className="relative aspect-[4/3] overflow-hidden bg-white">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -113,13 +113,13 @@ export default function ProductGallery() {
 
                 {/* Static gradient overlay with text */}
                 <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/90 via-industrial-950/20 to-transparent flex flex-col justify-end p-4">
-                  <span className="text-[10px] font-mono font-bold text-brand-orange tracking-wider uppercase">
+                  <span className="text-[11px] font-semibold text-brand-orange tracking-wider uppercase">
                     {item.category}
                   </span>
                   <h3 className="text-white font-bold text-sm sm:text-base leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-[11px] text-slate-300 font-mono mt-1 line-clamp-1">
+                  <p className="text-xs text-slate-300 mt-1 line-clamp-1">
                     {item.caption}
                   </p>
                 </div>

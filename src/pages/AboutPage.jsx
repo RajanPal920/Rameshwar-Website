@@ -69,25 +69,25 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
       title: "Machine Rating & Motor Plates",
       desc: "Custom rating plates carrying model number, RPM, volts, amps, frame, duty cycle, and OEM technical branding.",
       image: "/images/machine-name-plate.jpg",
-      link: "/machine-name-plates/manufacturer-in-india"
+      link: "/name-plate-manufacturer-in-mumbai"
     },
     {
       title: "Control Panel & Automation Overlays",
       desc: "High-precision faceplates, emergency stop rings, pump selector tags, and mimic diagrams for automation desks.",
       image: "/images/control-panel-plate.jpg",
-      link: "/control-panel-name-plates/manufacturer-in-india"
+      link: "/control-panel-name-plates-manufacturing-in-mumbai"
     },
     {
       title: "Process Equipment & Valve Tags",
       desc: "Heavy-duty SS 316 valve trim plates, cable marker rings, and pipeline identification tags with reinforced eyelets.",
-      image: "/images/equipment-data-plate.jpg",
-      link: "/valve-body-trim-plates/manufacturer-in-india"
+      image: "/images/products/valve-body-trim-plates.jpg",
+      link: "/valve-body-trim-plates-manufacturing-in-mumbai"
     },
     {
       title: "Safety Warning & Directional Signage",
       desc: "High-contrast caution/warning signs, electrical hazard legends, and architectural satin push/pull door plates.",
-      image: "/images/push-pull-plate.jpg",
-      link: "/industrial-safety-signs/manufacturer-in-india"
+      image: "/images/products/caution-warning-plates.jpg",
+      link: "/caution-warning-plates-supplier-in-mumbai"
     }
   ];
 
@@ -134,14 +134,14 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               {/* Left Image Showcase */}
               <div className="lg:col-span-5 relative">
-                <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900 group">
+                <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white group">
                   <img
                     src="/images/custom-plates-group.jpg"
                     alt="Rameshwar Industries Multi-Material Plate Array"
                     className="w-full h-auto object-cover group-hover:scale-103 transition-transform duration-500 cursor-pointer"
                     onClick={() => onSelectImage('/images/custom-plates-group.jpg', 'Multi-Material Custom Plate Collection')}
                   />
-                  <div className="p-4 bg-industrial-950 text-white border-t border-slate-800 text-xs font-mono">
+                  <div className="p-4 bg-industrial-950 text-white border-t border-slate-800 text-xs font-medium">
                     <span className="text-brand-orange font-bold">MANUFACTURING SCOPE:</span> Stainless Steel (SS 304/316), Anodized Aluminium, Brass & Copper Plates.
                   </div>
                 </div>
@@ -149,7 +149,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
 
               {/* Right Content */}
               <div className="lg:col-span-7 space-y-5">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-50 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase border border-orange-200">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-50 text-brand-orange text-xs font-semibold tracking-wide uppercase border border-orange-200">
                   <Sliders className="w-3.5 h-3.5" />
                   <span>DIRECT INDUSTRIAL MANUFACTURER</span>
                 </div>
@@ -166,7 +166,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
                   Operating production facilities in Bhiwandi (Thane) and central operations in Girgaon (Mumbai), we supply equipment builders, electrical switchgear OEMs, and plant maintenance engineers across India. Unlike commercial printing shops, our machinery and metallurgical processes are tailored exclusively for metal substrates engineered to withstand high vibration, chemical washdowns, extreme temperatures, and decades of industrial exposure.
                 </p>
 
-                <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono text-slate-700">
+                <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-medium text-slate-700">
                   <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded border border-slate-200">
                     <CheckCircle2 className="w-4 h-4 text-brand-orange" />
                     <span>Udyam Registered Enterprise (MSME)</span>
@@ -183,7 +183,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
           {/* 3. Section: Our Manufacturing Capabilities (4-Card Grid) */}
           <section className="space-y-8">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-mono font-bold tracking-wider uppercase mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-semibold tracking-wide uppercase mb-2">
                 <span>PRODUCTION INFRASTRUCTURE</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-industrial-950 tracking-tight">
@@ -201,7 +201,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
                   className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between hover:border-brand-orange/60 hover:shadow-md transition-all duration-200"
                 >
                   <div>
-                    <span className="text-[10px] font-mono font-bold text-brand-orange bg-orange-50 border border-orange-200 px-2.5 py-0.5 rounded uppercase tracking-wider inline-block mb-3">
+                    <span className="text-[11px] font-semibold text-brand-orange bg-orange-50 border border-orange-200 px-2.5 py-0.5 rounded uppercase tracking-wider inline-block mb-3">
                       {proc.badge}
                     </span>
                     <h3 className="text-base font-bold text-industrial-950 mb-2">
@@ -211,7 +211,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
                       {proc.desc}
                     </p>
                   </div>
-                  <div className="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
+                  <div className="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-medium text-slate-400">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
                     <span>In-House Tooling</span>
                   </div>
@@ -224,7 +224,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
           <section className="space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-mono font-bold tracking-wider uppercase mb-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-semibold tracking-wide uppercase mb-2">
                   <span>CATALOGUE PRODUCT RANGE</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-industrial-950 tracking-tight">
@@ -250,7 +250,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
                   key={item.title}
                   className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 overflow-hidden shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
                 >
-                  <Link to={item.link} className="relative aspect-[16/10] bg-slate-950 overflow-hidden block">
+                  <Link to={item.link} className="relative aspect-[16/10] bg-white overflow-hidden block">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -286,7 +286,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
           {/* 5. Section: Materials & Metallurgical Specifications */}
           <section className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-12 shadow-xs">
             <div className="max-w-3xl mb-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-100 text-slate-800 text-xs font-mono font-bold tracking-wider uppercase mb-2 border border-slate-200">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-100 text-slate-800 text-xs font-semibold tracking-wide uppercase mb-2 border border-slate-200">
                 <Layers className="w-3.5 h-3.5 text-brand-orange" />
                 <span>METALLURGICAL EXPERTISE</span>
               </div>
@@ -300,7 +300,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {materialSpecs.map((m) => (
-                <div key={m.metal} className="p-6 rounded-xl bg-slate-50 border border-slate-200/90 flex flex-col justify-between">
+                <div key={m.metal} className="p-6 rounded-xl bg-white border border-slate-200/90 flex flex-col justify-between">
                   <div>
                     <h3 className="text-base font-bold text-industrial-950 mb-2">
                       {m.metal}
@@ -309,7 +309,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
                       {m.props}
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-slate-200/70 text-xs font-mono text-slate-500 flex items-center justify-between">
+                  <div className="pt-3 border-t border-slate-200/70 text-xs font-medium text-slate-500 flex items-center justify-between">
                     <span className="font-semibold text-slate-700">Surface Finish:</span>
                     <span className="text-brand-orange font-bold">{m.finish}</span>
                   </div>
@@ -321,7 +321,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
           {/* 6. Section: 4-Stage Quality Assurance Protocol */}
           <section className="space-y-8">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-mono font-bold tracking-wider uppercase mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-semibold tracking-wide uppercase mb-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-brand-orange" />
                 <span>QUALITY ASSURANCE PROTOCOL</span>
               </div>
@@ -337,7 +337,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
               {qcProtocol.map((qc) => (
                 <div key={qc.step} className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between">
                   <div>
-                    <span className="text-3xl font-mono font-black text-brand-orange block mb-2">
+                    <span className="text-3xl font-extrabold text-brand-orange block mb-2">
                       {qc.step}
                     </span>
                     <h3 className="text-sm font-bold text-industrial-950 mb-1.5">
@@ -347,7 +347,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
                       {qc.desc}
                     </p>
                   </div>
-                  <div className="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-emerald-600 font-semibold">
+                  <div className="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-emerald-600 font-semibold">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Verified QC Step</span>
                   </div>
@@ -359,7 +359,7 @@ export default function AboutPage({ onOpenQuote, onSelectImage }) {
           {/* 7. Section: CTA Banner — Direct Link to Contact & Catalogue */}
           <section className="p-8 sm:p-12 rounded-2xl bg-industrial-950 text-white flex flex-col lg:flex-row items-center justify-between gap-8 border border-white/10 shadow-xl">
             <div className="space-y-2 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-brand-orange text-black text-[10px] font-mono font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-brand-orange text-black text-[11px] font-bold uppercase tracking-wide">
                 <span>TECHNICAL ESTIMATION DESK</span>
               </div>
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight">

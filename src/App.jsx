@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from 'react-router-dom';
+import { getProductBySlug, getMaterialBySlug } from './data/productData';
 
 // Layout Components
 import Header from './components/Header';
@@ -20,6 +21,7 @@ import IndustriesPage from './pages/IndustriesPage';
 import CertificatePage from './pages/CertificatePage';
 import ContactPage from './pages/ContactPage';
 import ProductDetailPage from './pages/ProductDetailPage';
+import MaterialDetailPage from './pages/MaterialDetailPage';
 
 // Scroll to Top helper on route change
 function ScrollToTop() {
@@ -30,6 +32,77 @@ function ScrollToTop() {
   }, [pathname]);
 
   return null;
+}
+
+// 301 / Client Redirect Handlers for Legacy Product & Material URLs
+function ProductRouteRedirect() {
+  const { slug } = useParams();
+  const product = getProductBySlug(slug);
+  if (product) {
+    return <Navigate to={product.seoUrl} replace />;
+  }
+  const material = getMaterialBySlug(slug);
+  if (material) {
+    return <Navigate to={material.seoUrl} replace />;
+  }
+  return <Navigate to="/products" replace />;
+}
+
+function MaterialRouteRedirect() {
+  const { slug } = useParams();
+  const material = getMaterialBySlug(slug);
+  if (material) {
+    return <Navigate to={material.seoUrl} replace />;
+  }
+  const product = getProductBySlug(slug);
+  if (product) {
+    return <Navigate to={product.seoUrl} replace />;
+  }
+  return <Navigate to="/materials" replace />;
+}
+
+// Dynamic SEO Slug Resolver for Root Slugs (e.g. /warning-plate-manufacturing-in-mumbai, /stainless-steel-supplier-in-mumbai)
+function DynamicSlugPage({ onOpenQuote, onSelectImage, onSelectProduct }) {
+  const { slug } = useParams();
+
+  // 1. Check Product match
+  const product = getProductBySlug(slug);
+  if (product) {
+    // If accessed via an old alias or legacy slug, 301 redirect to canonical SEO URL
+    if (slug !== product.slug) {
+      return <Navigate to={product.seoUrl} replace />;
+    }
+    return (
+      <ProductDetailPage 
+        onOpenQuote={onOpenQuote}
+        onSelectImage={onSelectImage}
+      />
+    );
+  }
+
+  // 2. Check Material match
+  const material = getMaterialBySlug(slug);
+  if (material) {
+    // If accessed via an old alias or legacy slug, 301 redirect to canonical SEO URL
+    if (slug !== material.slug) {
+      return <Navigate to={material.seoUrl} replace />;
+    }
+    return (
+      <MaterialDetailPage 
+        onOpenQuote={onOpenQuote}
+        onSelectImage={onSelectImage}
+      />
+    );
+  }
+
+  // Fallback to HomePage
+  return (
+    <HomePage 
+      onOpenQuote={onOpenQuote}
+      onSelectImage={onSelectImage}
+      onSelectProduct={onSelectProduct}
+    />
+  );
 }
 
 export default function App() {
@@ -121,34 +194,29 @@ export default function App() {
               path="/contact" 
               element={<ContactPage />} 
             />
-            {/* Dedicated SEO Product Detail Pages */}
+
+            {/* 301 Redirects for Legacy /products/:slug & /materials/:slug URLs */}
+            <Route path="/products/:slug" element={<ProductRouteRedirect />} />
+            <Route path="/products/:slug/manufacturer-in-india" element={<ProductRouteRedirect />} />
+            <Route path="/materials/:slug" element={<MaterialRouteRedirect />} />
+            <Route path="/materials/:slug/manufacturer-in-india" element={<MaterialRouteRedirect />} />
+
+            {/* Root Canonical SEO URLs for all 25 Products & 6 Materials */}
             <Route 
               path="/:slug/manufacturer-in-india" 
-              element={
-                <ProductDetailPage 
-                  onOpenQuote={handleOpenQuote}
-                  onSelectImage={handleSelectImage}
-                />
-              } 
+              element={<ProductRouteRedirect />} 
             />
             <Route 
-              path="/products/:slug/manufacturer-in-india" 
+              path="/:slug" 
               element={
-                <ProductDetailPage 
+                <DynamicSlugPage 
                   onOpenQuote={handleOpenQuote}
                   onSelectImage={handleSelectImage}
+                  onSelectProduct={(prod) => setSelectedProduct(prod)}
                 />
               } 
             />
-            <Route 
-              path="/products/:slug" 
-              element={
-                <ProductDetailPage 
-                  onOpenQuote={handleOpenQuote}
-                  onSelectImage={handleSelectImage}
-                />
-              } 
-            />
+
             {/* Catch-all fallback */}
             <Route 
               path="*" 

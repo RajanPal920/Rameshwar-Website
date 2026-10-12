@@ -29,7 +29,7 @@ export default function IndustriesPage({ onOpenQuote, onSelectImage }) {
             >
               <div>
                 <div 
-                  className="relative aspect-[16/10] bg-slate-900 overflow-hidden cursor-pointer"
+                  className="relative aspect-[16/10] bg-white overflow-hidden cursor-pointer"
                   onClick={() => onSelectImage(ind.image, `${ind.name} Industrial Deployment`)}
                 >
                   <img
@@ -39,7 +39,7 @@ export default function IndustriesPage({ onOpenQuote, onSelectImage }) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
                   <div className="absolute bottom-4 left-5 text-white">
-                    <span className="text-[11px] font-mono text-brand-orange uppercase font-bold tracking-wider">SECTOR SPECIFICATION</span>
+                    <span className="text-[11px] font-semibold text-brand-orange uppercase tracking-wider">SECTOR SPECIFICATION</span>
                     <h3 className="text-xl font-bold">{ind.name}</h3>
                   </div>
                 </div>
@@ -49,7 +49,7 @@ export default function IndustriesPage({ onOpenQuote, onSelectImage }) {
                     {ind.desc}
                   </p>
 
-                  <div className="mt-4 pt-4 border-t border-slate-100 grid grid-cols-2 gap-2 text-xs font-mono text-slate-700">
+                  <div className="mt-4 pt-4 border-t border-slate-100 grid grid-cols-2 gap-2 text-xs font-medium text-slate-700">
                     <div>• Serial & Rating Plates</div>
                     <div>• Safety & Warning Tags</div>
                     <div>• Dial & Feed Rate Charts</div>

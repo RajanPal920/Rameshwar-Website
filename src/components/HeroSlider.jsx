@@ -236,7 +236,7 @@ export default function HeroSlider({ onOpenQuote }) {
 
       {/* Slider Counter */}
       <div
-        className="absolute bottom-3.5 sm:bottom-4 right-3 sm:right-8 text-neutral-400 text-[11px] font-mono"
+        className="absolute bottom-3.5 sm:bottom-4 right-3 sm:right-8 text-neutral-400 text-[11px] font-medium"
         style={{ zIndex: 20 }}
       >
         <span className="text-white font-bold">{String(currentSlide + 1).padStart(2, '0')}</span>

@@ -29,14 +29,14 @@ export default function FeaturedApplication({ onOpenQuote, onSelectImage }) {
               />
 
               {/* In-situ indicator tag */}
-              <div className="absolute top-4 left-4 bg-industrial-950/90 backdrop-blur-md px-3 py-1.5 rounded-md border border-white/10 text-xs font-mono text-slate-200 flex items-center gap-2">
+              <div className="absolute top-4 left-4 bg-industrial-950/90 backdrop-blur-md px-3 py-1.5 rounded-md border border-white/10 text-xs font-medium text-slate-200 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
                 <span>IN-SITU MACHINE INSTALLATION</span>
               </div>
 
               {/* Callout box */}
               <div className="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md p-4 rounded-xl border border-white/10">
-                <p className="text-xs font-mono text-slate-300">
+                <p className="text-xs font-medium text-slate-300">
                   <span className="text-brand-orange font-bold">Featured:</span> Heavy-duty CNC center fitted with laser-etched manufacturer data plate, safety warnings, and CNC control console faceplate.
                 </p>
               </div>
@@ -47,7 +47,7 @@ export default function FeaturedApplication({ onOpenQuote, onSelectImage }) {
           <div className="lg:col-span-6 space-y-6">
             
             {/* Small Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-500/10 border border-orange-500/20 text-brand-orange text-xs font-mono tracking-wider uppercase font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-500/10 border border-orange-500/20 text-brand-orange text-xs font-semibold tracking-wide uppercase">
               <Wrench className="w-3.5 h-3.5" />
               <span>MADE FOR THE MACHINE</span>
             </div>

@@ -16,7 +16,7 @@ export default function ImageModal({ image, title, onClose, onOpenQuote }) {
         {/* Top Header */}
         <div className="flex items-center justify-between p-4 bg-industrial-950 border-b border-slate-800 text-white">
           <div>
-            <span className="text-[10px] font-mono text-brand-orange uppercase font-bold tracking-widest block">
+            <span className="text-xs font-semibold text-brand-orange uppercase tracking-wider block">
               AUTHENTIC SPECIMEN DETAIL
             </span>
             <h4 className="text-base font-bold truncate max-w-md">{title || "Product Showcase"}</h4>
@@ -30,7 +30,7 @@ export default function ImageModal({ image, title, onClose, onOpenQuote }) {
         </div>
 
         {/* Image Area */}
-        <div className="relative aspect-[16/11] bg-slate-950 flex items-center justify-center overflow-hidden">
+        <div className="relative aspect-[16/11] bg-white flex items-center justify-center overflow-hidden">
           <img
             src={image}
             alt={title || "Industrial Plate"}
@@ -42,14 +42,14 @@ export default function ImageModal({ image, title, onClose, onOpenQuote }) {
         <div className="p-4 bg-industrial-950 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-300">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span className="font-mono text-slate-400">Manufactured by Rameshwar Industries</span>
+            <span className="font-medium text-slate-400">Manufactured by Rameshwar Industries</span>
           </div>
           <button
             onClick={() => {
               onClose();
               onOpenQuote(title);
             }}
-            className="w-full sm:w-auto bg-brand-orange hover:bg-brand-orange-dark text-white font-bold px-5 py-2 rounded-md transition-colors cursor-pointer"
+            className="w-full sm:w-auto bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold px-5 py-2 rounded-lg transition-colors cursor-pointer"
           >
             Enquire for this Specification
           </button>

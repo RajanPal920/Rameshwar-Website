@@ -32,7 +32,7 @@ export default function About({ onSelectImage }) {
 
           {/* LEFT: Fixed-width Image Card */}
           <div className="w-full max-w-[560px] lg:w-[460px] lg:max-w-none lg:shrink-0 mx-auto lg:mx-0 relative">
-            <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl group">
+            <div className="relative rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-xl group">
               <img
                 src="/images/about-img-home.jpg"
                 alt="Rameshwar Industries - Precision Engineered Brass Turbine Name Plate"
@@ -41,11 +41,11 @@ export default function About({ onSelectImage }) {
 
               {/* Overlay engineering tag */}
               <div className="absolute bottom-4 left-4 right-4 bg-industrial-950/90 backdrop-blur-md text-white p-4 rounded-xl border border-white/10 shadow-lg">
-                <div className="flex items-center justify-between text-xs font-mono text-slate-300 pb-2 border-b border-slate-800">
+                <div className="flex items-center justify-between text-xs font-medium text-slate-300 pb-2 border-b border-slate-800">
                   <span className="text-brand-orange font-bold">CLOSE-UP SPECIMEN</span>
                   <span className="hidden sm:inline">SOLID BRASS / DEEP ETCH</span>
                 </div>
-                <p className="text-xs text-slate-200 mt-2 font-mono">
+                <p className="text-xs text-slate-200 mt-2 font-medium">
                   Deep enamel infill, beveled safety border & countersunk screw alignment.
                 </p>
               </div>
@@ -60,7 +60,7 @@ export default function About({ onSelectImage }) {
           <div className="flex-1 space-y-6">
 
             {/* Small Label */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-50 border border-orange-200 text-brand-orange text-xs font-mono font-bold tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-50 border border-orange-200 text-brand-orange text-xs font-semibold tracking-wide uppercase">
               <SlidersHorizontal className="w-3.5 h-3.5" />
               <span>COMPANY OVERVIEW</span>
             </div>
@@ -93,7 +93,7 @@ export default function About({ onSelectImage }) {
 
             {/* Customization Parameters Grid */}
             <div className="pt-3">
-              <h3 className="text-xs font-mono tracking-widest text-slate-500 uppercase font-semibold mb-3">
+              <h3 className="text-xs font-semibold tracking-wider text-slate-500 uppercase mb-3">
                 CUSTOM FABRICATION PARAMETERS:
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">

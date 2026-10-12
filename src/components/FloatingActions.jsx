@@ -1,13 +1,14 @@
 import React from 'react';
 import { Phone } from 'lucide-react';
 import { IoLogoWhatsapp } from "react-icons/io5";
+import { COMPANY_CONTACT } from '../data/productData';
 
 export default function FloatingActions() {
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-auto">
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/919876543210"
+        href={COMPANY_CONTACT.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-lg shadow-emerald-900/30 hover:shadow-xl hover:scale-105 transition-all duration-200 relative"
@@ -23,7 +24,7 @@ export default function FloatingActions() {
 
       {/* Call Button */}
       <a
-        href="tel:+919876543210"
+        href={`tel:${COMPANY_CONTACT.primaryPhoneRaw}`}
         className="group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-brand-orange hover:bg-brand-orange-dark text-white rounded-full shadow-lg shadow-orange-900/30 hover:scale-105 transition-all duration-200 relative"
         aria-label="Call Rameshwar Industries"
       >

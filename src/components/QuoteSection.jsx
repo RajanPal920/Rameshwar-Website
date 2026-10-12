@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Send, CheckCircle2, Phone, Mail, ArrowRight, FileCheck, Loader2 } from 'lucide-react';
 import { IoLogoWhatsapp } from "react-icons/io5";
 import emailjs from '@emailjs/browser';
+import { COMPANY_CONTACT } from '../data/productData';
 
 export default function QuoteSection({ initialProduct = '' }) {
   const formRef = useRef();
@@ -82,7 +83,7 @@ export default function QuoteSection({ initialProduct = '' }) {
           {/* Left Column */}
           <div className="lg:col-span-5 space-y-6">
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-500/10 border border-orange-500/20 text-brand-orange text-xs font-mono tracking-wider uppercase font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-500/10 border border-orange-500/20 text-brand-orange text-xs font-semibold tracking-wide uppercase">
               <FileCheck className="w-3.5 h-3.5" />
               <span>DIRECT FACTORY QUOTATION</span>
             </div>
@@ -95,22 +96,22 @@ export default function QuoteSection({ initialProduct = '' }) {
               Share your design, dimensions, material or application requirements with <strong className="text-white">Rameshwar Industries</strong>.
             </p>
 
-            <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3 font-mono text-xs text-slate-300">
+            <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3 font-medium text-xs text-slate-300">
               <div className="flex items-center gap-2 text-slate-100 font-bold">
                 <span className="w-2 h-2 rounded-full bg-brand-orange"></span>
                 <span>RAPID SPECIFICATION ESTIMATE</span>
               </div>
-              <p className="leading-relaxed text-slate-400">
+              <p className="leading-relaxed text-slate-400 font-normal">
                 Send your AutoCAD / PDF / CDR drawing or simply provide length × width, material, and required text for a fast quotation.
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
-                href="https://wa.me/919876543210"
+                href={COMPANY_CONTACT.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm px-5 py-3 rounded-md shadow-md transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm px-5 py-3 rounded-lg shadow-md transition-colors"
               >
                 <IoLogoWhatsapp className="w-4 h-4" />
                 <span>WhatsApp Us</span>
@@ -118,21 +119,21 @@ export default function QuoteSection({ initialProduct = '' }) {
 
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm px-5 py-3 rounded-md border border-slate-600 transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm px-5 py-3 rounded-lg border border-slate-600 transition-colors"
               >
                 <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4 text-brand-orange" />
               </Link>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 text-xs font-mono text-slate-400 border-t border-slate-800/80">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 text-xs font-medium text-slate-400 border-t border-slate-800/80">
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-brand-orange" />
-                <span>Call: +91 98765 43210</span>
+                <span>Call: {COMPANY_CONTACT.primaryPhone}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-brand-orange" />
-                <span>sales@rameshwarindustries.com</span>
+                <span>{COMPANY_CONTACT.primaryEmail}</span>
               </div>
             </div>
 
@@ -165,7 +166,7 @@ export default function QuoteSection({ initialProduct = '' }) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">Your Name *</label>
+                    <label className="block text-xs font-medium text-slate-300 mb-1">Your Name *</label>
                     <input
                       type="text"
                       required
@@ -177,7 +178,7 @@ export default function QuoteSection({ initialProduct = '' }) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">Company / Organization *</label>
+                    <label className="block text-xs font-medium text-slate-300 mb-1">Company / Organization *</label>
                     <input
                       type="text"
                       required
@@ -191,7 +192,7 @@ export default function QuoteSection({ initialProduct = '' }) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">Contact Phone *</label>
+                    <label className="block text-xs font-medium text-slate-300 mb-1">Contact Phone *</label>
                     <input
                       type="tel"
                       required
@@ -203,7 +204,7 @@ export default function QuoteSection({ initialProduct = '' }) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">Email Address *</label>
+                    <label className="block text-xs font-medium text-slate-300 mb-1">Email Address *</label>
                     <input
                       type="email"
                       required
@@ -217,7 +218,7 @@ export default function QuoteSection({ initialProduct = '' }) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">Plate Type</label>
+                    <label className="block text-xs font-medium text-slate-300 mb-1">Plate Type</label>
                     <select
                       value={formData.plateType}
                       onChange={(e) => setFormData({ ...formData, plateType: e.target.value })}
@@ -236,7 +237,7 @@ export default function QuoteSection({ initialProduct = '' }) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">Material Substrate</label>
+                    <label className="block text-xs font-medium text-slate-300 mb-1">Material Substrate</label>
                     <select
                       value={formData.material}
                       onChange={(e) => setFormData({ ...formData, material: e.target.value })}
@@ -253,7 +254,7 @@ export default function QuoteSection({ initialProduct = '' }) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1">Approx. Quantity</label>
+                    <label className="block text-xs font-medium text-slate-300 mb-1">Approx. Quantity</label>
                     <select
                       value={formData.quantity}
                       onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
@@ -268,7 +269,7 @@ export default function QuoteSection({ initialProduct = '' }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-300 mb-1">
                     Dimensions & Specific Requirements
                   </label>
                   <textarea
@@ -305,7 +306,7 @@ export default function QuoteSection({ initialProduct = '' }) {
                   )}
                 </button>
 
-                <p className="text-[10px] text-center text-slate-500 font-mono">
+                <p className="text-[11px] text-center text-slate-400 font-medium">
                   Your inquiry will be sent directly to sales@rameshwarindustries.com
                 </p>
               </form>

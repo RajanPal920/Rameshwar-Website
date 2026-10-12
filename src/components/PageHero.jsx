@@ -31,7 +31,7 @@ export default function PageHero({
         <div className="pointer-events-auto w-[min(740px,calc(100%-24px))] min-h-[380px] p-[32px_28px] box-border flex flex-col justify-center text-white bg-white/15 backdrop-blur-md border border-white/70 rounded-[20px] shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
           {/* Breadcrumbs */}
           {breadcrumbs.length > 0 && (
-            <nav className="flex items-center flex-wrap gap-1.5 text-xs font-mono text-white mb-4" aria-label="Breadcrumb">
+            <nav className="flex items-center flex-wrap gap-1.5 text-xs font-medium text-white mb-4" aria-label="Breadcrumb">
               <Link to="/" className="hover:text-brand-orange transition-colors text-white">
                 Home
               </Link>
@@ -52,7 +52,7 @@ export default function PageHero({
 
           {/* Eyebrow Badge */}
           {eyebrow && (
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-orange text-white text-[11px] sm:text-xs font-extrabold tracking-widest uppercase mb-4 self-start shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-orange text-white text-xs font-semibold tracking-wider uppercase mb-4 self-start shadow-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               <span>{eyebrow}</span>
             </div>
@@ -71,15 +71,15 @@ export default function PageHero({
           )}
 
           {/* Supporting Trust & Specification Line */}
-          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/40 text-xs sm:text-sm font-extrabold mt-auto">
+          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/40 text-xs sm:text-sm font-semibold mt-auto">
             <div className="flex items-center gap-1.5 text-brand-orange font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
               <span>ISO 9001:2015</span>
             </div>
             <span className="text-white/60 hidden sm:inline">•</span>
-            <span className="text-white font-medium font-extrabold ">Bhiwandi & Mumbai, India</span>
+            <span className="text-white font-medium">Bhiwandi & Mumbai, India</span>
             <span className="text-white/60 hidden sm:inline">•</span>
-            <span className="text-white font-medium font-extrabold ">OEM Specification Direct</span>
+            <span className="text-white font-medium">OEM Specification Direct</span>
           </div>
         </div>
       </div>

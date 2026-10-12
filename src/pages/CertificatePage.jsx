@@ -48,7 +48,7 @@ export default function CertificatePage({ onOpenQuote, onSelectImage }) {
             {/* Left Certificate Document Container */}
             <div className="lg:col-span-5">
               <div 
-                className="bg-slate-950 p-3 rounded-xl border border-slate-700 shadow-xl cursor-pointer group"
+                className="bg-white p-3 rounded-xl border border-slate-200 shadow-md cursor-pointer group"
                 onClick={() => onSelectImage('/certificates/udyam-certificate.jpg', 'Udyam Registration Certificate - Government of India')}
               >
                 <div className="relative aspect-[1/1.3] bg-white rounded overflow-hidden">
@@ -69,7 +69,7 @@ export default function CertificatePage({ onOpenQuote, onSelectImage }) {
 
             {/* Right Certificate Details */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-emerald-50 text-emerald-800 text-xs font-mono font-bold uppercase tracking-wider border border-emerald-200">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-emerald-50 text-emerald-800 text-xs font-semibold uppercase tracking-wider border border-emerald-200">
                 <Award className="w-3.5 h-3.5 text-emerald-600" />
                 <span>OFFICIALLY REGISTERED ENTERPRISE</span>
               </div>
@@ -82,7 +82,7 @@ export default function CertificatePage({ onOpenQuote, onSelectImage }) {
                 Rameshwar Industries is officially registered with the Ministry of Micro, Small and Medium Enterprises, Government of India.
               </p>
 
-              <div className="space-y-3 font-mono text-xs text-slate-700 bg-slate-50 p-5 rounded-xl border border-slate-200/80">
+              <div className="space-y-3 font-medium text-xs text-slate-700 bg-white p-5 rounded-xl border border-slate-200/80">
                 <div className="flex justify-between py-1 border-b border-slate-200">
                   <span className="text-slate-500">Enterprise:</span>
                   <span className="font-bold text-industrial-950">Rameshwar Industries</span>
@@ -132,7 +132,7 @@ export default function CertificatePage({ onOpenQuote, onSelectImage }) {
             {qcSteps.map((step) => (
               <div key={step.step} className="bg-white p-6 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
                 <div>
-                  <span className="text-2xl font-mono font-black text-brand-orange block mb-3">
+                  <span className="text-2xl font-extrabold text-brand-orange block mb-3">
                     {step.step}
                   </span>
                   <h4 className="font-bold text-sm text-industrial-950 mb-2">
@@ -142,7 +142,7 @@ export default function CertificatePage({ onOpenQuote, onSelectImage }) {
                     {step.desc}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-mono text-emerald-600 font-semibold">
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] text-emerald-600 font-semibold">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>Verified Checkpoint</span>
                 </div>

@@ -22,46 +22,53 @@ import {
 import { FaWhatsapp, FaLinkedinIn, FaFacebookF, FaInstagram } from 'react-icons/fa6';
 import { PRODUCTS, CATALOGUE_DOWNLOAD_URL, COMPANY_CONTACT } from '../data/productData';
 
-// Organized categories for the Products mega menu
+// Organized categories for the Products mega menu matching the 5 Catalogue Groups
 const PRODUCT_MENU_CATEGORIES = [
   {
-    title: "Machinery & Rating",
-    subtitle: "Motor & Equipment Specs",
+    title: "Metal Industrial Plates",
+    subtitle: "Machinery, Motors & Valves",
     icon: Settings2,
     items: [
-      { name: "Machine Name Plates", url: "/machine-name-plates/manufacturer-in-india" },
-      { name: "Motor Rating Plates", url: "/motor-rating-plates/manufacturer-in-india" },
-      { name: "Valve Body & Trim Plates", url: "/valve-body-trim-plates/manufacturer-in-india" }
+      { name: "Machine Name Plates", url: "/name-plate-manufacturer-in-mumbai" },
+      { name: "Motor Rating Plates", url: "/motor-rating-plates-manufacturer-in-india" },
+      { name: "Valve Body & Trim Plates", url: "/valve-body-trim-plates-manufacturing-in-mumbai" },
+      { name: "Equipment Data Plates", url: "/equipment-data-plates-supplier-in-mumbai" },
+      { name: "Model & Serial Number Plates", url: "/serial-number-name-plates-manufacturer-in-mumbai" }
     ]
   },
   {
-    title: "Control Panel & Schematics",
-    subtitle: "Automation & Switchgear",
-    icon: SlidersHorizontal,
-    items: [
-      { name: "Control Panel Name Plates", url: "/control-panel-name-plates/manufacturer-in-india" },
-      { name: "Temperature & Operating Plates", url: "/temperature-control-plates/manufacturer-in-india" },
-      { name: "Custom Industrial Metal Plates", url: "/custom-industrial-plates/manufacturer-in-india" }
-    ]
-  },
-  {
-    title: "Metals & Asset Tags",
-    subtitle: "SS, Aluminium & Asset Tracking",
+    title: "Aluminium & Barcode Tags",
+    subtitle: "Anodized, VIN & Asset ID",
     icon: Tag,
     items: [
-      { name: "Stainless Steel Name Plates", url: "/stainless-steel-name-plates/manufacturer-in-india" },
-      { name: "Aluminium Name Plates", url: "/aluminium-name-plates/manufacturer-in-india" },
-      { name: "Industrial Machine Tags", url: "/industrial-machine-tags/manufacturer-in-india" }
+      { name: "Aluminium Name Plates", url: "/aluminium-name-plates-manufacturer-in-india" },
+      { name: "Barcode & Asset Tracking Plates", url: "/aluminium-barcode-asset-plates-supplier-in-india" },
+      { name: "Automotive & Engine VIN Plates", url: "/automotive-engine-rating-plates-manufacturing-in-mumbai" },
+      { name: "Metal Identification Tags", url: "/metal-identification-tags-stockist-in-mumbai" },
+      { name: "Metal Identification Rings & Collars", url: "/metal-identification-rings-manufacturer-in-india" }
     ]
   },
   {
-    title: "Safety & Facility Signs",
-    subtitle: "Hazard, Push/Pull & Labels",
+    title: "Warning & Safety Plates",
+    subtitle: "Danger, High Voltage & OSHA",
     icon: AlertTriangle,
     items: [
-      { name: "Safety Warning & Hazard Signs", url: "/industrial-safety-signs/manufacturer-in-india" },
-      { name: "Push / Pull Directional Plates", url: "/push-pull-directional-plates/manufacturer-in-india" },
-      { name: "PVC & Vinyl Industrial Labels", url: "/pvc-vinyl-labels/manufacturer-in-india" }
+      { name: "Warning & Instruction Plates", url: "/warning-plate-manufacturing-in-mumbai" },
+      { name: "Caution & Danger Warning Plates", url: "/caution-warning-plates-supplier-in-mumbai" },
+      { name: "High-Voltage Warning Plates", url: "/high-voltage-warning-plates-manufacturer-in-mumbai" },
+      { name: "Operating Procedure Instructions", url: "/safety-instruction-plates-supplier-in-india" }
+    ]
+  },
+  {
+    title: "Schematics & Control Panels",
+    subtitle: "Wiring Diagrams & Switches",
+    icon: SlidersHorizontal,
+    items: [
+      { name: "Control Panel Name Plates", url: "/control-panel-name-plates-manufacturing-in-mumbai" },
+      { name: "Electrical Schematics & Wiring", url: "/schematic-panel-labels-supplier-in-mumbai" },
+      { name: "Emergency Stop Push Button Labels", url: "/emergency-stop-labels-stockist-in-india" },
+      { name: "Water Pump ON/OFF Switch Labels", url: "/water-pump-switch-labels-manufacturer-in-mumbai" },
+      { name: "Alarm & Time Remaining Labels", url: "/alarm-indicator-labels-supplier-in-mumbai" }
     ]
   }
 ];
@@ -278,10 +285,10 @@ export default function Header({ onOpenQuote }) {
                     <div className="bg-slate-50 px-6 py-3 border-b border-slate-200 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Layers className="w-4 h-4 text-brand-orange" />
-                        <span className="text-xs font-medium font-bold tracking-wider uppercase text-slate-800 whitespace-nowrap">
+                        <span className="text-xs font-bold tracking-wider uppercase text-slate-800 whitespace-nowrap">
                           Product Solutions Portfolio
                         </span>
-                        <span className="text-[10px] bg-orange-100 text-brand-orange font-medium font-bold px-2 py-0.5 rounded whitespace-nowrap">
+                        <span className="text-[10px] bg-orange-100 text-brand-orange font-bold px-2 py-0.5 rounded whitespace-nowrap">
                           12 Industrial Categories
                         </span>
                       </div>
@@ -304,7 +311,7 @@ export default function Header({ onOpenQuote }) {
                             <div className="pb-2.5 border-b border-slate-100">
                               <div className="flex items-center gap-1.5 text-brand-orange mb-0.5">
                                 <CategoryIcon className="w-3.5 h-3.5 shrink-0" />
-                                <h4 className="text-xs font-medium font-bold uppercase tracking-wider text-slate-900 whitespace-nowrap">
+                                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 whitespace-nowrap">
                                   {cat.title}
                                 </h4>
                               </div>
@@ -407,7 +414,7 @@ export default function Header({ onOpenQuote }) {
                   <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden divide-y divide-slate-100">
                     {/* Header */}
                     <div className="bg-slate-50 px-4 py-2.5">
-                      <span className="text-[11px] font-medium font-bold uppercase tracking-wider text-slate-800">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-800">
                         Official Enterprise Documents
                       </span>
                     </div>
@@ -544,7 +551,7 @@ export default function Header({ onOpenQuote }) {
                 <div className="pl-4 pr-2 py-2 space-y-3 bg-slate-50 rounded-lg my-1">
                   {PRODUCT_MENU_CATEGORIES.map((cat) => (
                     <div key={cat.title}>
-                      <span className="text-[10px] font-medium font-bold uppercase text-slate-400 tracking-wider block mb-1">
+                      <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider block mb-1">
                         {cat.title}
                       </span>
                       <div className="space-y-1">

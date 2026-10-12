@@ -113,7 +113,7 @@ export default function GlobalPresence() {
 
           {/* Heading */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-slate-800 text-xs font-mono font-bold tracking-widest uppercase mb-4 border border-slate-200 shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-slate-800 text-xs font-semibold tracking-wide uppercase mb-4 border border-slate-200 shadow-xs">
               <Building2 className="w-3.5 h-3.5 text-brand-orange" />
               <span>STRATEGIC DOMESTIC SUPPLY</span>
             </div>
@@ -149,7 +149,7 @@ export default function GlobalPresence() {
 
           {/* Heading */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#420d14] text-amber-400 text-xs font-mono font-bold tracking-widest uppercase mb-4 border border-amber-500/30 shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#420d14] text-amber-400 text-xs font-semibold tracking-wide uppercase mb-4 border border-amber-500/30 shadow-xs">
               <MapPin className="w-3.5 h-3.5 text-amber-400" />
               <span>INDIA-WIDE COVERAGE</span>
             </div>
@@ -180,7 +180,7 @@ export default function GlobalPresence() {
 
           {/* Bottom Dispatch & Logistics Strip */}
           <div className="mt-14 text-center">
-            <div className="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-mono font-medium text-amber-200/90 bg-[#3d0c13]/80 px-6 py-3.5 rounded-full border border-amber-500/30 shadow-xs">
+            <div className="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-medium text-amber-200/90 bg-[#3d0c13]/80 px-6 py-3.5 rounded-full border border-amber-500/30 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
               <span className="font-semibold text-white">Pan-India Express Dispatch</span>
               <span className="hidden sm:inline text-amber-500/40">•</span>

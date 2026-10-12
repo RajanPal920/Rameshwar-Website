@@ -58,7 +58,7 @@ export default function QualityPrecision({ onSelectImage }) {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 border border-slate-700 text-brand-orange text-xs font-mono tracking-wider uppercase mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 border border-slate-700 text-brand-orange text-xs font-semibold tracking-wide uppercase mb-3">
             <Microscope className="w-3.5 h-3.5" />
             <span>METROLOGY & FINISHING EXCELLENCE</span>
           </div>
@@ -89,12 +89,12 @@ export default function QualityPrecision({ onSelectImage }) {
               </div>
 
               {/* Technical Overlay Bar */}
-              <div className="absolute top-4 left-4 bg-industrial-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-md border border-white/10 text-xs font-mono text-slate-300 flex items-center gap-2">
+              <div className="absolute top-4 left-4 bg-industrial-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-md border border-white/10 text-xs font-medium text-slate-300 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
                 <span>INSPECTION CAMERA // MICRON ZOOM</span>
               </div>
 
-              <div className="absolute bottom-4 left-4 right-4 bg-industrial-950/90 backdrop-blur-md p-3.5 rounded-xl border border-white/10 text-xs font-mono text-slate-300 flex justify-between items-center">
+              <div className="absolute bottom-4 left-4 right-4 bg-industrial-950/90 backdrop-blur-md p-3.5 rounded-xl border border-white/10 text-xs font-medium text-slate-300 flex justify-between items-center">
                 <span>ACTIVE FOCUS: <strong className="text-brand-orange">{callouts[activeCallout].label}</strong></span>
                 <span className="text-slate-400">{callouts[activeCallout].tag}</span>
               </div>
@@ -103,7 +103,7 @@ export default function QualityPrecision({ onSelectImage }) {
 
           {/* Right Column: 6 Small Technical Labels Grid */}
           <div className="lg:col-span-5 space-y-3">
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2 font-semibold">
+            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
               TECHNICAL AUDIT CRITERIA (CLICK TO INSPECT):
             </div>
 
@@ -119,14 +119,14 @@ export default function QualityPrecision({ onSelectImage }) {
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className={`text-xs font-mono font-black tracking-widest px-2 py-0.5 rounded ${
+                    <span className={`text-xs font-bold tracking-wider px-2 py-0.5 rounded ${
                       activeCallout === index
                         ? 'bg-brand-orange text-white'
                         : 'bg-slate-800 text-slate-400'
                     }`}>
                       {c.label}
                     </span>
-                    <span className="text-[11px] font-mono text-slate-500">
+                    <span className="text-[11px] font-medium text-slate-500">
                       {c.tag}
                     </span>
                   </div>

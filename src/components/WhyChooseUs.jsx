@@ -18,7 +18,7 @@ export default function WhyChooseUs() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-mono tracking-wider uppercase mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-semibold tracking-wide uppercase mb-3">
             <span>ENGINEERING STRATEGY & STRENGTHS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-industrial-950 tracking-tight">
@@ -37,7 +37,7 @@ export default function WhyChooseUs() {
               className="group bg-white p-6 sm:p-7 rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
             >
               {/* Corner Watermark Number */}
-              <div className="absolute top-4 right-4 text-3xl font-mono font-black text-slate-100 group-hover:text-orange-50 transition-colors pointer-events-none">
+              <div className="absolute top-4 right-4 text-3xl font-extrabold text-slate-100 group-hover:text-orange-50 transition-colors pointer-events-none">
                 {String(index + 1).padStart(2, '0')}
               </div>
 
@@ -61,7 +61,7 @@ export default function WhyChooseUs() {
               </div>
 
               {/* Bottom Subtle Accent Line */}
-              <div className="mt-6 pt-3 border-t border-slate-100 flex items-center gap-2 text-xs font-mono text-slate-400">
+              <div className="mt-6 pt-3 border-t border-slate-100 flex items-center gap-2 text-xs font-medium text-slate-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-brand-orange transition-colors"></span>
                 <span>Industrial Standard QA</span>
               </div>

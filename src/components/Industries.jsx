@@ -11,7 +11,7 @@ export default function Industries({ onOpenQuote, onSelectImage }) {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-100 text-slate-800 text-xs font-mono tracking-wider uppercase mb-3 border border-slate-200">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-100 text-slate-800 text-xs font-semibold tracking-wide uppercase mb-3 border border-slate-200">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
               <span>SECTOR SPECIALIZATION</span>
             </div>
@@ -43,7 +43,7 @@ export default function Industries({ onOpenQuote, onSelectImage }) {
                 alt="Industrial Machine with installed nameplates and control consoles"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-4 left-4 bg-industrial-950/90 backdrop-blur-md px-3 py-1.5 rounded-md text-xs font-mono text-white flex items-center gap-2 border border-white/10">
+              <div className="absolute top-4 left-4 bg-industrial-950/90 backdrop-blur-md px-3 py-1.5 rounded-md text-xs font-medium text-white flex items-center gap-2 border border-white/10">
                 <span className="w-2 h-2 rounded-full bg-brand-orange"></span>
                 <span>SHOP FLOOR INSTALLATION</span>
               </div>
@@ -51,7 +51,7 @@ export default function Industries({ onOpenQuote, onSelectImage }) {
 
             {/* Accompanying Information */}
             <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 text-white space-y-4">
-              <span className="text-xs font-mono text-brand-orange tracking-widest uppercase font-bold">
+              <span className="text-xs font-semibold text-brand-orange tracking-wider uppercase">
                 HEAVY INDUSTRIAL INTEGRATION
               </span>
               <h3 className="text-2xl sm:text-3xl font-bold tracking-tight leading-snug">
@@ -79,7 +79,7 @@ export default function Industries({ onOpenQuote, onSelectImage }) {
           {INDUSTRIES.map((ind) => (
             <div
               key={ind.name}
-              className="relative bg-slate-900 rounded-xl border border-slate-200 shadow-xs overflow-hidden"
+              className="relative bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden"
             >
               {/* Real Industrial Image */}
               <div className="relative aspect-[16/10] overflow-hidden">

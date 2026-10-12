@@ -57,7 +57,7 @@ export default function ContactPage() {
           {/* 2. Company Contact Information (Verified from Catalogue Page 4) */}
           <section className="space-y-6">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-mono font-bold tracking-wider uppercase mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-200 text-slate-800 text-xs font-semibold tracking-wide uppercase mb-2">
                 <span>VERIFIED COMPANY LOCATIONS</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-industrial-950 tracking-tight">
@@ -78,7 +78,7 @@ export default function ContactPage() {
                     <div className="w-11 h-11 rounded-lg bg-orange-50 border border-orange-100 text-brand-orange flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-colors">
                       <Factory className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-orange bg-orange-50 border border-orange-200 px-2.5 py-0.5 rounded">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-brand-orange bg-orange-50 border border-orange-200 px-2.5 py-0.5 rounded">
                       Production Works
                     </span>
                   </div>
@@ -87,7 +87,7 @@ export default function ContactPage() {
                     <h3 className="text-base font-bold text-industrial-950 group-hover:text-brand-orange transition-colors">
                       {COMPANY_CONTACT.factory.label}
                     </h3>
-                    <p className="text-xs text-slate-500 font-mono mt-0.5">
+                    <p className="text-xs text-slate-500 mt-0.5">
                       Kalher, Bhiwandi, Thane
                     </p>
                   </div>
@@ -122,7 +122,7 @@ export default function ContactPage() {
                     <div className="w-11 h-11 rounded-lg bg-slate-100 border border-slate-200 text-slate-800 flex items-center justify-center group-hover:bg-industrial-950 group-hover:text-white transition-colors">
                       <Building2 className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-700 bg-slate-100 border border-slate-200 px-2.5 py-0.5 rounded">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 bg-slate-100 border border-slate-200 px-2.5 py-0.5 rounded">
                       Central Office
                     </span>
                   </div>
@@ -131,7 +131,7 @@ export default function ContactPage() {
                     <h3 className="text-base font-bold text-industrial-950 group-hover:text-brand-orange transition-colors">
                       {COMPANY_CONTACT.office.label}
                     </h3>
-                    <p className="text-xs text-slate-500 font-mono mt-0.5">
+                    <p className="text-xs text-slate-500 mt-0.5">
                       Chira Bazar, Girgaon, Mumbai
                     </p>
                   </div>
@@ -166,7 +166,7 @@ export default function ContactPage() {
                     <div className="w-11 h-11 rounded-lg bg-orange-50 border border-orange-100 text-brand-orange flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-colors">
                       <Phone className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded">
                       Direct Support
                     </span>
                   </div>
@@ -175,7 +175,7 @@ export default function ContactPage() {
                     <h3 className="text-base font-bold text-industrial-950 group-hover:text-brand-orange transition-colors">
                       Direct Communication Lines
                     </h3>
-                    <p className="text-xs text-slate-500 font-mono mt-0.5">
+                    <p className="text-xs text-slate-500 mt-0.5">
                       Fast Quotations & Order Inquiries
                     </p>
                   </div>
@@ -183,7 +183,7 @@ export default function ContactPage() {
                   <div className="pt-2 border-t border-slate-100 space-y-3 text-xs">
                     {/* Telephone Numbers */}
                     <div>
-                      <span className="text-slate-400 block font-mono text-[10px] uppercase">Telephone / Mobile</span>
+                      <span className="text-slate-400 block font-medium text-[11px] uppercase">Telephone / Mobile</span>
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-0.5">
                         {COMPANY_CONTACT.phones.map((phone) => (
                           <a
@@ -199,7 +199,7 @@ export default function ContactPage() {
 
                     {/* Email Addresses */}
                     <div>
-                      <span className="text-slate-400 block font-mono text-[10px] uppercase">Official Emails</span>
+                      <span className="text-slate-400 block font-medium text-[11px] uppercase">Official Emails</span>
                       <div className="space-y-0.5 mt-0.5">
                         {COMPANY_CONTACT.emails.map((email) => (
                           <a
@@ -215,7 +215,7 @@ export default function ContactPage() {
 
                     {/* Working Hours */}
                     <div>
-                      <span className="text-slate-400 block font-mono text-[10px] uppercase">Working Hours</span>
+                      <span className="text-slate-400 block font-medium text-[11px] uppercase">Working Hours</span>
                       <span className="text-slate-700 font-medium block mt-0.5">
                         {COMPANY_CONTACT.workingHours}
                       </span>
@@ -243,7 +243,7 @@ export default function ContactPage() {
           <section className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
             <div className="p-6 sm:p-8 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
-                <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-orange-50 text-brand-orange text-[11px] font-mono font-bold tracking-wider uppercase mb-1 border border-orange-200">
+                <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-orange-50 text-brand-orange text-[11px] font-semibold tracking-wide uppercase mb-1 border border-orange-200">
                   <MapPin className="w-3 h-3" />
                   <span>GEOGRAPHIC FACTORY LOCATION</span>
                 </div>
@@ -288,7 +288,7 @@ export default function ContactPage() {
               {/* Verified Address & Logistics Information Box */}
               <div className="lg:col-span-4 p-6 sm:p-8 space-y-6 bg-slate-50/70 flex flex-col justify-between">
                 <div className="space-y-4">
-                  <h4 className="text-sm font-mono font-bold uppercase tracking-wider text-slate-900 pb-2 border-b border-slate-200">
+                  <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-900 pb-2 border-b border-slate-200">
                     Works Dispatch Details
                   </h4>
 
@@ -369,7 +369,7 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="border-b border-slate-100 pb-4">
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-mono font-bold tracking-wider uppercase mb-1">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-semibold tracking-wide uppercase mb-1">
                       <span>FORMAL ESTIMATION FORM</span>
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-industrial-950">
@@ -382,7 +382,7 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                      <label className="block text-xs font-medium text-slate-700 mb-1">
                         Your Full Name <span className="text-brand-orange">*</span>
                       </label>
                       <input
@@ -395,7 +395,7 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                      <label className="block text-xs font-medium text-slate-700 mb-1">
                         Company / Organization <span className="text-brand-orange">*</span>
                       </label>
                       <input
@@ -411,7 +411,7 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                      <label className="block text-xs font-medium text-slate-700 mb-1">
                         Phone / WhatsApp Number <span className="text-brand-orange">*</span>
                       </label>
                       <input
@@ -424,7 +424,7 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                      <label className="block text-xs font-medium text-slate-700 mb-1">
                         Business Email Address <span className="text-brand-orange">*</span>
                       </label>
                       <input
@@ -440,7 +440,7 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-xs font-mono font-bold text-slate-700 mb-1">Plate Type</label>
+                      <label className="block text-xs font-medium text-slate-700 mb-1">Plate Type</label>
                       <select
                         value={formData.plateType}
                         onChange={(e) => setFormData({ ...formData, plateType: e.target.value })}
@@ -462,7 +462,7 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono font-bold text-slate-700 mb-1">Material Substrate</label>
+                      <label className="block text-xs font-medium text-slate-700 mb-1">Material Substrate</label>
                       <select
                         value={formData.material}
                         onChange={(e) => setFormData({ ...formData, material: e.target.value })}
@@ -479,7 +479,7 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono font-bold text-slate-700 mb-1">Batch Quantity</label>
+                      <label className="block text-xs font-medium text-slate-700 mb-1">Batch Quantity</label>
                       <select
                         value={formData.quantity}
                         onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
@@ -494,7 +494,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono font-bold text-slate-700 mb-1">
+                    <label className="block text-xs font-medium text-slate-700 mb-1">
                       Dimensions, Mounting Holes & CAD Details
                     </label>
                     <textarea
@@ -522,7 +522,7 @@ export default function ContactPage() {
 
               {/* Engineering File Support */}
               <div className="bg-industrial-950 text-white p-6 sm:p-7 rounded-2xl border border-slate-800 space-y-3">
-                <span className="text-brand-orange text-xs font-mono font-bold uppercase tracking-wider block">
+                <span className="text-brand-orange text-xs font-semibold uppercase tracking-wider block">
                   TECHNICAL FILE SPECIFICATIONS
                 </span>
                 <h4 className="text-base font-bold text-white">
@@ -538,7 +538,7 @@ export default function ContactPage() {
 
               {/* Quality Standards Card */}
               <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 space-y-3 shadow-xs">
-                <div className="flex items-center gap-2 text-brand-orange font-mono text-xs font-bold uppercase">
+                <div className="flex items-center gap-2 text-brand-orange font-semibold text-xs uppercase">
                   <ShieldCheck className="w-4 h-4" />
                   <span>MANUFACTURING ASSURANCE</span>
                 </div>
@@ -569,7 +569,7 @@ export default function ContactPage() {
           <section className="bg-gradient-to-r from-industrial-950 via-slate-900 to-industrial-950 rounded-2xl border border-slate-800 p-8 sm:p-10 text-white relative overflow-hidden shadow-xl">
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="max-w-2xl space-y-2">
-                <span className="text-brand-orange text-xs font-mono font-bold uppercase tracking-wider block">
+                <span className="text-brand-orange text-xs font-semibold uppercase tracking-wider block">
                   TECHNICAL DOCUMENTATION & SPECIFICATIONS
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">

@@ -109,7 +109,7 @@ export default function CustomizationGuide() {
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-500/10 border border-orange-500/30 text-brand-orange text-xs font-mono tracking-wider uppercase mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-orange-500/10 border border-orange-500/30 text-brand-orange text-xs font-semibold tracking-wide uppercase mb-3">
             <Sliders className="w-3.5 h-3.5" />
             <span>CUSTOM MANUFACTURING SPECIALIST</span>
           </div>
@@ -144,7 +144,7 @@ export default function CustomizationGuide() {
                     <div className="text-[11px] text-slate-400 truncate max-w-[190px] sm:max-w-[230px]">{param.summary}</div>
                   </div>
                 </div>
-                <span className={`text-[11px] font-mono ${selectedParam === index ? 'text-brand-orange font-bold' : 'text-slate-600'}`}>
+                <span className={`text-[11px] font-semibold ${selectedParam === index ? 'text-brand-orange font-bold' : 'text-slate-600'}`}>
                   0{index + 1}
                 </span>
               </button>
@@ -158,11 +158,11 @@ export default function CustomizationGuide() {
             <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-5">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-brand-orange animate-pulse"></span>
-                <span className="font-mono text-xs text-slate-300 tracking-wider uppercase font-semibold">
+                <span className="text-xs text-slate-300 tracking-wider uppercase font-semibold">
                   CUSTOMIZATION PARAMETER: {currentParam.title}
                 </span>
               </div>
-              <span className="text-xs font-mono text-orange-400 bg-orange-950/80 px-2.5 py-1 rounded border border-orange-800/50">
+              <span className="text-xs font-semibold text-orange-400 bg-orange-950/80 px-2.5 py-1 rounded border border-orange-800/50">
                 {currentParam.tolerance}
               </span>
             </div>
@@ -183,11 +183,11 @@ export default function CustomizationGuide() {
 
                 {/* Floating overlay tag */}
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
-                  <div className="bg-industrial-950/85 backdrop-blur-md px-3 py-1.5 rounded-md border border-white/10 text-[11px] font-mono text-white flex items-center gap-2">
+                  <div className="bg-industrial-950/85 backdrop-blur-md px-3 py-1.5 rounded-md border border-white/10 text-[11px] font-medium text-white flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse" />
                     <span className="truncate max-w-[240px] sm:max-w-none">{currentParam.summary}</span>
                   </div>
-                  <div className="hidden sm:block bg-brand-orange/90 text-white text-[10px] font-mono font-bold px-2.5 py-1 rounded shadow-sm uppercase tracking-wider">
+                  <div className="hidden sm:block bg-brand-orange/90 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-sm uppercase tracking-wider">
                     SPECIFICATION
                   </div>
                 </div>

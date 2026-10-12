@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ArrowUp, Clock, FileDown } from 'lucide-react';
 import { IoLogoWhatsapp } from "react-icons/io";
-import { CATALOGUE_DOWNLOAD_URL } from '../data/productData';
+import { CATALOGUE_DOWNLOAD_URL, COMPANY_CONTACT } from '../data/productData';
 
 function FacebookIcon({ className }) {
   return (
@@ -46,22 +46,22 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="Rameshwar Industries Official Logo"
-                className="h-16 sm:h-20 md:h-22 w-auto object-contain"
+                className="h-12 sm:h-14 w-auto object-contain"
               />
             </div>
 
-            <p className="text-sm sm:text-base text-slate-300 font-semibold tracking-wide text-brand-orange uppercase">
+            <p className="text-sm sm:text-base font-semibold tracking-wide text-brand-orange uppercase">
               Industrial Name Plates & Identification Solutions
             </p>
 
-            <p className="text-sm text-slate-400 leading-relaxed pr-4">
+            <p className="text-sm text-slate-400 leading-relaxed pr-4 font-normal">
               Specialized manufacturer of customized industrial name plates, machine plates, control panel faceplates, equipment data tags, door signage, and chemical-resistant industrial labels.
             </p>
 
             {/* Social Media Links */}
             <div className="pt-2 flex items-center gap-3">
               <a
-                href="https://wa.me/919876543210"
+                href={COMPANY_CONTACT.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="WhatsApp Direct"
@@ -101,10 +101,10 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-white font-bold text-base tracking-wider uppercase font-mono">
+            <h4 className="text-white font-bold text-base tracking-wider uppercase">
               Navigation
             </h4>
-            <ul className="space-y-2.5 text-sm font-semibold">
+            <ul className="space-y-2.5 text-sm font-medium">
               <li><Link to="/" className="hover:text-brand-orange transition-colors">Home</Link></li>
               <li><Link to="/about" className="hover:text-brand-orange transition-colors">About Us</Link></li>
               <li><Link to="/products" className="hover:text-brand-orange transition-colors">Product Range</Link></li>
@@ -118,7 +118,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="inline-flex items-center gap-1.5 text-brand-orange hover:underline font-bold text-xs font-mono"
+                  className="inline-flex items-center gap-1.5 text-brand-orange hover:underline font-semibold text-xs"
                 >
                   <FileDown className="w-3.5 h-3.5" />
                   <span>Download Catalogue</span>
@@ -129,78 +129,79 @@ export default function Footer() {
 
           {/* Column 3: Product Categories with direct SEO URLs */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-white font-bold text-base tracking-wider uppercase font-mono">
-              Products
+            <h4 className="text-white font-bold text-base tracking-wider uppercase">
+              Catalogue Products
             </h4>
-            <ul className="space-y-2.5 text-sm font-semibold">
-              <li><Link to="/machine-name-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Machine Name Plates</Link></li>
-              <li><Link to="/stainless-steel-name-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Stainless Steel Name Plates</Link></li>
-              <li><Link to="/control-panel-name-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Control Panel Name Plates</Link></li>
-              <li><Link to="/aluminium-name-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Aluminium Name Plates</Link></li>
-              <li><Link to="/industrial-machine-tags/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Industrial Machine Tags</Link></li>
-              <li><Link to="/warning-instruction-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Warning & Hazard Plates</Link></li>
-              <li><Link to="/equipment-data-plates/manufacturer-in-india" className="hover:text-brand-orange transition-colors">Equipment Data Plates</Link></li>
-              <li><Link to="/pvc-vinyl-labels/manufacturer-in-india" className="hover:text-brand-orange transition-colors">PVC & Vinyl Industrial Labels</Link></li>
+            <ul className="space-y-2.5 text-sm font-medium">
+              <li><Link to="/name-plate-manufacturer-in-mumbai" className="hover:text-brand-orange transition-colors">Machine Name Plates</Link></li>
+              <li><Link to="/motor-rating-plates-manufacturer-in-india" className="hover:text-brand-orange transition-colors">Motor Rating Plates</Link></li>
+              <li><Link to="/valve-body-trim-plates-manufacturing-in-mumbai" className="hover:text-brand-orange transition-colors">Valve Body & Trim Plates</Link></li>
+              <li><Link to="/aluminium-name-plates-manufacturer-in-india" className="hover:text-brand-orange transition-colors">Aluminium Name Plates</Link></li>
+              <li><Link to="/metal-identification-tags-stockist-in-mumbai" className="hover:text-brand-orange transition-colors">Metal Identification Tags</Link></li>
+              <li><Link to="/caution-warning-plates-supplier-in-mumbai" className="hover:text-brand-orange transition-colors">Caution & Warning Plates</Link></li>
+              <li><Link to="/high-voltage-warning-plates-manufacturer-in-mumbai" className="hover:text-brand-orange transition-colors">High-Voltage Warning Plates</Link></li>
+              <li><Link to="/schematic-panel-labels-supplier-in-mumbai" className="hover:text-brand-orange transition-colors">Electrical Schematics & Wiring</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Contact Information */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-white font-bold text-base tracking-wider uppercase font-mono">
+            <h4 className="text-white font-bold text-base tracking-wider uppercase">
               Factory & Sales Contact
             </h4>
 
-            <div className="space-y-3 text-xs sm:text-sm">
+            <div className="space-y-3 text-xs sm:text-sm font-normal">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
                 <div className="leading-snug text-slate-300">
                   <span className="font-semibold text-white block">Works & Factory:</span>
-                  <span>Osiyamata Compound, C-4, Reti Bunder Rd, Kalher, Bhiwandi, Thane - 421302, Maharashtra</span>
+                  <span>{COMPANY_CONTACT.factory.fullAddress}</span>
                 </div>
               </div>
 
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
                 <div className="leading-snug text-slate-400">
-                  <span className="font-medium text-slate-300 block">Registered Office:</span>
-                  <span>Lotlikar Bldg, Chira Bazar, Girgaon, Mumbai, Maharashtra</span>
+                  <span className="font-semibold text-slate-300 block">Registered Office:</span>
+                  <span>{COMPANY_CONTACT.office.fullAddress}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-brand-orange shrink-0" />
                 <div className="flex flex-wrap gap-x-2 text-slate-300">
-                  <a href="tel:+919699838993" className="hover:text-brand-orange">
-                    +91 96998 38993
-                  </a>
-                  <span>/</span>
-                  <a href="tel:+919769946355" className="hover:text-brand-orange">
-                    +91 97699 46355
-                  </a>
+                  {COMPANY_CONTACT.phones.map((phone, idx) => (
+                    <React.Fragment key={idx}>
+                      <a href={`tel:${phone.raw}`} className="hover:text-brand-orange font-medium">
+                        {phone.display}
+                      </a>
+                      {idx < COMPANY_CONTACT.phones.length - 1 && <span>/</span>}
+                    </React.Fragment>
+                  ))}
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-brand-orange shrink-0" />
-                <a href="mailto:sales@rameshwarindustries.com" className="hover:text-brand-orange text-slate-300 truncate">
-                  sales@rameshwarindustries.com
+                <a href={`mailto:${COMPANY_CONTACT.primaryEmail}`} className="hover:text-brand-orange text-slate-300 truncate font-medium">
+                  {COMPANY_CONTACT.primaryEmail}
                 </a>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <Clock className="w-4 h-4 text-brand-orange shrink-0" />
                 <span className="text-slate-400">
-                  Mon – Sat: 9:00 AM – 7:00 PM IST
+                  {COMPANY_CONTACT.workingHours}
                 </span>
               </div>
             </div>
 
             <div className="pt-2">
               <a
-                href="https://wa.me/919699838993"
+                href={COMPANY_CONTACT.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-emerald-400 hover:text-emerald-300 border border-slate-700 px-3.5 py-2.5 rounded-md text-xs sm:text-sm font-semibold transition-colors"
+                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-emerald-400 hover:text-emerald-300 border border-slate-700 px-3.5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-colors"
               >
                 <IoLogoWhatsapp className="w-4 h-4" />
                 <span>Instant WhatsApp Support</span>
@@ -210,17 +211,29 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Bar: Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-400">
-          <div>
-            © 2026 Rameshwar Industries. All Rights Reserved. | Design & SEO by <a href="https://sunmargindia.com" target="_blank" rel="noopener noreferrer" className="text-brand-orange">Sunmarg India</a>
+        {/* Bottom Bar: Copyright, SEO Credit & Back to Top */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-400 font-normal">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+            <span>© 2026 Rameshwar Industries. All Rights Reserved.</span>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <span>
+              Design and SEO by{' '}
+              <a
+                href="https://sunmargindia.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-300 hover:text-brand-orange transition-colors font-medium underline underline-offset-2"
+              >
+                Sunmarg India
+              </a>
+            </span>
           </div>
 
           <div className="flex items-center gap-6">
-            <span>Specialist Industrial Name Plate Manufacturer</span>
+            <span className="hidden md:inline">Specialist Industrial Name Plate Manufacturer</span>
             <button
               onClick={scrollToTop}
-              className="flex items-center gap-1.5 text-slate-400 hover:text-brand-orange transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 text-slate-400 hover:text-brand-orange transition-colors cursor-pointer font-medium"
             >
               <span>Back to Top</span>
               <ArrowUp className="w-3.5 h-3.5" />

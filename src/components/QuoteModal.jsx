@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Send, CheckCircle2, Phone, MessageSquare, ShieldCheck } from 'lucide-react';
+import { COMPANY_CONTACT } from '../data/productData';
 
 export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
   const [formData, setFormData] = useState({
@@ -43,8 +44,8 @@ export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b border-slate-800 bg-industrial-950">
           <div>
-            <span className="text-[10px] font-mono text-brand-orange uppercase font-bold tracking-widest block">
-              RAMESHWAR INDUSTRIES // RFQ DESK
+            <span className="text-xs font-semibold text-brand-orange uppercase tracking-wider block">
+              RAMESHWAR INDUSTRIES RFQ DESK
             </span>
             <h3 className="text-lg font-bold text-white">
               Request a Quotation & Engineering Estimate
@@ -80,7 +81,7 @@ export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
             <form onSubmit={handleSubmit} className="space-y-4 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-mono mb-1">Your Name *</label>
+                  <label className="block text-slate-300 font-medium mb-1">Your Name *</label>
                   <input
                     type="text"
                     required
@@ -91,7 +92,7 @@ export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-mono mb-1">Company / Organization *</label>
+                  <label className="block text-slate-300 font-medium mb-1">Company / Organization *</label>
                   <input
                     type="text"
                     required
@@ -105,7 +106,7 @@ export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-mono mb-1">Phone / WhatsApp *</label>
+                  <label className="block text-slate-300 font-medium mb-1">Phone / WhatsApp *</label>
                   <input
                     type="tel"
                     required
@@ -116,7 +117,7 @@ export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-mono mb-1">Email *</label>
+                  <label className="block text-slate-300 font-medium mb-1">Email *</label>
                   <input
                     type="email"
                     required
@@ -130,7 +131,7 @@ export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-mono mb-1">Plate Type</label>
+                  <label className="block text-slate-300 font-medium mb-1">Plate Type</label>
                   <select
                     value={formData.plateType}
                     onChange={(e) => setFormData({...formData, plateType: e.target.value})}
@@ -149,7 +150,7 @@ export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-mono mb-1">Material Substrate</label>
+                  <label className="block text-slate-300 font-medium mb-1">Material Substrate</label>
                   <select
                     value={formData.material}
                     onChange={(e) => setFormData({...formData, material: e.target.value})}
@@ -166,7 +167,7 @@ export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-mono mb-1">Dimensions & Specifications</label>
+                <label className="block text-slate-300 font-medium mb-1">Dimensions & Specifications</label>
                 <textarea
                   rows={2}
                   placeholder="e.g. Dimensions (L x W x Thickness), mounting holes, text to be engraved..."
@@ -186,15 +187,15 @@ export default function QuoteModal({ isOpen, onClose, selectedProduct = '' }) {
                 </button>
               </div>
 
-              <div className="pt-2 flex items-center justify-center gap-4 text-[11px] text-slate-400 border-t border-slate-800">
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-emerald-400">
+              <div className="pt-2 flex items-center justify-center gap-4 text-xs text-slate-400 border-t border-slate-800 font-medium">
+                <a href={COMPANY_CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-emerald-400 hover:underline">
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>Or WhatsApp Directly</span>
                 </a>
                 <span>•</span>
-                <a href="tel:+919876543210" className="flex items-center gap-1 hover:text-white">
+                <a href={`tel:${COMPANY_CONTACT.primaryPhoneRaw}`} className="flex items-center gap-1 hover:text-white">
                   <Phone className="w-3.5 h-3.5 text-brand-orange" />
-                  <span>+91 98765 43210</span>
+                  <span>{COMPANY_CONTACT.primaryPhone}</span>
                 </a>
               </div>
             </form>

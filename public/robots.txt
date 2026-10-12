@@ -1,0 +1,6 @@
+# Rameshwar Industries Robots Directive
+User-agent: *
+Allow: /
+
+# Canonical Sitemap
+Sitemap: https://rameshwarindustries.com/sitemap.xml

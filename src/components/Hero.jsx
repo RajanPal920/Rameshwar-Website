@@ -116,9 +116,9 @@ export default function Hero({ onOpenQuote, onSelectImage }) {
                 <div className="flex items-center justify-between pb-3 px-1 border-b border-slate-100 text-xs">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                    <span className="font-mono font-medium text-slate-700">SPECIMEN // {heroShowcase[activeTab].badge}</span>
+                    <span className="font-semibold text-slate-700">SPECIMEN // {heroShowcase[activeTab].badge}</span>
                   </div>
-                  <span className="text-slate-400 font-mono text-[11px]">RAMESHWAR QA-APPROVED</span>
+                  <span className="text-slate-400 font-semibold text-[11px]">RAMESHWAR QA-APPROVED</span>
                 </div>
 
                 {/* Primary Photo Display with Realistic Containment */}
@@ -150,11 +150,11 @@ export default function Hero({ onOpenQuote, onSelectImage }) {
                   <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
                     <div className="font-bold text-sm sm:text-base flex items-center justify-between">
                       <span>{heroShowcase[activeTab].title}</span>
-                      <span className="text-xs font-mono text-orange-400 bg-orange-950/70 px-2 py-0.5 rounded border border-orange-500/30">
+                      <span className="text-xs font-semibold text-orange-400 bg-orange-950/70 px-2 py-0.5 rounded border border-orange-500/30">
                         {heroShowcase[activeTab].material}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-300 font-mono mt-0.5">{heroShowcase[activeTab].specs}</p>
+                    <p className="text-xs text-slate-300 font-medium mt-0.5">{heroShowcase[activeTab].specs}</p>
                   </div>
                 </div>
 
@@ -195,7 +195,7 @@ export default function Hero({ onOpenQuote, onSelectImage }) {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-100">100% Customized Specification</div>
-                  <div className="text-[11px] text-slate-400 font-mono">Laser Cut • Screen Print • Etched</div>
+                  <div className="text-[11px] text-slate-400 font-medium">Laser Cut • Screen Print • Etched</div>
                 </div>
               </div>
 
