@@ -9,7 +9,7 @@ const slides = [
     heading: "ENGINEERED NAMEPLATES. BUILT FOR INDUSTRY.",
     description: "Precision-manufactured industrial nameplates, identification plates and custom labels for machines, control panels, equipment and industrial applications.",
     image: "/images/hero-industrial-nameplates.jpg",
-    objectPosition: "right 45%",
+    className: "hero-slide-img-1",
     badge: "SS 304 / SS 316 Grade",
     specs: "Laser Etched • Serialized • Vibration-Proof",
     ctaPrimary: "EXPLORE OUR PRODUCTS",
@@ -22,7 +22,7 @@ const slides = [
     heading: "CUSTOM INDUSTRIAL NAMEPLATES & IDENTIFICATION",
     description: "Permanent laser-etched and stamped technical rating plates engineered to withstand high vibration, lubricants, heat, and plant floor wear.",
     image: "/images/equipment-data-plate.jpg",
-    objectPosition: "center 45%",
+    className: "hero-slide-img-2",
     badge: "Heavy Duty Data Plate",
     specs: "Pressure & Power Ratings • CE Certified",
     ctaPrimary: "EXPLORE OUR PRODUCTS",
@@ -35,7 +35,7 @@ const slides = [
     heading: "BRASS • COPPER • ALUMINIUM PRECISION-MADE PLATES",
     description: "High-contrast chemical etching, deep enamel filling, and precision CNC profiling crafted in solid brass, pure copper, and anodized aluminium for demanding environments.",
     image: "/images/brass-industrial-plate.jpg",
-    objectPosition: "right 50%",
+    className: "hero-slide-img-3",
     badge: "Solid Brass & Anodized Alloys",
     specs: "Deep Enamel Fill • Marine Grade • Mirror & Satin",
     ctaPrimary: "EXPLORE OUR PRODUCTS",
@@ -48,7 +48,7 @@ const slides = [
     heading: "IDENTIFICATION PLATES FOR INDUSTRIAL APPLICATIONS",
     description: "Custom switch cutouts, dial markings, emergency indicators, and operator legends manufactured in anodized aluminium and stainless steel.",
     image: "/images/control-panel-plate.jpg",
-    objectPosition: "center 40%",
+    className: "hero-slide-img-4",
     badge: "Precision CNC Control Faceplates",
     specs: "CNC Cutouts • Dial Markings • Switch Holes",
     ctaPrimary: "EXPLORE OUR PRODUCTS",
@@ -92,7 +92,7 @@ export default function HeroSlider({ onOpenQuote }) {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-slate-100 site-hero-container"
+      className="relative w-full overflow-hidden bg-white site-hero-container"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-label="Industrial Nameplates Hero Showcase"
@@ -101,56 +101,53 @@ export default function HeroSlider({ onOpenQuote }) {
       {slides.map((s, idx) => (
         <div
           key={s.id}
-          className="absolute inset-0 transition-opacity duration-500 ease-in-out"
+          className="absolute inset-0 transition-opacity duration-500 ease-in-out bg-white"
           style={{
             opacity: idx === currentSlide ? 1 : 0,
             zIndex: idx === currentSlide ? 1 : 0,
             pointerEvents: idx === currentSlide ? 'auto' : 'none',
           }}
         >
-          {/* Main Full-Bleed Product Image - Sharp, Bright & Clear */}
+          {/* Main Full-Bleed Product Image - Sharp, Bright & Clear with Strict Cover */}
           <img
             src={s.image}
             alt={s.heading}
-            className="w-full h-full object-cover"
-            style={{
-              objectPosition: s.objectPosition || 'center center',
-            }}
+            className={`w-full h-full object-cover ${s.className || ''}`}
           />
         </div>
       ))}
 
-      {/* Hero Foreground Content: Single Clean Glassmorphism Card Positioned on Left */}
-      <div className="absolute inset-0 flex items-center z-10 pointer-events-none">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4">
+      {/* Hero Foreground Content: Clean Glassmorphism Card Positioned on Left */}
+      <div className="relative z-10 min-h-[inherit] h-full flex items-center pointer-events-none py-6 sm:py-8 lg:py-4 pb-14 sm:pb-16 lg:pb-4">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
 
-          {/* Consistent Shared Glassmorphism Content Card — Tailwind Glass Effect */}
+          {/* Consistent Shared Glassmorphism Content Card — Exactly matching About Page Hero */}
           <div
-            className={`pointer-events-auto w-[min(780px,calc(100%-24px))] min-h-[350px] p-[32px_28px] box-border flex flex-col justify-center text-white bg-white/15 backdrop-blur-md border border-white/70 rounded-[20px] shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
+            className={`pointer-events-auto w-[min(740px,calc(100%-24px))] min-h-[380px] p-[32px_28px] box-border flex flex-col justify-center text-white bg-white/15 backdrop-blur-md border border-white/70 rounded-[20px] shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
               }`}
           >
             {/* Eyebrow badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand-orange text-white text-[11px] sm:text-xs font-extrabold tracking-widest uppercase mb-4 shadow-xs self-start">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-orange text-white text-[11px] sm:text-xs font-extrabold tracking-widest uppercase mb-4 shadow-xs self-start">
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               <span>{slide.eyebrow}</span>
             </div>
 
             {/* Heading — Orange, Bold, Big */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[50px] font-extrabold text-brand-orange tracking-tight leading-[1.1] mb-4 uppercase">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[50px] font-extrabold text-brand-orange tracking-tight uppercase leading-[1.1] mb-4">
               {slide.heading}
             </h1>
 
             {/* Description — White, Bigger Font */}
-            <p className="text-white text-base sm:text-lg md:text-xl leading-relaxed mb-5 font-bold max-w-2xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+            <p className="text-white text-base sm:text-lg md:text-xl leading-relaxed mb-5 font-normal max-w-2xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
               {slide.description}
             </p>
 
             {/* Industrial Specs Pill */}
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="text-xs sm:text-sm font-bold bg-white text-brand-orange border border-orange-200 px-3.5 py-1.5 rounded shadow-sm">
+              <span className="text-xs sm:text-sm font-bold bg-white text-brand-orange border border-orange-200 px-3.5 py-1.5 rounded-lg shadow-sm">
                 {slide.badge}
               </span>
-              <span className="text-sm text-white font-medium hidden sm:inline drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)]">
+              <span className="text-xs sm:text-sm text-white font-medium hidden sm:inline drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)]">
                 {slide.specs}
               </span>
             </div>
@@ -159,23 +156,23 @@ export default function HeroSlider({ onOpenQuote }) {
             <div className="flex flex-wrap items-center gap-3.5 mb-5">
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-lg shadow-md shadow-orange-600/40 transition-all duration-200 group tracking-wider uppercase cursor-pointer"
+                className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-md shadow-orange-600/40 transition-all duration-200 group tracking-wider uppercase cursor-pointer"
               >
                 <span>{slide.ctaPrimary}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 
-              {/* GET A QUOTE — Blue Gradient Button */}
+              {/* Secondary CTA */}
               <button
                 onClick={() => onOpenQuote(slide.badge)}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-black to-gray-800 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-lg transition-all duration-200 tracking-wider uppercase cursor-pointer shadow-lg hover:scale-[1.03]"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-black to-gray-800 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-xl transition-all duration-200 tracking-wider uppercase cursor-pointer shadow-lg hover:scale-[1.03]"
               >
                 <span>{slide.ctaSecondary}</span>
               </button>
             </div>
 
             {/* Industrial Trust Badges */}
-            <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/40 text-xs sm:text-sm font-extrabold mt-auto">
+            <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/40 text-xs sm:text-sm font-semibold mt-auto">
               <div className="flex items-center gap-1.5 text-brand-orange font-bold">
                 <ShieldCheck className="w-4 h-4 text-brand-orange" />
                 <span>{slide.qual}</span>
@@ -236,7 +233,7 @@ export default function HeroSlider({ onOpenQuote }) {
 
       {/* Slider Counter */}
       <div
-        className="absolute bottom-3.5 sm:bottom-4 right-3 sm:right-8 text-neutral-400 text-[11px] font-medium"
+        className="absolute bottom-3.5 sm:bottom-4 right-3 sm:right-8 bg-black/40 backdrop-blur-xs px-2.5 py-1 rounded-md border border-white/30 shadow-2xs text-white/90 text-[11px] font-medium"
         style={{ zIndex: 20 }}
       >
         <span className="text-white font-bold">{String(currentSlide + 1).padStart(2, '0')}</span>

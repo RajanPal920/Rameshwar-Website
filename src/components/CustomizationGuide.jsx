@@ -171,11 +171,11 @@ export default function CustomizationGuide() {
             <div key={currentParam.id} className="space-y-5 animate-fadeIn">
 
               {/* Dynamic Image Preview Area */}
-              <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-xl overflow-hidden border border-slate-700/80 bg-slate-900 group shadow-inner">
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-xl overflow-hidden border border-slate-700/80 bg-slate-900 group shadow-inner p-3 sm:p-4 flex items-center justify-center">
                 <img
                   src={currentParam.image}
                   alt={currentParam.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103"
+                  className="w-full h-full object-contain object-center transition-transform duration-500 group-hover:scale-103"
                 />
 
                 {/* Subtle vignette gradient */}

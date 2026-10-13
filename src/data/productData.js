@@ -703,7 +703,7 @@ const RAW_PRODUCTS = [
     metaDescription: "Premium stainless steel name plates in SS 304 and SS 316. Chemical-resistant, deep etched, and laser engraved industrial plates for harsh factory environments.",
     canonicalUrl: "https://rameshwarindustries.com/stainless-steel-name-plates-manufacturer-in-mumbai",
     category: "Heavy-Duty & Chemical Resistant",
-    image: "/images/equipment-data-plate.jpg",
+    image: "/images/data-plate.jpg",
     description: "Corrosion-proof SS 304 and SS 316 identification plates designed for extreme heat, marine washdowns, and chemical exposure.",
     overview: "Engineered from surgical and marine-grade austenitic stainless steel (SS 304 / SS 316 / SS 316L). Features deep chemical etching with baked enamel color fill or permanent black laser anneal marking that will never fade, peel, or rust under saltwater, steam washdown, or corrosive gas atmospheres.",
     specifications: {
@@ -901,6 +901,111 @@ const RAW_PRODUCTS = [
       "Electrical Circuit Breakers & Switchgear Labels",
       "Factory Hazard Warning & Inspection Decals"
     ]
+  },
+  {
+    id: "commercial-sign-boards",
+    slug: "commercial-sign-boards-manufacturer-in-mumbai",
+    seoUrl: "/commercial-sign-boards-manufacturer-in-mumbai",
+    aliases: ["commercial-sign-boards", "products/commercial-sign-boards", "commercial-sign-boards/manufacturer-in-india", "commercial-signs", "commercial-sign-boards-manufacturer-in-mumbai"],
+    number: "26",
+    title: "Commercial Sign Boards",
+    metaTitle: "Commercial Sign Boards Manufacturer in Mumbai | Rameshwar Industries",
+    metaDescription: "Manufacturer and supplier of durable commercial sign boards in stainless steel, brass, and aluminium for corporate offices, industrial plants, and commercial facilities.",
+    canonicalUrl: "https://rameshwarindustries.com/commercial-sign-boards-manufacturer-in-mumbai",
+    category: "Facility & Commercial Signage",
+    image: "/images/room-door-plate.jpg",
+    description: "Heavy-duty commercial sign boards engineered for corporate premises, industrial plants, architectural complexes, and facility wayfinding.",
+    overview: "Directly featured on Page 2 of our official catalogue ('eminent manufacturer, exporter & supplier of commercial sign boards, LED sign boards, office sign boards, name plates...'). Precision fabricated in brushed stainless steel, anodized aluminium, and solid brass with chemical etching, deep enamel infill, and weatherproof protective coatings for exterior and interior commercial architectural installations.",
+    specifications: {
+      materials: "Stainless Steel (SS 304 / SS 316), Anodized Aluminium, Solid Brass",
+      markingMethods: "Chemical Acid Etching, Fiber Laser Engraving, CNC Routing",
+      thicknessRange: "1.0 mm to 5.0 mm",
+      temperatureRating: "Ambient to 300°C (Weather & UV Resistant)",
+      mounting: "Countersunk Screw Holes, Concealed Stud Fixings, 3M VHB Tape",
+      surfaceFinish: "Horizontal Satin Brushed, Mirror Polished, Matte Anodized",
+      chemicalResistance: "Weatherproof, UV-resistant, factory washdown & detergent safe",
+      standardsCompliance: "ISO 9001:2015, Architectural Signage Standards"
+    },
+    materials: ["Stainless Steel", "Aluminium", "Brass"],
+    mounting: ["Countersunk Screws", "Concealed Wall Studs", "3M VHB Adhesive"],
+    leadTime: "3 - 5 Days",
+    catalogueRef: "Catalogue Page 2 (Commercial Sign Boards)",
+    applications: [
+      "Corporate Headquarters & Commercial Complexes",
+      "Industrial Plant Main Entry & Department Signage",
+      "Factory Floor Wayfinding & Zonal Identification",
+      "Institutional Facilities & Architectural Centers"
+    ]
+  },
+  {
+    id: "led-sign-boards",
+    slug: "led-sign-boards-manufacturer-in-mumbai",
+    seoUrl: "/led-sign-boards-manufacturer-in-mumbai",
+    aliases: ["led-sign-boards", "products/led-sign-boards", "led-sign-boards/manufacturer-in-india", "led-signs", "led-sign-boards-manufacturer-in-mumbai"],
+    number: "27",
+    title: "LED Sign Boards",
+    metaTitle: "LED Sign Boards Manufacturer in Mumbai | Rameshwar Industries",
+    metaDescription: "Industrial and commercial illuminated LED sign boards manufactured in stainless steel and aluminium. High visibility, energy efficient LED signage from Rameshwar Industries.",
+    canonicalUrl: "https://rameshwarindustries.com/led-sign-boards-manufacturer-in-mumbai",
+    category: "Illuminated & Commercial Signage",
+    image: "/images/led-sign-board.jpg",
+    description: "Illuminated industrial and commercial LED sign boards featuring robust metal housings, high-efficiency LEDs, and crisp laser-cut typography for day-and-night visibility.",
+    overview: "Directly featured on Page 2 of our official catalogue ('eminent manufacturer, exporter & supplier of commercial sign boards, LED sign boards, office sign boards...'). Engineered with precision laser-cut stainless steel or powder-coated aluminium frames, integrated moisture-proof LED modules, and uniform light diffusers. Designed for factory entrances, industrial complexes, safety hazard notices, and commercial facility visibility in all ambient lighting conditions.",
+    specifications: {
+      materials: "Stainless Steel 304, Anodized Aluminium, Acrylic Diffusers",
+      markingMethods: "Precision Laser Profiling, CNC Channel Bending, Backlit Diffusion",
+      thicknessRange: "Fabricated 3D Profile Housing (25mm to 100mm depth)",
+      temperatureRating: "-20°C to +65°C continuous exterior operation",
+      mounting: "Heavy-Duty Wall Cleats, Structural Bracket Fasteners, Standoffs",
+      surfaceFinish: "Brushed Satin SS, Matte Black Powder Coat, Clear Lacquer",
+      chemicalResistance: "IP65 Weatherproof Sealed, UV-resistant acrylic faces",
+      standardsCompliance: "ISO 9001:2015, CE Electrical Safety Standards"
+    },
+    materials: ["Stainless Steel", "Aluminium", "PVC & Vinyl"],
+    mounting: ["Structural Wall Brackets", "Flush Cleat Mounts", "Concealed Fasteners"],
+    leadTime: "4 - 7 Days",
+    catalogueRef: "Catalogue Page 2 (LED Sign Boards)",
+    applications: [
+      "Plant Gates & Industrial Park Main Entrances",
+      "Factory Evacuation Routes & 24/7 Safety Notifiers",
+      "Corporate Building Architectural Identity",
+      "Industrial Warehouse Loading Bay Signage"
+    ]
+  },
+  {
+    id: "office-sign-boards",
+    slug: "office-sign-boards-supplier-in-mumbai",
+    seoUrl: "/office-sign-boards-supplier-in-mumbai",
+    aliases: ["office-sign-boards", "products/office-sign-boards", "office-sign-boards/manufacturer-in-india", "office-signs", "office-sign-boards-supplier-in-mumbai"],
+    number: "28",
+    title: "Office Sign Boards",
+    metaTitle: "Office Sign Boards Supplier in Mumbai | Rameshwar Industries",
+    metaDescription: "Premium architectural office sign boards, departmental door plaques, and executive room nameplates in brushed stainless steel, brass, and aluminium.",
+    canonicalUrl: "https://rameshwarindustries.com/office-sign-boards-supplier-in-mumbai",
+    category: "Facility & Commercial Signage",
+    image: "/images/office-plate.jpg",
+    description: "Refined architectural office sign boards and door nameplates for executive cabins, departments, conference rooms, and corporate workspaces.",
+    overview: "Directly featured on Page 2 of our official catalogue ('manufacturer, exporter & supplier of commercial sign boards, LED sign boards, office sign boards, name plates, labels...'). Custom manufactured in heavy-gauge satin stainless steel, hand-grained solid brass, and matte anodized aluminium. Features precision beveled borders, crisp typography, and concealed or countersunk fastener fixings to complement modern office and industrial plant administrative interiors.",
+    specifications: {
+      materials: "Grade 304 Stainless Steel, Solid Polished Brass, Anodized Aluminium",
+      markingMethods: "Chemical Etching with Baked Enamel, Laser Engraving, CNC Routing",
+      thicknessRange: "1.2 mm to 3.0 mm",
+      temperatureRating: "Standard Commercial & Industrial Indoor Temperatures",
+      mounting: "Countersunk Matching Screws, 3M High-Bond VHB Foam Tape",
+      surfaceFinish: "Horizontal Satin Brushed, Mirror Brass Polish, Chamfered Edges",
+      chemicalResistance: "Resistant to daily sanitizing agents, cleaning chemicals, hand prints",
+      standardsCompliance: "ISO 9001:2015, Architectural Hardware Standards"
+    },
+    materials: ["Stainless Steel", "Aluminium", "Brass"],
+    mounting: ["Matching Architectural Screws", "3M VHB Tape Backing"],
+    leadTime: "2 - 4 Days",
+    catalogueRef: "Catalogue Page 2 (Office Sign Boards)",
+    applications: [
+      "Executive Cabins & Director Suite Entrances",
+      "Departmental Office Plaque & Conference Room Signs",
+      "Plant Manager, Control Room & Quality Lab Offices",
+      "Corporate Reception Wayfinding & Boardroom Plaques"
+    ]
   }
 ];
 
@@ -955,7 +1060,7 @@ export const MATERIALS = [
     headline: "Heavy-duty industrial plates for extreme durability",
     description: "Grade 304 and 316 austenitic stainless steels provide unmatched resistance to extreme heat (up to 800°C), corrosive chemicals, steam washdowns, and physical impact. Essential for chemical refineries, boilers, food processing, and offshore equipment.",
     detailedOverview: "Rameshwar Industries precision fabricates stainless steel industrial nameplates, machine rating plates, and equipment tags from mill-certified austenitic SS 304 and marine-grade SS 316 coils. Utilizing sub-surface chemical etching with baked synthetic enamel infill as well as permanent fiber laser annealing, our stainless plates withstand aggressive industrial washdowns, organic acids, salt air, and heavy machine vibration without fading, oxidizing, or losing dimensional integrity.",
-    image: "/images/equipment-data-plate.jpg",
+    image: "/images/data-plate.jpg",
     color: "#334155",
     tagColor: "bg-zinc-100 text-zinc-900 border-zinc-300",
     swatchClass: "bg-gradient-to-br from-slate-300 via-zinc-400 to-slate-600 border-slate-400",
@@ -1038,7 +1143,13 @@ export const MATERIALS = [
       "temperature-control-plates",
       "temperature-control-plates-manufacturing-in-mumbai",
       "custom-industrial-plates",
-      "custom-industrial-plates-manufacturer-in-india"
+      "custom-industrial-plates-manufacturer-in-india",
+      "commercial-sign-boards",
+      "commercial-sign-boards-manufacturer-in-mumbai",
+      "led-sign-boards",
+      "led-sign-boards-manufacturer-in-mumbai",
+      "office-sign-boards",
+      "office-sign-boards-supplier-in-mumbai"
     ]
   },
   {
@@ -1114,7 +1225,13 @@ export const MATERIALS = [
       "water-pump-switch-labels",
       "industrial-identification-plates",
       "temperature-control-plates",
-      "custom-industrial-plates"
+      "custom-industrial-plates",
+      "commercial-sign-boards",
+      "commercial-sign-boards-manufacturer-in-mumbai",
+      "led-sign-boards",
+      "led-sign-boards-manufacturer-in-mumbai",
+      "office-sign-boards",
+      "office-sign-boards-supplier-in-mumbai"
     ]
   },
   {
@@ -1130,7 +1247,7 @@ export const MATERIALS = [
     headline: "Prestige industrial plates with natural marine resilience",
     description: "Solid brass offers classic industrial prestige, superior saltwater corrosion resistance, and high mechanical durability. Excellent for heavy steam pumps, valves, architectural facilities, and marine installations.",
     detailedOverview: "Manufactured from high-density IS 319 and Naval Brass sheets, our brass nameplates undergo precision chemical milling where recessed lettering is filled with durable thermosetting black enamel. The surrounding metal is hand-grained to a satin brushed finish or polished to a mirror sheen, followed by UV-stable protective lacquering to preserve its rich metallic luster.",
-    image: "/images/brass-industrial-plate.jpg",
+    image: "/images/img12.jpg",
     color: "#b45309",
     tagColor: "bg-amber-100 text-amber-900 border-amber-300",
     swatchClass: "bg-gradient-to-br from-amber-200 via-amber-400 to-amber-600 border-amber-300",
@@ -1187,7 +1304,11 @@ export const MATERIALS = [
       "push-pull-directional-plates-supplier-in-india",
       "door-room-plates",
       "custom-industrial-plates",
-      "custom-industrial-plates-manufacturer-in-india"
+      "custom-industrial-plates-manufacturer-in-india",
+      "commercial-sign-boards",
+      "commercial-sign-boards-manufacturer-in-mumbai",
+      "office-sign-boards",
+      "office-sign-boards-supplier-in-mumbai"
     ]
   },
   {
@@ -1261,7 +1382,7 @@ export const MATERIALS = [
     headline: "Extreme wear-resistant & heavy machinery tags",
     description: "Phosphor bronze and tool steel alloys engineered for high friction surfaces, heavy mechanical machinery, and mining equipment requiring maximum tensile endurance and anti-galling resilience.",
     detailedOverview: "Formulated specifically for severe industrial environments where plates are exposed to abrasive slurry, heavy physical rubbing, or continuous saltwater exposure. Phosphor bronze (alloyed with tin and phosphorus) exhibits high fatigue strength and near-zero galling tendency, making it ideal for bearing housings, marine winches, and slurry pumps.",
-    image: "/images/brass-industrial-plate.jpg",
+    image: "/images/img14.jpg",
     color: "#92400e",
     tagColor: "bg-yellow-100 text-yellow-900 border-yellow-300",
     swatchClass: "bg-gradient-to-br from-amber-600 via-yellow-700 to-amber-900 border-amber-700",
@@ -1380,7 +1501,9 @@ export const MATERIALS = [
       "alarm-indicator-labels",
       "alarm-indicator-labels-supplier-in-mumbai",
       "water-pump-switch-labels",
-      "water-pump-switch-labels-manufacturer-in-mumbai"
+      "water-pump-switch-labels-manufacturer-in-mumbai",
+      "led-sign-boards",
+      "led-sign-boards-manufacturer-in-mumbai"
     ]
   }
 ];
@@ -1521,7 +1644,7 @@ export const COMPANY_CONTACT = {
   name: "Rameshwar Industries",
   tagline: "Industrial Name Plates & Identification Solutions",
   certifications: "ISO 9001:2015 Certified Company • Udyam MSME Registered",
-  
+
   // Factory / Manufacturing Works (from Catalogue Page 4)
   factory: {
     label: "Manufacturing Works & Facility",

@@ -102,24 +102,25 @@ export default function ProductGallery() {
           {galleryItems.map((item, index) => (
             <div
               key={index}
-              className="group relative rounded-xl overflow-hidden bg-white border border-slate-200 shadow-sm transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_30px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-white">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
+              <div>
+                <div className="relative aspect-[16/11] bg-slate-50/70 p-4 sm:p-5 border-b border-slate-100/90 flex items-center justify-center overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500"
+                  />
+                </div>
 
-                {/* Static gradient overlay with text */}
-                <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/90 via-industrial-950/20 to-transparent flex flex-col justify-end p-4">
-                  <span className="text-[11px] font-semibold text-brand-orange tracking-wider uppercase">
+                <div className="p-5 sm:p-6">
+                  <span className="text-[11px] font-semibold text-brand-orange uppercase tracking-wider block mb-1.5">
                     {item.category}
                   </span>
-                  <h3 className="text-white font-bold text-sm sm:text-base leading-snug">
+                  <h3 className="text-base sm:text-[17px] font-bold text-industrial-950 group-hover:text-brand-orange transition-colors leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-300 mt-1 line-clamp-1">
+                  <p className="text-xs sm:text-[13px] text-slate-600 mt-2 line-clamp-2 leading-relaxed font-normal">
                     {item.caption}
                   </p>
                 </div>

@@ -33,96 +33,58 @@ export default function MaterialShowcase({ onOpenQuote, onSelectImage }) {
         </div>
 
         {/* 6 Material Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {MATERIALS.map((mat) => (
             <div
               key={mat.id}
-              className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col justify-between"
+              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_30px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full"
             >
               <div>
-                {/* Sample Plate Image with Natural Aspect */}
+                {/* Plate Specimen with object-contain */}
                 <Link 
                   to={mat.seoUrl}
-                  className="block relative aspect-[16/10] bg-white overflow-hidden cursor-pointer"
+                  className="block relative aspect-[16/11] bg-slate-50/70 p-4 sm:p-5 border-b border-slate-100/90 overflow-hidden flex items-center justify-center cursor-pointer"
                 >
                   <img
                     src={mat.image}
                     alt={`${mat.name} Industrial Name Plate Specimen`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500"
                   />
-                  
-                  {/* Overlay Substrate Pill */}
-                  <div className="absolute top-3 left-3 bg-industrial-950/90 backdrop-blur-md text-white text-xs font-extrabold px-3 py-1 rounded-md tracking-wider uppercase border border-white/10">
-                    {mat.name}
-                  </div>
-
-                  <div className="absolute bottom-3 left-3 bg-white/95 text-slate-900 text-[11px] font-semibold px-2.5 py-0.5 rounded shadow-xs">
-                    {mat.grades}
+                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-slate-800 text-[11px] font-semibold px-2.5 py-0.5 rounded-md shadow-2xs border border-slate-200/60">
+                    {mat.badge || 'OEM Grade'}
                   </div>
                 </Link>
 
                 {/* Content */}
-                <div className="p-6">
-                  {/* Headline */}
-                  <Link to={mat.seoUrl} className="block">
-                    <h3 className="text-lg font-bold text-industrial-950 group-hover:text-brand-orange transition-colors">
-                      {mat.headline}
+                <div className="p-5 sm:p-6">
+                  <Link to={mat.seoUrl} className="block group-hover:text-brand-orange transition-colors">
+                    <h3 className="text-base sm:text-[17px] font-bold text-slate-900 group-hover:text-brand-orange transition-colors leading-snug">
+                      {mat.name}
                     </h3>
                   </Link>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed font-normal">
+                  <p className="text-xs sm:text-[13px] text-slate-600 mt-2 line-clamp-2 leading-relaxed font-normal">
                     {mat.description}
                   </p>
-
-                  {/* Clickable Grade Badges */}
-                  {mat.gradesList && mat.gradesList.length > 0 && (
-                    <div className="mt-4 pt-3 border-t border-slate-100">
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block mb-1.5">
-                        Verified Alloys:
-                      </span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {mat.gradesList.map((g) => (
-                          <Link
-                            key={g.code}
-                            to={`${mat.seoUrl}?grade=${encodeURIComponent(g.code)}`}
-                            className="text-[11px] font-semibold px-2 py-0.5 rounded bg-slate-100 hover:bg-brand-orange hover:text-white text-slate-700 transition-colors border border-slate-200/60"
-                          >
-                            {g.code}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Bullet Highlights */}
-                  <div className="mt-4 space-y-2 pt-4 border-t border-slate-100">
-                    {mat.features.map((feat) => (
-                      <div key={feat} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                        <Check className="w-3.5 h-3.5 text-brand-orange shrink-0 stroke-[2.5]" />
-                        <span>{feat}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
 
               {/* Card Footer Actions */}
-              <div className="px-6 pb-6 pt-0 space-y-2">
-                <Link
-                  to={mat.seoUrl}
-                  className="w-full inline-flex items-center justify-center gap-2 text-xs font-semibold text-white bg-slate-900 hover:bg-industrial-950 py-2.5 px-4 rounded-lg transition-colors shadow-xs"
-                >
-                  <span>View {mat.name} Substrate Details</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-
-                <Link
-                  to={`/materials?filter=${mat.id}`}
-                  className="w-full inline-flex items-center justify-center gap-2 text-xs font-semibold text-brand-orange hover:text-white bg-orange-50 hover:bg-brand-orange border border-orange-200 py-2 px-4 rounded-lg transition-colors cursor-pointer"
-                >
-                  <span>Filter Catalogue Products in {mat.name}</span>
-                </Link>
+              <div className="p-5 sm:p-6 pt-0 mt-auto">
+                <div className="pt-3.5 border-t border-slate-100 flex items-center gap-2">
+                  <Link
+                    to={mat.seoUrl}
+                    className="inline-flex items-center justify-center gap-1.5 flex-1 text-xs font-semibold text-slate-800 bg-slate-50 hover:bg-slate-900 hover:text-white border border-slate-200/80 hover:border-slate-900 px-3.5 py-2.5 rounded-xl transition-all duration-200 group/btn"
+                  >
+                    <span>Material Specs</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                  </Link>
+                  <Link
+                    to={`/contact?material=${encodeURIComponent(mat.name)}`}
+                    className="inline-flex items-center justify-center text-xs font-semibold text-white bg-brand-orange hover:bg-brand-orange-dark px-3.5 py-2.5 rounded-xl transition-all duration-200 shadow-2xs shrink-0"
+                  >
+                    Inquire
+                  </Link>
+                </div>
               </div>
 
             </div>

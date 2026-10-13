@@ -32,21 +32,6 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
   // Find material by slug, id or alias
   const material = getMaterialBySlug(slug);
 
-  // Active grade selected from URL param or default to first grade
-  const [selectedGradeCode, setSelectedGradeCode] = useState('');
-
-  useEffect(() => {
-    if (material) {
-      const params = new URLSearchParams(location.search);
-      const gradeParam = params.get('grade');
-      if (gradeParam && material.gradesList?.some((g) => g.code.toLowerCase() === gradeParam.toLowerCase())) {
-        setSelectedGradeCode(gradeParam);
-      } else if (material.gradesList && material.gradesList.length > 0) {
-        setSelectedGradeCode(material.gradesList[0].code);
-      }
-    }
-  }, [material, location.search]);
-
   // Dynamic SEO Title, Meta Description, Canonical Link & Structured Data
   useEffect(() => {
     if (material) {
@@ -146,11 +131,6 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
   // Other 5 materials
   const otherMaterials = MATERIALS.filter((m) => m.id !== material.id);
 
-  // Active selected grade object
-  const activeGradeObj = material.gradesList?.find(
-    (g) => g.code.toLowerCase() === selectedGradeCode.toLowerCase()
-  ) || material.gradesList?.[0];
-
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* Top Breadcrumb Bar */}
@@ -178,26 +158,26 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
       </div>
 
       {/* Main Material Overview Section */}
-      <section className="py-10 md:py-14 border-b border-slate-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+      <section className="py-10 md:py-14 lg:py-8 border-b border-slate-200 bg-white lg:min-h-[calc(100svh-var(--navbar-height)-45px)] lg:flex lg:items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
             {/* Left Column: Material Specimen Image */}
             <div className="lg:col-span-5 space-y-4">
               <div
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-md group cursor-pointer"
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] group cursor-pointer flex items-center justify-center p-6 sm:p-8"
                 onClick={() => onSelectImage(material.image, `${material.name} Substrate Sample`)}
               >
                 <img
                   src={material.image}
                   alt={`${material.name} Industrial Name Plate Substrate`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500"
                 />
-                <div className="absolute top-3 left-3 bg-industrial-950/85 backdrop-blur-sm text-white text-[11px] font-medium px-3 py-1 rounded-md border border-white/10 flex items-center gap-1.5">
+                <div className="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-xs text-industrial-950 text-[11px] font-semibold px-2.5 py-1 rounded-md border border-slate-200/60 shadow-2xs flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-brand-orange" />
                   <span>{material.badge || 'OEM Grade Verified'}</span>
                 </div>
-                <div className="absolute bottom-3 right-3 bg-white/95 text-slate-800 text-xs font-semibold px-3 py-1.5 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5">
+                <div className="absolute bottom-3.5 right-3.5 bg-industrial-950/90 backdrop-blur-xs text-white text-xs font-semibold px-3 py-1.5 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5">
                   <span>Enlarge Specimen</span>
                   <ExternalLink className="w-3.5 h-3.5 text-brand-orange" />
                 </div>
@@ -222,10 +202,9 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
                   href={CATALOGUE_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  download
                   className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white hover:bg-industrial-950 text-slate-900 hover:text-white border border-slate-300 hover:border-industrial-950 px-3.5 py-2 rounded-lg transition-colors shrink-0 shadow-2xs"
                 >
-                  <span>Download</span>
+                  <span>View PDF</span>
                   <FileDown className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -284,17 +263,16 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
 
               {/* Primary Call to Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={() => onOpenQuote(`${material.name} (${selectedGradeCode || material.grades}) Plate Requirement`)}
+                <Link
+                  to={`/contact?material=${encodeURIComponent(material.name)}`}
                   className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold text-sm px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer"
                 >
                   <span>Request Quote for {material.name}</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
 
                 <a
-                  href={`https://wa.me/${COMPANY_CONTACT.whatsappNumber}?text=${encodeURIComponent(`Hi, I am inquiring about ${material.name} (${selectedGradeCode || material.grades}) industrial name plates from Rameshwar Industries.`)}`}
+                  href={`https://wa.me/${COMPANY_CONTACT.whatsappNumber}?text=${encodeURIComponent(`Hi, I am inquiring about ${material.name} industrial name plates from Rameshwar Industries.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
@@ -310,103 +288,8 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
         </div>
       </section>
 
-      {/* Verified Alloy Grades Section (Clickable & Fully Functional) */}
+      {/* Metallurgical Specifications Matrix */}
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
-        {material.gradesList && material.gradesList.length > 0 && (
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
-              <div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-orange-100 text-brand-orange text-xs font-semibold uppercase mb-1">
-                  <span>VERIFIED INDUSTRIAL GRADES</span>
-                </div>
-                <h2 className="text-xl font-bold text-industrial-950">
-                  Available Alloy Formulations for {material.name}
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-normal">
-                  Click any grade below to inspect technical application details or request quote.
-                </p>
-              </div>
-
-              <div className="text-xs text-slate-500 font-medium">
-                ISO 9001:2015 Mill Certified
-              </div>
-            </div>
-
-            {/* Clickable Grade Badges / Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {material.gradesList.map((grade) => {
-                const isSelected = selectedGradeCode.toLowerCase() === grade.code.toLowerCase();
-                return (
-                  <div
-                    key={grade.code}
-                    onClick={() => {
-                      setSelectedGradeCode(grade.code);
-                      navigate(`?grade=${encodeURIComponent(grade.code)}`, { replace: true });
-                    }}
-                    className={`p-5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
-                      isSelected
-                        ? 'border-brand-orange bg-white shadow-sm ring-2 ring-brand-orange/20'
-                        : 'border-slate-200 hover:border-brand-orange/60 bg-white shadow-2xs'
-                    }`}
-                  >
-                    <div>
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className={`text-xs font-bold px-2.5 py-1 rounded-md ${
-                          isSelected
-                            ? 'bg-brand-orange text-white'
-                            : 'bg-slate-200 text-slate-800'
-                        }`}>
-                          {grade.code}
-                        </span>
-                        {isSelected && (
-                          <span className="text-[11px] font-semibold text-brand-orange flex items-center gap-1">
-                            <Check className="w-3.5 h-3.5" /> Selected
-                          </span>
-                        )}
-                      </div>
-
-                      <h4 className="font-bold text-sm text-industrial-950 mt-1">
-                        {grade.name}
-                      </h4>
-                      <p className="text-xs text-slate-600 mt-2 font-normal leading-relaxed">
-                        {grade.desc}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 mt-4 border-t border-slate-200/60 flex items-center justify-between text-xs">
-                      <span className="text-slate-500 font-medium">Click to select</span>
-                      <span className="font-semibold text-brand-orange inline-flex items-center gap-1">
-                        Inquire Grade <ArrowRight className="w-3 h-3" />
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Selected Grade Highlight Callout */}
-            {activeGradeObj && (
-              <div className="p-4 sm:p-5 rounded-xl bg-slate-900 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div>
-                  <div className="text-xs text-brand-orange font-semibold uppercase">Currently Selected Grade</div>
-                  <h4 className="text-base font-bold text-white mt-0.5">
-                    {activeGradeObj.code} — {activeGradeObj.name}
-                  </h4>
-                  <p className="text-xs text-slate-300 mt-1 max-w-2xl font-normal leading-relaxed">
-                    {activeGradeObj.desc}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => onOpenQuote(`${material.name} (Grade: ${activeGradeObj.code}) Quote`)}
-                  className="bg-brand-orange hover:bg-brand-orange-dark text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors shrink-0 shadow-sm cursor-pointer"
-                >
-                  Request Quote for {activeGradeObj.code}
-                </button>
-              </div>
-            )}
-          </div>
-        )}
 
         {/* Detailed Metallurgical Specifications Matrix */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -450,6 +333,10 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
                     <td className="py-3 px-3 text-slate-800">{material.specs?.surfaceFinishes || 'Satin Brushed, Mirror, Matte'}</td>
                   </tr>
                   <tr className="hover:bg-slate-50/60 transition-colors">
+                    <td className="py-3 px-3 font-medium text-slate-500">Manufacturing Alloys & Grades</td>
+                    <td className="py-3 px-3 text-slate-900 font-semibold">{material.grades}</td>
+                  </tr>
+                  <tr className="hover:bg-slate-50/60 transition-colors">
                     <td className="py-3 px-3 font-medium text-slate-500">Quality & Standards</td>
                     <td className="py-3 px-3 text-slate-800">{material.specs?.standardsCompliance || 'ISO 9001:2015'}</td>
                   </tr>
@@ -483,13 +370,13 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
               <p className="text-xs text-slate-300 leading-relaxed font-normal">
                 Need to confirm chemical exposure compatibility (acids, salt spray, chlorine, caustic wash)? Contact our engineering desk.
               </p>
-              <button
-                type="button"
-                onClick={() => onOpenQuote(`${material.name} Metallurgy Compatibility Check`)}
-                className="w-full bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold text-xs py-2.5 px-4 rounded-lg transition-colors cursor-pointer"
+              <Link
+                to={`/contact?material=${encodeURIComponent(material.name)}`}
+                className="w-full inline-flex items-center justify-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold text-xs py-2.5 px-4 rounded-lg transition-colors cursor-pointer"
               >
-                Inquire Chemical Suitability
-              </button>
+                <span>Inquire Technical Suitability</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
         </div>
@@ -505,15 +392,15 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
                 Products Manufactured in {material.name}
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 mt-0.5 font-normal">
-                All catalogue products below are verified for fabrication in {material.name} ({material.grades}).
+                All catalogue products below are verified for fabrication in {material.name}.
               </p>
             </div>
 
             <Link
               to="/products"
-              className="text-xs sm:text-sm font-semibold text-brand-orange hover:underline inline-flex items-center gap-1 shrink-0"
+              className="text-xs sm:text-sm font-semibold text-brand-orange hover:text-brand-orange-dark inline-flex items-center gap-1 shrink-0 transition-colors"
             >
-              <span>View All 25 Catalogue Products</span>
+              <span>View All {PRODUCTS.length} Catalogue Products</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -522,46 +409,47 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
             {compatibleProducts.map((prod) => (
               <div
                 key={prod.id}
-                className="bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+                className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_30px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 <div>
-                  <Link to={prod.seoUrl} className="block relative aspect-[16/10] bg-white p-3 overflow-hidden border-b border-slate-100">
+                  <Link
+                    to={prod.seoUrl}
+                    className="block relative aspect-[16/11] rounded-t-2xl overflow-hidden bg-slate-50/70 p-4 sm:p-5 border-b border-slate-100/90 flex items-center justify-center cursor-pointer"
+                  >
                     <img
                       src={prod.image}
                       alt={prod.title}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500"
                     />
-                    <div className="absolute top-2.5 left-2.5 bg-industrial-950/80 backdrop-blur-sm text-white text-[11px] font-medium px-2 py-0.5 rounded border border-white/10">
+                    <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs text-industrial-950 text-[11px] font-semibold px-2.5 py-0.5 rounded-md shadow-2xs border border-slate-200/60">
                       #{prod.number}
                     </div>
                   </Link>
 
-                  <div className="p-5">
-                    <span className="text-[11px] text-brand-orange font-semibold uppercase tracking-wider block mb-1">
+                  <div className="p-5 sm:p-6">
+                    <span className="text-[11px] text-brand-orange font-semibold uppercase tracking-wider block mb-1.5">
                       {prod.category}
                     </span>
-                    <Link to={prod.seoUrl}>
-                      <h4 className="font-bold text-base text-industrial-950 group-hover:text-brand-orange transition-colors">
+                    <Link to={prod.seoUrl} className="block group-hover:text-brand-orange transition-colors">
+                      <h4 className="font-bold text-base sm:text-[17px] text-industrial-950 group-hover:text-brand-orange transition-colors leading-snug">
                         {prod.title}
                       </h4>
                     </Link>
-                    <p className="text-xs text-slate-600 mt-2 line-clamp-2 font-normal leading-relaxed">
+                    <p className="text-xs sm:text-[13px] text-slate-600 mt-2 line-clamp-2 font-normal leading-relaxed">
                       {prod.description}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-5 pt-0">
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-medium">
-                    <span className="text-slate-500">Lead Time: {prod.leadTime}</span>
-                    <Link
-                      to={prod.seoUrl}
-                      className="inline-flex items-center gap-1 text-brand-orange font-semibold hover:underline"
-                    >
-                      <span>View Specifications</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
-                  </div>
+                <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100/80 flex items-center justify-between text-xs font-medium">
+                  <span className="text-slate-500 font-normal">Lead: {prod.leadTime}</span>
+                  <Link
+                    to={prod.seoUrl}
+                    className="font-semibold text-brand-orange hover:text-brand-orange-dark inline-flex items-center gap-1 transition-colors group/link"
+                  >
+                    <span>View Specifications</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5" />
+                  </Link>
                 </div>
               </div>
             ))}
@@ -593,24 +481,26 @@ export default function MaterialDetailPage({ onOpenQuote, onSelectImage }) {
               <Link
                 key={mat.id}
                 to={mat.seoUrl}
-                className="p-4 rounded-xl border border-slate-200 hover:border-brand-orange/60 bg-white transition-all flex flex-col justify-between group"
+                className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 <div>
-                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-white mb-3">
+                  <div className="relative aspect-[16/11] rounded-t-2xl overflow-hidden bg-slate-50/70 p-3 border-b border-slate-100/90 flex items-center justify-center">
                     <img
                       src={mat.image}
                       alt={mat.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500"
                     />
                   </div>
-                  <h4 className="font-bold text-sm text-slate-900 group-hover:text-brand-orange transition-colors">
-                    {mat.name}
-                  </h4>
-                  <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 font-normal">
-                    {mat.grades}
-                  </p>
+                  <div className="p-4">
+                    <h4 className="font-bold text-sm text-slate-900 group-hover:text-brand-orange transition-colors leading-snug">
+                      {mat.name}
+                    </h4>
+                    <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 font-normal leading-relaxed">
+                      {mat.headline}
+                    </p>
+                  </div>
                 </div>
-                <div className="pt-3 mt-3 border-t border-slate-200 flex items-center justify-between text-[11px] font-semibold text-brand-orange">
+                <div className="px-4 pb-4 pt-2 border-t border-slate-100/80 flex items-center justify-between text-[11px] font-semibold text-brand-orange">
                   <span>View Substrate</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </div>

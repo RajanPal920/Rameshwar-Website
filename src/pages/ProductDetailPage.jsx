@@ -155,26 +155,26 @@ export default function ProductDetailPage({ onOpenQuote, onSelectImage }) {
       </div>
 
       {/* Main Product Hero & Overview */}
-      <section className="py-10 md:py-14 border-b border-slate-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+      <section className="py-10 md:py-14 lg:py-8 border-b border-slate-200 bg-white lg:min-h-[calc(100svh-var(--navbar-height)-45px)] lg:flex lg:items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
             {/* Left Column: High-Res Specimen Image */}
             <div className="lg:col-span-5 space-y-4">
               <div
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-md group cursor-pointer"
+                className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] group cursor-pointer flex items-center justify-center p-6 sm:p-8"
                 onClick={() => onSelectImage(product.image, product.title)}
               >
                 <img
                   src={product.image}
                   alt={`${product.title} Manufacturer in India`}
-                  className="w-full h-full object-contain p-3 group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500"
                 />
-                <div className="absolute top-3 left-3 bg-industrial-950/85 backdrop-blur-sm text-white text-[11px] font-medium px-3 py-1 rounded-md border border-white/10 flex items-center gap-1.5">
+                <div className="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-xs text-industrial-950 text-[11px] font-semibold px-2.5 py-1 rounded-md border border-slate-200/60 shadow-2xs flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-brand-orange" />
                   <span>ISO 9001:2015 Verified</span>
                 </div>
-                <div className="absolute bottom-3 right-3 bg-white/95 text-slate-800 text-xs font-semibold px-3 py-1.5 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5">
+                <div className="absolute bottom-3.5 right-3.5 bg-industrial-950/90 backdrop-blur-xs text-white text-xs font-semibold px-3 py-1.5 rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1.5">
                   <span>Enlarge Specimen</span>
                   <ExternalLink className="w-3.5 h-3.5 text-brand-orange" />
                 </div>
@@ -199,10 +199,9 @@ export default function ProductDetailPage({ onOpenQuote, onSelectImage }) {
                   href={CATALOGUE_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  download
                   className="inline-flex items-center gap-1.5 text-xs font-semibold bg-white hover:bg-industrial-950 text-slate-900 hover:text-white border border-slate-300 hover:border-industrial-950 px-3.5 py-2 rounded-lg transition-colors shrink-0 shadow-2xs"
                 >
-                  <span>Download</span>
+                  <span>View PDF</span>
                   <FileDown className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -261,14 +260,13 @@ export default function ProductDetailPage({ onOpenQuote, onSelectImage }) {
 
               {/* Primary Call to Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
-                <button
-                  type="button"
-                  onClick={() => onOpenQuote(product.title)}
+                <Link
+                  to={`/contact?product=${encodeURIComponent(product.title)}`}
                   className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold text-sm px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer"
                 >
                   <span>Request Custom OEM Quote</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
 
                 <a
                   href={`https://wa.me/${COMPANY_CONTACT.whatsappNumber}?text=${encodeURIComponent(`Hi, I am interested in ${product.title} from Rameshwar Industries. Please share pricing and technical details.`)}`}
@@ -366,13 +364,13 @@ export default function ProductDetailPage({ onOpenQuote, onSelectImage }) {
               <p className="text-xs text-slate-300 leading-relaxed font-normal">
                 Need customized dimensions, CAD profile milling, or serialized barcoding?
               </p>
-              <button
-                type="button"
-                onClick={() => onOpenQuote(`${product.title} Custom Inquiry`)}
-                className="w-full bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold text-xs py-2.5 px-4 rounded-lg transition-colors cursor-pointer"
+              <Link
+                to={`/contact?product=${encodeURIComponent(product.title)}`}
+                className="w-full inline-flex items-center justify-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold text-xs py-2.5 px-4 rounded-lg transition-colors cursor-pointer"
               >
-                Send Technical Drawing
-              </button>
+                <span>Send Technical Drawing</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
 
@@ -384,10 +382,10 @@ export default function ProductDetailPage({ onOpenQuote, onSelectImage }) {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
               <div>
                 <h3 className="text-lg font-bold text-industrial-950">
-                  Compatible Metallurgy & Substrates
+                  Compatible Materials & Substrates
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500 mt-1 font-normal">
-                  Every substrate below is verified for this product. Click any material card or grade to view detailed metallurgy specifications.
+                  Every substrate below is verified for this product. Click any material card to view detailed technical specifications.
                 </p>
               </div>
 
@@ -404,7 +402,7 @@ export default function ProductDetailPage({ onOpenQuote, onSelectImage }) {
               {productMaterials.map((mat) => (
                 <div
                   key={mat.id}
-                  className="p-5 rounded-xl border border-slate-200 hover:border-brand-orange/60 bg-white hover:bg-slate-50/50 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group"
+                  className="p-5 rounded-xl border border-slate-200 hover:border-brand-orange/60 bg-white shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group"
                 >
                   <div>
                     {/* Top clickable block */}
@@ -432,27 +430,6 @@ export default function ProductDetailPage({ onOpenQuote, onSelectImage }) {
                         </p>
                       </div>
                     </Link>
-
-                    {/* Clickable Grade Badges */}
-                    {mat.gradesList && mat.gradesList.length > 0 && (
-                      <div className="pt-2.5 border-t border-slate-100 space-y-1.5">
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block">
-                          Verified Grades (Click to Inspect):
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {mat.gradesList.map((g) => (
-                            <Link
-                              key={g.code}
-                              to={`${mat.seoUrl}?grade=${encodeURIComponent(g.code)}`}
-                              className="text-[11px] font-semibold px-2 py-0.5 rounded bg-slate-100 hover:bg-brand-orange hover:text-white text-slate-700 transition-colors border border-slate-200/60"
-                              title={`${g.code}: ${g.desc}`}
-                            >
-                              {g.code}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
 
                   <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-between text-xs">
@@ -461,7 +438,7 @@ export default function ProductDetailPage({ onOpenQuote, onSelectImage }) {
                       to={mat.seoUrl}
                       className="font-semibold text-brand-orange hover:underline inline-flex items-center gap-1"
                     >
-                      <span>Metallurgy Details</span>
+                      <span>Material Details</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
@@ -495,46 +472,47 @@ export default function ProductDetailPage({ onOpenQuote, onSelectImage }) {
             {fallbackRelated.map((rel) => (
               <div
                 key={rel.id}
-                className="bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+                className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_30px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 <div>
-                  <Link to={rel.seoUrl} className="relative aspect-[16/10] bg-white p-2 overflow-hidden block border-b border-slate-100">
+                  <Link
+                    to={rel.seoUrl}
+                    className="block relative aspect-[16/11] rounded-t-2xl overflow-hidden bg-slate-50/70 p-4 sm:p-5 border-b border-slate-100/90 flex items-center justify-center cursor-pointer"
+                  >
                     <img
                       src={rel.image}
                       alt={rel.title}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500"
                     />
-                    <div className="absolute top-2.5 left-2.5 bg-industrial-950/80 backdrop-blur-sm text-white text-[11px] font-medium px-2 py-0.5 rounded border border-white/10">
+                    <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs text-industrial-950 text-[11px] font-semibold px-2.5 py-0.5 rounded-md shadow-2xs border border-slate-200/60">
                       #{rel.number}
                     </div>
                   </Link>
 
-                  <div className="p-5">
-                    <span className="text-[11px] text-brand-orange font-semibold uppercase tracking-wider block mb-1">
+                  <div className="p-5 sm:p-6">
+                    <span className="text-[11px] text-brand-orange font-semibold uppercase tracking-wider block mb-1.5">
                       {rel.category}
                     </span>
-                    <Link to={rel.seoUrl}>
-                      <h4 className="font-bold text-base text-slate-900 group-hover:text-brand-orange transition-colors">
+                    <Link to={rel.seoUrl} className="block group-hover:text-brand-orange transition-colors">
+                      <h4 className="font-bold text-base sm:text-[17px] text-industrial-950 group-hover:text-brand-orange transition-colors leading-snug">
                         {rel.title}
                       </h4>
                     </Link>
-                    <p className="text-xs text-slate-600 mt-2 line-clamp-2 font-normal leading-relaxed">
+                    <p className="text-xs sm:text-[13px] text-slate-600 mt-2 line-clamp-2 font-normal leading-relaxed">
                       {rel.description}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-5 pt-0">
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-medium">
-                    <span className="text-slate-400">{rel.leadTime}</span>
-                    <Link
-                      to={rel.seoUrl}
-                      className="inline-flex items-center gap-1 text-brand-orange font-semibold hover:underline"
-                    >
-                      <span>Specifications</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
-                  </div>
+                <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-slate-100/80 flex items-center justify-between text-xs font-medium">
+                  <span className="text-slate-500 font-normal">Lead: {rel.leadTime}</span>
+                  <Link
+                    to={rel.seoUrl}
+                    className="font-semibold text-brand-orange hover:text-brand-orange-dark inline-flex items-center gap-1 transition-colors group/link"
+                  >
+                    <span>Specifications</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5" />
+                  </Link>
                 </div>
               </div>
             ))}

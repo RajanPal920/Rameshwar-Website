@@ -34,7 +34,7 @@ export default function WhyChooseUs() {
           {WHY_CHOOSE_US.map((item, index) => (
             <div
               key={item.title}
-              className="group bg-white p-6 sm:p-7 rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
+              className="group bg-white p-7 sm:p-8 rounded-2xl border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_30px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
             >
               {/* Corner Watermark Number */}
               <div className="absolute top-4 right-4 text-3xl font-extrabold text-slate-100 group-hover:text-orange-50 transition-colors pointer-events-none">

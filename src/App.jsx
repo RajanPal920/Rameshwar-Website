@@ -183,12 +183,7 @@ export default function App() {
             />
             <Route 
               path="/certificate" 
-              element={
-                <CertificatePage 
-                  onOpenQuote={handleOpenQuote}
-                  onSelectImage={handleSelectImage}
-                />
-              } 
+              element={<Navigate to="/" replace />} 
             />
             <Route 
               path="/contact" 
@@ -201,7 +196,7 @@ export default function App() {
             <Route path="/materials/:slug" element={<MaterialRouteRedirect />} />
             <Route path="/materials/:slug/manufacturer-in-india" element={<MaterialRouteRedirect />} />
 
-            {/* Root Canonical SEO URLs for all 25 Products & 6 Materials */}
+            {/* Root Canonical SEO URLs for all Products & Materials */}
             <Route 
               path="/:slug/manufacturer-in-india" 
               element={<ProductRouteRedirect />} 

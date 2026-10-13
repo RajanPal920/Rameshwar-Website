@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   Phone,
   Mail,
@@ -20,6 +21,7 @@ import PageHero from '../components/PageHero';
 import { COMPANY_CONTACT, CATALOGUE_DOWNLOAD_URL } from '../data/productData';
 
 export default function ContactPage() {
+  const location = useLocation();
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -31,6 +33,32 @@ export default function ContactPage() {
     quantity: '50 - 200 pcs',
     requirements: ''
   });
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const prod = params.get('product');
+    const mat = params.get('material');
+    const ind = params.get('industry');
+
+    if (prod) {
+      setFormData((prev) => ({
+        ...prev,
+        plateType: prod,
+        requirements: prev.requirements || `Inquiry for ${prod} specifications.`,
+      }));
+    } else if (mat) {
+      setFormData((prev) => ({
+        ...prev,
+        material: mat,
+        requirements: prev.requirements || `Inquiry for ${mat} name plates.`,
+      }));
+    } else if (ind) {
+      setFormData((prev) => ({
+        ...prev,
+        requirements: prev.requirements || `Inquiry for ${ind} sector identification plates.`,
+      }));
+    }
+  }, [location.search]);
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -585,11 +613,10 @@ export default function ContactPage() {
                   href={CATALOGUE_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  download
                   className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-lg shadow-sm transition-colors cursor-pointer"
                 >
                   <FileDown className="w-4 h-4" />
-                  <span>Download Product Catalogue (PDF)</span>
+                  <span>View Product Catalogue (PDF)</span>
                 </a>
 
                 <a

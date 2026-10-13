@@ -20,7 +20,7 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import { FaWhatsapp, FaLinkedinIn, FaFacebookF, FaInstagram } from 'react-icons/fa6';
-import { PRODUCTS, CATALOGUE_DOWNLOAD_URL, COMPANY_CONTACT } from '../data/productData';
+import { PRODUCTS, MATERIALS, CATALOGUE_DOWNLOAD_URL, COMPANY_CONTACT } from '../data/productData';
 
 // Organized categories for the Products mega menu matching the 5 Catalogue Groups
 const PRODUCT_MENU_CATEGORIES = [
@@ -76,15 +76,18 @@ const PRODUCT_MENU_CATEGORIES = [
 export default function Header({ onOpenQuote }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null); // 'products' | 'certification' | null
+  const [activeDropdown, setActiveDropdown] = useState(null); // 'products' | 'materials' | 'certification' | null
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileMaterialsOpen, setMobileMaterialsOpen] = useState(false);
   const [mobileCertOpen, setMobileCertOpen] = useState(false);
   const closeTimeoutRef = useRef(null);
+  const headerRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
   const isCertActive = location.pathname.startsWith('/certificate');
   const isProductsActive = location.pathname.startsWith('/products') || PRODUCT_MENU_CATEGORIES.some(cat => cat.items.some(item => location.pathname === item.url));
+  const isMaterialsActive = location.pathname.startsWith('/materials') || MATERIALS.some(m => location.pathname === m.seoUrl);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -96,11 +99,34 @@ export default function Header({ onOpenQuote }) {
         setMobileMenuOpen(false);
       }
     };
+
+    // Keep --navbar-height accurately synchronized with exact rendered header height
+    const updateNavbarHeight = () => {
+      if (headerRef.current) {
+        const height = headerRef.current.offsetHeight;
+        if (height > 0) {
+          document.documentElement.style.setProperty('--navbar-height', `${height}px`);
+        }
+      }
+    };
+
+    updateNavbarHeight();
+
+    let resizeObserver;
+    if (typeof window !== 'undefined' && window.ResizeObserver && headerRef.current) {
+      resizeObserver = new ResizeObserver(updateNavbarHeight);
+      resizeObserver.observe(headerRef.current);
+    }
+
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', updateNavbarHeight);
+
     return () => {
+      if (resizeObserver) resizeObserver.disconnect();
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', updateNavbarHeight);
     };
   }, []);
 
@@ -121,11 +147,12 @@ export default function Header({ onOpenQuote }) {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
     setMobileProductsOpen(false);
+    setMobileMaterialsOpen(false);
     setMobileCertOpen(false);
   };
 
   return (
-    <header className="sticky top-0 z-50 transition-all duration-200">
+    <header ref={headerRef} className="sticky top-0 z-50 transition-all duration-200">
       {/* Top Bar: Compact, clean, perfectly aligned with verified information */}
       <div className="bg-industrial-950 text-slate-300 text-xs border-b border-neutral-800/80 py-1.5 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
@@ -347,12 +374,11 @@ export default function Header({ onOpenQuote }) {
                         href={CATALOGUE_DOWNLOAD_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        download
                         onClick={closeAllMenus}
                         className="inline-flex items-center gap-1.5 bg-brand-orange hover:bg-brand-orange-dark text-white px-3.5 py-1.5 rounded-md font-bold transition-colors shadow-2xs whitespace-nowrap"
                       >
                         <FileDown className="w-3.5 h-3.5" />
-                        <span>Download Catalogue (PDF)</span>
+                        <span>View Catalogue (PDF)</span>
                       </a>
                     </div>
                   </div>
@@ -360,18 +386,107 @@ export default function Header({ onOpenQuote }) {
               )}
             </div>
 
-            {/* Materials */}
-            <NavLink
-              to="/materials"
-              className={({ isActive }) =>
-                `text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${isActive
+            {/* Materials (Dropdown Menu) */}
+            <div
+              className="relative h-full flex items-center"
+              onMouseEnter={() => handleMouseEnter('materials')}
+              onMouseLeave={handleMouseLeave}
+            >
+              <NavLink
+                to="/materials"
+                aria-haspopup="true"
+                aria-expanded={activeDropdown === 'materials'}
+                className={`inline-flex items-center gap-1.5 text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap ${isMaterialsActive
                   ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
                   : 'text-slate-800'
-                }`
-              }
-            >
-              Materials
-            </NavLink>
+                  }`}
+              >
+                <span>Materials</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'materials' ? 'rotate-180 text-brand-orange' : 'text-slate-400'}`} />
+              </NavLink>
+
+              {/* Materials Dropdown Panel - Clean Apple-inspired Menu */}
+              {activeDropdown === 'materials' && (
+                <div
+                  role="region"
+                  aria-label="Materials Dropdown Menu"
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 w-[660px] max-w-[96vw] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                  onMouseEnter={() => handleMouseEnter('materials')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="bg-white rounded-2xl shadow-2xl border border-slate-200/90 overflow-hidden ring-1 ring-black/5">
+                    {/* Header */}
+                    <div className="bg-slate-50/80 px-6 py-3 border-b border-slate-200/80 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Layers className="w-4 h-4 text-brand-orange" />
+                        <span className="text-xs font-bold tracking-wider uppercase text-slate-800 whitespace-nowrap">
+                          Metallurgical Substrates
+                        </span>
+                        <span className="text-[10px] bg-orange-100 text-brand-orange font-bold px-2 py-0.5 rounded whitespace-nowrap">
+                          6 Factory Alloys
+                        </span>
+                      </div>
+                      <Link
+                        to="/materials"
+                        onClick={closeAllMenus}
+                        className="text-xs font-bold text-brand-orange hover:text-brand-orange-dark flex items-center gap-1 transition-colors group/view whitespace-nowrap"
+                      >
+                        <span>View All Materials</span>
+                        <ArrowRight className="w-3 h-3 group-view:translate-x-0.5 transition-transform" />
+                      </Link>
+                    </div>
+
+                    {/* 6 Materials Grid (2 Columns × 3 Rows) */}
+                    <div className="p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white">
+                      {MATERIALS.map((mat) => (
+                        <Link
+                          key={mat.id}
+                          to={mat.seoUrl}
+                          onClick={closeAllMenus}
+                          className="group/item flex items-center gap-3.5 p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200/80 transition-all duration-200"
+                        >
+                          {/* Material Plate Thumbnail */}
+                          <div className="w-12 h-12 rounded-lg overflow-hidden bg-slate-50 border border-slate-200/80 shrink-0 relative flex items-center justify-center p-1">
+                            <img
+                              src={mat.image}
+                              alt={mat.name}
+                              className="w-full h-full object-contain object-center group-hover/item:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between gap-1.5">
+                              <h4 className="text-xs sm:text-sm font-bold text-slate-900 group-hover/item:text-brand-orange transition-colors truncate">
+                                {mat.name}
+                              </h4>
+                              <ArrowRight className="w-3 h-3 text-slate-300 group-hover/item:text-brand-orange group-hover/item:translate-x-0.5 transition-all shrink-0" />
+                            </div>
+                            <p className="text-[11px] text-slate-500 font-medium truncate mt-0.5">
+                              {mat.grades.split(',').slice(0, 2).join(', ')}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+
+                    {/* Dropdown Footer CTA */}
+                    <div className="bg-slate-900 text-white px-6 py-2.5 flex items-center justify-between text-xs">
+                      <span className="text-slate-300 font-medium text-[11px] truncate pr-4">
+                        Chemical Acid Etching • Fiber Laser Annealing • ISO 9001:2015
+                      </span>
+                      <Link
+                        to="/materials"
+                        onClick={closeAllMenus}
+                        className="inline-flex items-center gap-1.5 text-brand-orange hover:text-white font-bold text-xs whitespace-nowrap transition-colors"
+                      >
+                        <span>Substrate Matrix</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Industries */}
             <NavLink
@@ -386,100 +501,103 @@ export default function Header({ onOpenQuote }) {
               Industries
             </NavLink>
 
-            {/* Certification (Dropdown Trigger — Does NOT open certificate directly) */}
+            {/* Certificates (Dropdown Trigger) */}
             <div
               className="relative h-full flex items-center"
-              onMouseEnter={() => handleMouseEnter('certification')}
+              onMouseEnter={() => handleMouseEnter('certificates')}
               onMouseLeave={handleMouseLeave}
             >
               <button
                 type="button"
-                onClick={() => setActiveDropdown(activeDropdown === 'certification' ? null : 'certification')}
+                aria-haspopup="true"
+                aria-expanded={activeDropdown === 'certificates'}
+                onClick={() => setActiveDropdown(activeDropdown === 'certificates' ? null : 'certificates')}
                 className={`inline-flex items-center gap-1.5 text-sm xl:text-[15px] font-semibold transition-colors py-1 relative hover:text-brand-orange whitespace-nowrap cursor-pointer ${isCertActive
                   ? 'text-brand-orange font-bold after:w-full after:absolute after:-bottom-2.5 after:left-0 after:h-0.5 after:bg-brand-orange'
                   : 'text-slate-800'
                   }`}
               >
-                <span>Certification</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'certification' ? 'rotate-180 text-brand-orange' : 'text-slate-400'}`} />
+                <span>Certificates</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'certificates' ? 'rotate-180 text-brand-orange' : 'text-slate-400'}`} />
               </button>
 
-              {/* Certification Dropdown Menu */}
-              {activeDropdown === 'certification' && (
+              {/* Certificates Dropdown Menu */}
+              {activeDropdown === 'certificates' && (
                 <div
-                  className="absolute top-full left-0 pt-2 w-[340px] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
-                  onMouseEnter={() => handleMouseEnter('certification')}
+                  role="region"
+                  aria-label="Certificates Dropdown Menu"
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 w-[330px] max-w-[94vw] z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                  onMouseEnter={() => handleMouseEnter('certificates')}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden divide-y divide-slate-100">
+                  <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden divide-y divide-slate-100 ring-1 ring-black/5">
                     {/* Header */}
-                    <div className="bg-slate-50 px-4 py-2.5">
+                    <div className="bg-slate-50 px-4 py-2.5 flex items-center justify-between">
                       <span className="text-[11px] font-bold uppercase tracking-wider text-slate-800">
                         Official Enterprise Documents
                       </span>
+                      <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded border border-emerald-200">
+                        Verified Credentials
+                      </span>
                     </div>
 
-                    {/* Udyam Certificate Link — Opens Document in New Tab */}
+                    {/* 1. GST Certificate — Opens in New Tab */}
                     <a
-                      href="/certificates/udyam-certificate.jpg"
+                      href="/certificates/GST-CERTIFICATE.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={closeAllMenus}
                       className="p-3.5 flex items-start gap-3 hover:bg-orange-50/70 transition-colors group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-orange-100 group-hover:bg-brand-orange group-hover:text-white text-brand-orange flex items-center justify-center shrink-0 transition-colors">
+                      <div className="w-8 h-8 rounded-lg bg-blue-50 group-hover:bg-brand-orange group-hover:text-white text-blue-600 flex items-center justify-center shrink-0 transition-colors">
                         <FileText className="w-4 h-4" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
                           <h4 className="text-xs font-bold text-slate-900 group-hover:text-brand-orange transition-colors">
-                            Udyam Registration Certificate
+                            GST Certificate
                           </h4>
                           <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-brand-orange" />
                         </div>
                         <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
-                          Ministry of MSME, Govt. of India (Opens in New Tab)
+                          Government of India • Goods and Services Tax Network
                         </p>
                       </div>
                     </a>
 
-                    {/* ISO 9001:2015 Quality Page */}
-                    <Link
-                      to="/certificate"
+                    {/* 2. Udyam Certificate — Opens in New Tab */}
+                    <a
+                      href="/certificates/Udyam-Certificate.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={closeAllMenus}
                       className="p-3.5 flex items-start gap-3 hover:bg-orange-50/70 transition-colors group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-brand-orange group-hover:text-white text-slate-700 flex items-center justify-center shrink-0 transition-colors">
-                        <ShieldCheck className="w-4 h-4" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-xs font-bold text-slate-900 group-hover:text-brand-orange transition-colors">
-                          ISO 9001:2015 Quality Compliance
-                        </h4>
-                        <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
-                          Quality Assurance & Verified Factory Protocols
-                        </p>
-                      </div>
-                    </Link>
-
-                    {/* 4-Stage QC Protocol */}
-                    <Link
-                      to="/certificate"
-                      onClick={closeAllMenus}
-                      className="p-3.5 flex items-start gap-3 hover:bg-orange-50/70 transition-colors group"
-                    >
-                      <div className="w-8 h-8 rounded-lg bg-slate-100 group-hover:bg-brand-orange group-hover:text-white text-slate-700 flex items-center justify-center shrink-0 transition-colors">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-50 group-hover:bg-brand-orange group-hover:text-white text-emerald-600 flex items-center justify-center shrink-0 transition-colors">
                         <Award className="w-4 h-4" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-xs font-bold text-slate-900 group-hover:text-brand-orange transition-colors">
-                          4-Stage Inspection & QC Protocol
-                        </h4>
+                        <div className="flex items-center justify-between">
+                          <h4 className="text-xs font-bold text-slate-900 group-hover:text-brand-orange transition-colors">
+                            Udyam Certificate
+                          </h4>
+                          <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-brand-orange" />
+                        </div>
                         <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
-                          Raw Material, Metrology & Rub-Test Verification
+                          Ministry of Micro, Small & Medium Enterprises (MSME)
                         </p>
                       </div>
-                    </Link>
+                    </a>
+
+                    {/* Quality Overview Status */}
+                    <div className="bg-slate-900 text-white px-4 py-2.5 flex items-center justify-between text-xs">
+                      <span className="text-slate-300 font-medium text-[11px]">
+                        4-Stage QC & Inspection System
+                      </span>
+                      <span className="text-brand-orange font-bold text-[11px]">
+                        ISO 9001:2015 Verified
+                      </span>
+                    </div>
                   </div>
                 </div>
               )}
@@ -581,29 +699,54 @@ export default function Header({ onOpenQuote }) {
                       href={CATALOGUE_DOWNLOAD_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      download
                       onClick={closeAllMenus}
                       className="text-xs font-semibold text-slate-600 hover:text-brand-orange flex items-center gap-1"
                     >
                       <FileDown className="w-3 h-3 text-brand-orange" />
-                      <span>Download Catalogue (PDF)</span>
+                      <span>View Catalogue (PDF)</span>
                     </a>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Materials */}
-            <NavLink
-              to="/materials"
-              onClick={closeAllMenus}
-              className={({ isActive }) =>
-                `text-sm font-semibold py-2.5 px-3 rounded-md transition-colors ${isActive ? 'bg-orange-50 text-brand-orange font-bold' : 'text-slate-800 hover:text-brand-orange hover:bg-slate-50'
-                }`
-              }
-            >
-              Materials
-            </NavLink>
+            {/* Materials (Mobile Accordion) */}
+            <div>
+              <button
+                type="button"
+                onClick={() => setMobileMaterialsOpen(!mobileMaterialsOpen)}
+                className="w-full flex items-center justify-between text-sm font-semibold py-2.5 px-3 rounded-md text-slate-800 hover:text-brand-orange hover:bg-slate-50 transition-colors cursor-pointer"
+              >
+                <span className={isMaterialsActive ? 'text-brand-orange font-bold' : ''}>Materials</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileMaterialsOpen ? 'rotate-180 text-brand-orange' : 'text-slate-400'}`} />
+              </button>
+
+              {mobileMaterialsOpen && (
+                <div className="pl-4 pr-2 py-2 space-y-1.5 bg-slate-50 rounded-lg my-1">
+                  {MATERIALS.map((mat) => (
+                    <Link
+                      key={mat.id}
+                      to={mat.seoUrl}
+                      onClick={closeAllMenus}
+                      className="text-xs text-slate-800 hover:text-brand-orange font-medium flex items-center justify-between py-1.5 px-2 rounded hover:bg-white transition-colors"
+                    >
+                      <span className="font-semibold">{mat.name}</span>
+                      <span className="text-[10px] text-slate-400 truncate max-w-[130px]">{mat.grades.split(',')[0]}</span>
+                    </Link>
+                  ))}
+                  <div className="pt-2 border-t border-slate-200">
+                    <Link
+                      to="/materials"
+                      onClick={closeAllMenus}
+                      className="text-xs font-bold text-brand-orange flex items-center gap-1 py-1"
+                    >
+                      <span>View All Materials Matrix</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Industries */}
             <NavLink
@@ -617,43 +760,43 @@ export default function Header({ onOpenQuote }) {
               Industries
             </NavLink>
 
-            {/* Certification (Mobile Accordion) */}
+            {/* Certificates (Mobile Accordion) */}
             <div>
               <button
                 type="button"
                 onClick={() => setMobileCertOpen(!mobileCertOpen)}
-                className="w-full flex items-center justify-between text-sm font-semibold py-2.5 px-3 rounded-md text-slate-800 hover:text-brand-orange hover:bg-slate-50 transition-colors"
+                className="w-full flex items-center justify-between text-sm font-semibold py-2.5 px-3 rounded-md text-slate-800 hover:text-brand-orange hover:bg-slate-50 transition-colors cursor-pointer"
               >
-                <span>Certification</span>
+                <span className={isCertActive ? 'text-brand-orange font-bold' : ''}>Certificates</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileCertOpen ? 'rotate-180 text-brand-orange' : 'text-slate-400'}`} />
               </button>
 
               {mobileCertOpen && (
                 <div className="pl-4 pr-2 py-2 space-y-2 bg-slate-50 rounded-lg my-1">
                   <a
-                    href="/certificates/udyam-certificate.jpg"
+                    href="/certificates/GST-CERTIFICATE.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={closeAllMenus}
-                    className="text-xs text-slate-800 hover:text-brand-orange font-medium flex items-center justify-between py-1"
+                    className="text-xs text-slate-800 hover:text-brand-orange font-medium flex items-center justify-between py-1.5 px-2 rounded hover:bg-white transition-colors"
                   >
-                    <span>Udyam Registration Certificate</span>
+                    <span className="font-semibold">GST Certificate</span>
                     <ExternalLink className="w-3 h-3 text-brand-orange" />
                   </a>
-                  <Link
-                    to="/certificate"
+                  <a
+                    href="/certificates/Udyam-Certificate.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={closeAllMenus}
-                    className="text-xs text-slate-800 hover:text-brand-orange font-medium block py-1"
+                    className="text-xs text-slate-800 hover:text-brand-orange font-medium flex items-center justify-between py-1.5 px-2 rounded hover:bg-white transition-colors"
                   >
-                    ISO 9001:2015 Quality Compliance
-                  </Link>
-                  <Link
-                    to="/certificate"
-                    onClick={closeAllMenus}
-                    className="text-xs text-slate-800 hover:text-brand-orange font-medium block py-1"
-                  >
-                    4-Stage Quality Protocol Overview
-                  </Link>
+                    <span className="font-semibold">Udyam Certificate</span>
+                    <ExternalLink className="w-3 h-3 text-brand-orange" />
+                  </a>
+                  <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-[11px] font-semibold text-slate-500 py-1">
+                    <span>Quality Assurance:</span>
+                    <span className="text-brand-orange font-bold">ISO 9001:2015 Verified</span>
+                  </div>
                 </div>
               )}
             </div>

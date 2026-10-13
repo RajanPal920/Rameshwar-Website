@@ -15,7 +15,7 @@ export default function PageHero({
   objectPosition = 'center center',
 }) {
   return (
-    <div className="relative w-full overflow-hidden bg-slate-100 site-hero-container">
+    <div className="relative w-full overflow-hidden bg-white site-hero-container">
       {/* Full-Bleed Background Image (Clear, Sharp, Professionally Presented) */}
       <img
         src={image}
@@ -27,7 +27,7 @@ export default function PageHero({
       />
 
       {/* Hero Foreground Content: Clean Left-Aligned Card matching Homepage Hero proportions */}
-      <div className="relative z-10 h-full flex items-center max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full py-8 pointer-events-none">
+      <div className="relative z-10 min-h-[inherit] h-full flex items-center max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full py-6 sm:py-8 pointer-events-none">
         <div className="pointer-events-auto w-[min(740px,calc(100%-24px))] min-h-[380px] p-[32px_28px] box-border flex flex-col justify-center text-white bg-white/15 backdrop-blur-md border border-white/70 rounded-[20px] shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
           {/* Breadcrumbs */}
           {breadcrumbs.length > 0 && (

@@ -38,11 +38,11 @@ export default function ProductDetailModal({ product, onClose, onOpenQuote }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             
             {/* Image */}
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-slate-700">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-white border border-slate-700 p-4 flex items-center justify-center">
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain object-center"
               />
             </div>
 

@@ -110,18 +110,18 @@ export default function Footer() {
               <li><Link to="/products" className="hover:text-brand-orange transition-colors">Product Range</Link></li>
               <li><Link to="/materials" className="hover:text-brand-orange transition-colors">Materials</Link></li>
               <li><Link to="/industries" className="hover:text-brand-orange transition-colors">Industries</Link></li>
-              <li><Link to="/certificate" className="hover:text-brand-orange transition-colors">Certificate & QA</Link></li>
+              <li><a href="/certificates/GST-CERTIFICATE.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">GST Certificate (PDF)</a></li>
+              <li><a href="/certificates/Udyam-Certificate.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">Udyam Certificate (PDF)</a></li>
               <li><Link to="/contact" className="hover:text-brand-orange transition-colors">Contact & RFQ</Link></li>
               <li className="pt-1">
                 <a
                   href={CATALOGUE_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  download
                   className="inline-flex items-center gap-1.5 text-brand-orange hover:underline font-semibold text-xs"
                 >
                   <FileDown className="w-3.5 h-3.5" />
-                  <span>Download Catalogue</span>
+                  <span>View Product Catalogue (PDF)</span>
                 </a>
               </li>
             </ul>

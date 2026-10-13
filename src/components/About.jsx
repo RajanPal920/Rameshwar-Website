@@ -31,12 +31,13 @@ export default function About({ onSelectImage }) {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
 
           {/* LEFT: Fixed-width Image Card */}
-          <div className="w-full max-w-[560px] lg:w-[460px] lg:max-w-none lg:shrink-0 mx-auto lg:mx-0 relative">
-            <div className="relative rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-xl group">
+          <div className="w-full max-w-[560px] lg:w-[660px] lg:max-w-none lg:shrink-0 mx-auto lg:mx-0 relative">
+            <div className="relative rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/90 shadow-[0_8px_30px_rgba(0,0,0,0.06)] group">
               <img
-                src="/images/about-img-home.jpg"
+                src="/images/img12.jpg"
                 alt="Rameshwar Industries - Precision Engineered Brass Turbine Name Plate"
-                className="w-full h-auto object-cover group-hover:scale-103 transition-transform duration-500 cursor-pointer"
+                className="w-full h-[400px] sm:h-[540px] md:h-[600px] lg:h-[650px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-500 cursor-pointer"
+                onClick={() => onSelectImage && onSelectImage('/images/img12.jpg', 'Solid Brass Turbine Name Plate')}
               />
 
               {/* Overlay engineering tag */}

@@ -26,38 +26,43 @@ export default function Applications({ onSelectImage, onOpenQuote }) {
           {APPLICATIONS.map((app) => (
             <div
               key={app.id}
-              className="group relative bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 p-3 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"
             >
               <div>
                 {/* Thumbnail Image Container */}
                 <div 
-                  className="relative aspect-[4/3] rounded-lg overflow-hidden bg-white mb-3 cursor-pointer"
+                  className="relative aspect-[16/11] rounded-t-2xl overflow-hidden bg-slate-50/70 p-3 border-b border-slate-100/90 flex items-center justify-center cursor-pointer"
                   onClick={() => onSelectImage(app.image, `${app.name} Application`)}
                 >
                   <img
                     src={app.image}
                     alt={app.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500"
                   />
-                  <div className="absolute top-2 left-2 bg-industrial-950/80 backdrop-blur-sm text-white text-[10px] font-semibold px-1.5 py-0.5 rounded">
+                  <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs text-industrial-950 text-[10px] font-semibold px-2 py-0.5 rounded shadow-2xs border border-slate-200/60">
                     {app.id}
                   </div>
                 </div>
 
-                {/* Title */}
-                <h3 className="font-bold text-sm text-industrial-950 group-hover:text-brand-orange transition-colors">
-                  {app.name}
-                </h3>
+                <div className="p-4 sm:p-5">
+                  {/* Title */}
+                  <h3 className="font-bold text-sm sm:text-base text-industrial-950 group-hover:text-brand-orange transition-colors leading-snug">
+                    {app.name}
+                  </h3>
 
-                {/* One-Line Description */}
-                <p className="text-xs text-slate-500 mt-1 leading-snug line-clamp-2">
-                  {app.desc}
-                </p>
+                  {/* One-Line Description */}
+                  <p className="text-xs text-slate-600 mt-1.5 leading-relaxed line-clamp-2 font-normal">
+                    {app.desc}
+                  </p>
+                </div>
               </div>
 
               {/* Bottom Quick Action */}
-              <div className="mt-3 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-400 group-hover:text-brand-orange font-semibold">
-                <span>View Application</span>
+              <div 
+                onClick={() => onSelectImage(app.image, `${app.name} Application`)}
+                className="px-4 pb-4 pt-2.5 border-t border-slate-100/80 flex items-center justify-between text-xs text-brand-orange font-semibold cursor-pointer"
+              >
+                <span>View Specimen</span>
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
             </div>

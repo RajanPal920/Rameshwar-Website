@@ -18,13 +18,13 @@ export default function FeaturedApplication({ onOpenQuote, onSelectImage }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* LEFT: Large Image of Industrial Machine/Control Panel Containing Identification Plates */}
+          {/* LEFT: Industrial Identification Plates Specimen */}
           <div className="lg:col-span-6 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-slate-700 shadow-2xl group">
+            <div className="relative rounded-2xl overflow-hidden bg-slate-100 border border-slate-700 shadow-2xl p-4 sm:p-6 flex items-center justify-center group min-h-[300px] sm:min-h-[360px]">
               <img
                 src="/images/machine-with-plates.jpg"
                 alt="CNC Industrial Machine with Installed Rameshwar Nameplates and Control Console"
-                className="w-full h-auto object-cover group-hover:scale-103 transition-transform duration-500 cursor-pointer"
+                className="w-full h-full max-h-[380px] object-contain object-center group-hover:scale-[1.02] transition-transform duration-500 cursor-pointer"
                 onClick={() => onSelectImage('/images/machine-with-plates.jpg', 'Industrial Machine Tool with Nameplates & Control Panels')}
               />
 

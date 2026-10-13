@@ -29,18 +29,17 @@ export default function Products({ onOpenQuote, onSelectProduct, onSelectImage }
               href={CATALOGUE_DOWNLOAD_URL}
               target="_blank"
               rel="noopener noreferrer"
-              download
               className="inline-flex items-center gap-2 bg-white hover:bg-slate-900 text-slate-800 hover:text-white border border-slate-300 hover:border-slate-900 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold shadow-2xs transition-all"
             >
               <FileDown className="w-4 h-4 text-brand-orange" />
-              <span>Download Product Catalogue</span>
+              <span>View Product Catalogue (PDF)</span>
             </a>
 
             <Link
               to="/products"
               className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-orange hover:text-brand-orange-dark px-3 py-2"
             >
-              <span>View All 25 Products</span>
+              <span>View All {PRODUCTS.length} Products</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -51,49 +50,49 @@ export default function Products({ onOpenQuote, onSelectProduct, onSelectImage }
           {PRODUCTS.slice(0, 9).map((product) => (
             <div
               key={product.id}
-              className="group bg-white rounded-xl border border-slate-200 hover:border-brand-orange/60 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden"
+              className="group bg-white rounded-2xl border border-slate-200/90 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-[0_14px_30px_rgba(0,0,0,0.07)] hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden"
             >
-              {/* Clickable Image — Directly linking to product detail page */}
+              {/* Clickable Image — Complete Plate Centered with object-contain */}
               <Link
                 to={product.seoUrl}
-                className="relative aspect-[16/10] bg-white p-2 border-b border-slate-100 overflow-hidden block cursor-pointer"
+                className="relative aspect-[16/11] bg-slate-50/70 p-4 sm:p-5 border-b border-slate-100/90 overflow-hidden flex items-center justify-center cursor-pointer"
               >
                 <img
                   src={product.image}
                   alt={`${product.title} Manufacturer in India`}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-contain object-center group-hover:scale-[1.03] transition-transform duration-500"
                 />
 
                 {/* Number Tag */}
-                <div className="absolute top-2.5 left-2.5 bg-industrial-950/85 backdrop-blur-sm text-slate-200 text-[11px] font-medium px-2 py-0.5 rounded border border-white/10">
+                <div className="absolute top-3 left-3 bg-industrial-950/85 backdrop-blur-sm text-slate-200 text-[11px] font-medium px-2.5 py-0.5 rounded-md border border-white/10 shadow-2xs">
                   #{product.number}
                 </div>
 
                 {/* Primary Substrate Tag */}
-                <div className="absolute top-2.5 right-2.5 bg-white/95 backdrop-blur-sm text-slate-900 text-[11px] font-semibold px-2 py-0.5 rounded shadow-2xs">
+                <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-slate-900 text-[11px] font-semibold px-2.5 py-0.5 rounded-md shadow-2xs border border-slate-200/60">
                   {product.materials[0]}
                 </div>
               </Link>
 
-              {/* Compact Card Content */}
-              <div className="p-4 sm:p-4.5 flex-1 flex flex-col justify-between">
+              {/* Card Content */}
+              <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="text-xs font-semibold text-brand-orange uppercase tracking-wider block mb-1 truncate">
+                  <span className="text-[11px] font-semibold text-brand-orange uppercase tracking-wider block mb-1 truncate">
                     {product.category}
                   </span>
 
                   <Link to={product.seoUrl} className="block">
-                    <h3 className="text-base font-bold text-industrial-950 group-hover:text-brand-orange transition-colors line-clamp-1 leading-snug">
+                    <h3 className="text-base sm:text-[17px] font-bold text-slate-900 group-hover:text-brand-orange transition-colors line-clamp-1 leading-snug">
                       {product.title}
                     </h3>
                   </Link>
 
-                  <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed font-normal">
+                  <p className="text-xs sm:text-[13px] text-slate-600 mt-1.5 line-clamp-2 leading-relaxed font-normal">
                     {product.description}
                   </p>
 
-                  {/* Compact Technical Spec Strip */}
-                  <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-medium text-slate-500">
+                  {/* Technical Spec Strip */}
+                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-medium text-slate-500">
                     <span className="truncate pr-2">
                       Substrate: <strong className="text-slate-800 font-semibold">{product.materials.slice(0, 2).join(', ')}</strong>
                     </span>
@@ -103,14 +102,20 @@ export default function Products({ onOpenQuote, onSelectProduct, onSelectImage }
                   </div>
                 </div>
 
-                {/* Bottom Action Button — Clean & Aligned */}
-                <div className="mt-3 pt-2.5 border-t border-slate-100">
+                {/* Bottom Action Buttons */}
+                <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center gap-2">
                   <Link
                     to={product.seoUrl}
-                    className="inline-flex items-center justify-center gap-1.5 w-full text-xs font-semibold text-brand-orange hover:text-white bg-orange-50/80 hover:bg-brand-orange px-3 py-2 rounded-lg transition-colors group/btn cursor-pointer"
+                    className="inline-flex items-center justify-center gap-1.5 flex-1 text-xs font-semibold text-slate-800 bg-slate-50 hover:bg-slate-900 hover:text-white border border-slate-200/80 hover:border-slate-900 px-3.5 py-2.5 rounded-xl transition-all duration-200 group/btn"
                   >
                     <span>View Product</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                  </Link>
+                  <Link
+                    to={`/contact?product=${encodeURIComponent(product.title)}`}
+                    className="inline-flex items-center justify-center text-xs font-semibold text-white bg-brand-orange hover:bg-brand-orange-dark px-3.5 py-2.5 rounded-xl transition-all duration-200 shadow-2xs shrink-0"
+                  >
+                    Inquire
                   </Link>
                 </div>
               </div>
@@ -121,14 +126,14 @@ export default function Products({ onOpenQuote, onSelectProduct, onSelectImage }
         {/* Bottom Navigation CTA */}
         <div className="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-xs sm:text-sm text-slate-500 font-normal">
-            Displaying 9 Featured Solutions from Complete Catalogue • 25 Specialized Formats Available
+            Displaying 9 Featured Solutions from Complete Catalogue • {PRODUCTS.length} Specialized Formats Available
           </p>
           <div className="flex items-center gap-3">
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 bg-industrial-950 hover:bg-industrial-850 text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 bg-industrial-950 hover:bg-industrial-850 text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition-colors shadow-2xs"
             >
-              <span>Explore All 25 Catalogue Products</span>
+              <span>Explore All {PRODUCTS.length} Catalogue Products</span>
               <ArrowRight className="w-4 h-4 text-brand-orange" />
             </Link>
           </div>

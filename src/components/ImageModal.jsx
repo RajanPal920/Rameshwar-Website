@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { X, ExternalLink, ShieldCheck, Check } from 'lucide-react';
 
 export default function ImageModal({ image, title, onClose, onOpenQuote }) {
@@ -30,11 +31,11 @@ export default function ImageModal({ image, title, onClose, onOpenQuote }) {
         </div>
 
         {/* Image Area */}
-        <div className="relative aspect-[16/11] bg-white flex items-center justify-center overflow-hidden">
+        <div className="relative aspect-[16/11] bg-slate-50 flex items-center justify-center overflow-hidden p-4 sm:p-6">
           <img
             src={image}
             alt={title || "Industrial Plate"}
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain object-center"
           />
         </div>
 
@@ -44,15 +45,13 @@ export default function ImageModal({ image, title, onClose, onOpenQuote }) {
             <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
             <span className="font-medium text-slate-400">Manufactured by Rameshwar Industries</span>
           </div>
-          <button
-            onClick={() => {
-              onClose();
-              onOpenQuote(title);
-            }}
-            className="w-full sm:w-auto bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold px-5 py-2 rounded-lg transition-colors cursor-pointer"
+          <Link
+            to={`/contact?product=${encodeURIComponent(title || '')}`}
+            onClick={onClose}
+            className="w-full sm:w-auto bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold px-5 py-2 rounded-lg transition-colors cursor-pointer text-center"
           >
             Enquire for this Specification
-          </button>
+          </Link>
         </div>
       </div>
     </div>
