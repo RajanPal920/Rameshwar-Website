@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Phone,
   Mail,
@@ -15,24 +15,29 @@ import {
   Factory,
   ArrowRight,
   ShieldCheck,
-  FileCheck
+  FileCheck,
+  AlertCircle
 } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import { COMPANY_CONTACT, CATALOGUE_DOWNLOAD_URL } from '../data/productData';
 
+const initialFormState = {
+  name: '',
+  company: '',
+  phone: '',
+  email: '',
+  plateType: 'Machine Name Plates',
+  material: 'Stainless Steel 304',
+  dimensions: '',
+  quantity: '50 - 200 pcs',
+  requirements: ''
+};
+
 export default function ContactPage() {
   const location = useLocation();
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    phone: '',
-    email: '',
-    plateType: 'Machine Name Plates',
-    material: 'Stainless Steel 304',
-    dimensions: '',
-    quantity: '50 - 200 pcs',
-    requirements: ''
-  });
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState(initialFormState);
+  const [validationError, setValidationError] = useState('');
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -60,11 +65,99 @@ export default function ContactPage() {
     }
   }, [location.search]);
 
-  const [submitted, setSubmitted] = useState(false);
+  // Ensure form resets appropriately when user navigates back (BFCache / history)
+  useEffect(() => {
+    const handlePageShow = (event) => {
+      if (event.persisted) {
+        setFormData(initialFormState);
+        setValidationError('');
+      }
+    };
+    window.addEventListener('pageshow', handlePageShow);
+    return () => window.removeEventListener('pageshow', handlePageShow);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
+
+    // 1. Validate required fields
+    const name = formData.name.trim();
+    const company = formData.company.trim();
+    const phone = formData.phone.trim();
+    const email = formData.email.trim();
+
+    if (!name || !company || !phone || !email) {
+      setValidationError('Please fill in all required fields (Name, Company, Phone, and Email).');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setValidationError('Please enter a valid business email address.');
+      return;
+    }
+
+    setValidationError('');
+
+    // 2. Format recipient, subject, and pre-filled body
+    const emailTo = 'sales@rameshwarindustries.com';
+    const emailSubject = 'New Industrial Plate Enquiry - Rameshwar Industries';
+    const emailBody = [
+      'Dear Rameshwar Industries Team,',
+      '',
+      'Please find my custom industrial plate requirements for official estimation below:',
+      '',
+      `• Full Name: ${name}`,
+      `• Company / Organization: ${company}`,
+      `• Phone / WhatsApp Number: ${phone}`,
+      `• Business Email Address: ${email}`,
+      `• Plate Type: ${formData.plateType}`,
+      `• Material Substrate: ${formData.material}`,
+      `• Batch Quantity: ${formData.quantity}`,
+      `• Dimensions, Mounting Holes & CAD Details:`,
+      formData.requirements.trim() ? formData.requirements.trim() : 'Standard / To be specified on drawing discussion',
+      '',
+      '---',
+      'Sent via Rameshwar Industries Technical Quotation Desk'
+    ].join('\r\n');
+
+    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailTo)}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoUrl = `mailto:${emailTo}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+    // 3. Immediately open Gmail directly in browser with pre-filled compose window
+    let opened = false;
+    try {
+      const newWin = window.open(gmailWebUrl, '_blank', 'noopener,noreferrer');
+      if (newWin && !newWin.closed && typeof newWin.closed !== 'undefined') {
+        opened = true;
+      }
+    } catch {
+      opened = false;
+    }
+
+    // Fallback: If popup blocker prevents opening Gmail or window failed, open default email client
+    if (!opened) {
+      const fallbackLink = document.createElement('a');
+      fallbackLink.href = mailtoUrl;
+      document.body.appendChild(fallbackLink);
+      fallbackLink.click();
+      document.body.removeChild(fallbackLink);
+    }
+
+    // 4. Clear form completely & restore dropdowns to original default values
+    setFormData(initialFormState);
+
+    // 5. Clean URL query parameters if present
+    if (location.search) {
+      navigate('/contact', { replace: true });
+    }
+  };
+
+  const handleInputChange = (field, value) => {
+    if (validationError) {
+      setValidationError('');
+    }
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
@@ -375,174 +468,161 @@ export default function ContactPage() {
 
             {/* Left Column: RFQ Form Container */}
             <div className="lg:col-span-8 bg-white rounded-2xl border border-slate-200 p-6 sm:p-10 shadow-xs">
-              {submitted ? (
-                <div className="py-16 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-xs">
-                    <CheckCircle2 className="w-8 h-8" />
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="border-b border-slate-100 pb-4">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-semibold tracking-wide uppercase mb-1">
+                    <span>FORMAL ESTIMATION FORM</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-industrial-950">Inquiry Successfully Received</h3>
-                  <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
-                    Thank you! Our estimation engineering team will review your specifications and send a formal commercial quotation within 24 hours.
+                  <h3 className="text-xl sm:text-2xl font-bold text-industrial-950">
+                    Submit Custom Industrial Plate Requirements
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                    Provide dimensions, substrate selection, and batch volume for quick technical review and official pricing.
                   </p>
-                  <div className="pt-4">
-                    <button
-                      type="button"
-                      onClick={() => setSubmitted(false)}
-                      className="inline-flex items-center gap-2 bg-industrial-950 hover:bg-brand-orange text-white text-xs font-bold px-5 py-2.5 rounded-lg transition-colors cursor-pointer"
-                    >
-                      <span>Submit Another Specification</span>
-                    </button>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">
+                      Your Full Name <span className="text-brand-orange">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Ramesh Patel"
+                      value={formData.name}
+                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">
+                      Company / Organization <span className="text-brand-orange">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Dynamic Engineering Works"
+                      value={formData.company}
+                      onChange={(e) => handleInputChange('company', e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                    />
                   </div>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="border-b border-slate-100 pb-4">
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-semibold tracking-wide uppercase mb-1">
-                      <span>FORMAL ESTIMATION FORM</span>
-                    </div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-industrial-950">
-                      Submit Custom Industrial Plate Requirements
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                      Provide dimensions, substrate selection, and batch volume for quick technical review and official pricing.
-                    </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">
+                      Phone / WhatsApp Number <span className="text-brand-orange">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="+91 98765 00000"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                    />
                   </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">
-                        Your Full Name <span className="text-brand-orange">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Ramesh Patel"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">
-                        Company / Organization <span className="text-brand-orange">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Dynamic Engineering Works"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
-                      />
-                    </div>
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">
+                      Business Email Address <span className="text-brand-orange">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="purchase@company.com"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                    />
                   </div>
+                </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">
-                        Phone / WhatsApp Number <span className="text-brand-orange">*</span>
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="+91 98765 00000"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">
-                        Business Email Address <span className="text-brand-orange">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="purchase@company.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Plate Type</label>
-                      <select
-                        value={formData.plateType}
-                        onChange={(e) => setFormData({ ...formData, plateType: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
-                      >
-                        <option>Machine Name Plates</option>
-                        <option>Motor Rating Plates</option>
-                        <option>Control Panel Plates</option>
-                        <option>Equipment Data Plates</option>
-                        <option>Stainless Steel Plates</option>
-                        <option>Aluminium Name Plates</option>
-                        <option>Industrial Machine Tags</option>
-                        <option>Safety & Warning Signs</option>
-                        <option>Push / Pull Plates</option>
-                        <option>Valve Body & Trim Plates</option>
-                        <option>PVC & Vinyl Labels</option>
-                        <option>Custom Industrial Plates</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Material Substrate</label>
-                      <select
-                        value={formData.material}
-                        onChange={(e) => setFormData({ ...formData, material: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
-                      >
-                        <option>Stainless Steel 304</option>
-                        <option>Stainless Steel 316 (Marine)</option>
-                        <option>Anodized Aluminium</option>
-                        <option>Solid Brass</option>
-                        <option>Pure Copper</option>
-                        <option>Phosphor Bronze</option>
-                        <option>Industrial PVC / Vinyl</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Batch Quantity</label>
-                      <select
-                        value={formData.quantity}
-                        onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                        className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
-                      >
-                        <option>10 - 50 pcs (Sample Batch)</option>
-                        <option>50 - 200 pcs</option>
-                        <option>200 - 1,000 pcs</option>
-                        <option>1,000+ pcs (Production)</option>
-                      </select>
-                    </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">Plate Type</label>
+                    <select
+                      value={formData.plateType}
+                      onChange={(e) => handleInputChange('plateType', e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                    >
+                      <option>Machine Name Plates</option>
+                      <option>Motor Rating Plates</option>
+                      <option>Control Panel Plates</option>
+                      <option>Equipment Data Plates</option>
+                      <option>Stainless Steel Plates</option>
+                      <option>Aluminium Name Plates</option>
+                      <option>Industrial Machine Tags</option>
+                      <option>Safety & Warning Signs</option>
+                      <option>Push / Pull Plates</option>
+                      <option>Valve Body & Trim Plates</option>
+                      <option>PVC & Vinyl Labels</option>
+                      <option>Custom Industrial Plates</option>
+                    </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-1">
-                      Dimensions, Mounting Holes & CAD Details
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Specify dimensions (e.g. 150mm x 80mm x 1.5mm), mounting holes (diameter, center pitch), serial numbering, or color filling requirements..."
-                      value={formData.requirements}
-                      onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
-                    ></textarea>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">Material Substrate</label>
+                    <select
+                      value={formData.material}
+                      onChange={(e) => handleInputChange('material', e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                    >
+                      <option>Stainless Steel 304</option>
+                      <option>Stainless Steel 316 (Marine)</option>
+                      <option>Anodized Aluminium</option>
+                      <option>Solid Brass</option>
+                      <option>Pure Copper</option>
+                      <option>Phosphor Bronze</option>
+                      <option>Industrial PVC / Vinyl</option>
+                    </select>
                   </div>
 
-                  <button
-                    type="submit"
-                    className="w-full flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-bold text-sm py-3.5 px-6 rounded-lg shadow-md transition-all cursor-pointer"
-                  >
-                    <Send className="w-4 h-4" />
-                    <span>Send Requirements for Official Estimation</span>
-                  </button>
-                </form>
-              )}
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">Batch Quantity</label>
+                    <select
+                      value={formData.quantity}
+                      onChange={(e) => handleInputChange('quantity', e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                    >
+                      <option>10 - 50 pcs (Sample Batch)</option>
+                      <option>50 - 200 pcs</option>
+                      <option>200 - 1,000 pcs</option>
+                      <option>1,000+ pcs (Production)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">
+                    Dimensions, Mounting Holes & CAD Details
+                  </label>
+                  <textarea
+                    rows={3}
+                    placeholder="Specify dimensions (e.g. 150mm x 80mm x 1.5mm), mounting holes (diameter, center pitch), serial numbering, or color filling requirements..."
+                    value={formData.requirements}
+                    onChange={(e) => handleInputChange('requirements', e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 transition-all"
+                  ></textarea>
+                </div>
+
+                {/* Validation Error Banner */}
+                {validationError && (
+                  <div className="p-3.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2.5">
+                    <AlertCircle className="w-4 h-4 text-red-500 shrink-0" />
+                    <span>{validationError}</span>
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white font-bold text-sm py-3.5 px-6 rounded-lg shadow-md transition-all cursor-pointer"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Send Requirements for Official Estimation</span>
+                </button>
+              </form>
             </div>
 
             {/* Right Column: Engineering Guidelines & Quality Standards */}
